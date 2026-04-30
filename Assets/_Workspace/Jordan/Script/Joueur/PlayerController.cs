@@ -1,26 +1,16 @@
-using Mono.Cecil;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace _Workspace.Jordan
+namespace _Workspace.Jordan.Script.Joueur
 {
     public class PlayerController : MonoBehaviour
     {
-        [Header("References")] 
-        
         [Header("Settings")] 
-        [SerializeField] private LayerMask _layerMask;
-
-        [Header("Movement")]
-        [SerializeField] private Vector2 _move;
-        [SerializeField] private Vector2 _look;
         [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _rotationSpeed;
-        
         [SerializeField] private float _dash;
 
         private bool _isDashing;
-
+        private Vector2 _move;
         private PlayerInput _pI;
         private Rigidbody _rb;
 
@@ -33,7 +23,6 @@ namespace _Workspace.Jordan
         private void Update()
         {
             Vector3 move = new Vector3(_move.x, 0, _move.y);
-            Vector3 look = new Vector3(_look.x, 0, _look.y);
 
             // Movement
             _rb.linearVelocity = new Vector3(_move.x, 0, _move.y) * (_moveSpeed * Time.deltaTime);
@@ -46,8 +35,12 @@ namespace _Workspace.Jordan
 
         public void OnSprint()
         {
-            Debug.Log("Sprinting");
             _rb.AddForce(new Vector3(_move.x * _dash,0,_move.y * _dash));
+        }
+
+        public void OnAttack(InputValue value)
+        {
+            
         }
     }
 }
