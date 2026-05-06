@@ -48,16 +48,13 @@ namespace _Workspace.Jordan.Script.Joueur
                 {
                     _isDashing = false;
                 }
-
                 return;
             }
-
             HandleMovement(move);
         }
 
         private void HandleMovement(Vector3 move)
         {
-            // 🧠 Deadzone input
             if (move.magnitude < _inputDeadZone)
             {
                 move = Vector3.zero;
@@ -66,8 +63,7 @@ namespace _Workspace.Jordan.Script.Joueur
             {
                 move = move.normalized;
             }
-
-            // 🔥 STOP TOTAL si pas d'input
+            
             Vector3 horizontalVelocity = move * _moveSpeed;
 
             Vector3 finalMove = new Vector3(
@@ -95,7 +91,7 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             _move = value.Get<Vector2>();
         }
-
+        
         public void OnSprint()
         {
             if (_move.magnitude < _inputDeadZone) return;
