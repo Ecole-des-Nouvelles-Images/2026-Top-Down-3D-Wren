@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace _Workspace.Jordan.Script.Joueur
@@ -6,6 +7,8 @@ namespace _Workspace.Jordan.Script.Joueur
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
+        public static event Action<bool> OnInputDeviceChanged;
+        
         [Header("Settings")] 
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private float _dashSpeed = 12f;
@@ -18,6 +21,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private Vector2 _move;
         private CharacterController _controller;
+        private bool _isControllerConnected;
 
         private bool _isDashing;
         private float _dashTimer;
