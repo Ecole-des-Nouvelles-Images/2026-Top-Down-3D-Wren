@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 5628556833275934113}
   - component: {fileID: 5668232269129079545}
   - component: {fileID: 7186669521904554642}
+  - component: {fileID: 7811192008229631814}
   m_Layer: 0
   m_Name: peasant
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.NavTarget
   _target: {fileID: 0}
+  _stopDistance: 1.5
 --- !u!195 &7186669521904554642
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -162,3 +164,17 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7811192008229631814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181480333825909922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c57c4111b4758e4cbc13e5fb07bf279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.EnnemyLife
+  _health: 1
+  HealthBar: {fileID: 0}

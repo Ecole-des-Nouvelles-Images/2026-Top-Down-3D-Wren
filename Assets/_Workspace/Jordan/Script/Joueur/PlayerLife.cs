@@ -1,23 +1,21 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
     public class PlayerLife : MonoBehaviour
     {
-        [SerializeField] private int _maxHealth;
+        [SerializeField] PlayerSo _playerSo;
         
         public Healthbar HealthBar;
 
-        private int _currentHealth;
+        private float _currentHealth;
 
         public void Awake()
         {
-            _currentHealth = _maxHealth; 
-            HealthBar.SetMaxHealth(_maxHealth);
+            _currentHealth = _playerSo.MaxHealth; 
         }
-
-        public void TakeDamage(int damage)
+        
+        public void TakeDamage(float damage)
         {
             _currentHealth -= damage;
             
