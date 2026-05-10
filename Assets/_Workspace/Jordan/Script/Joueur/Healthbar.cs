@@ -7,11 +7,12 @@ namespace _Workspace.Jordan.Script.Joueur
     public class Healthbar : MonoBehaviour
     { 
         [SerializeField] PlayerSo _playerSo;
+        [SerializeField] PlayerLife _playerLife;
         [SerializeField] private Image _image;
         
         private void Update()
         {
-            _image.fillAmount = _playerSo.MaxHealth / _playerSo.CurrentHealth;
+            _image.fillAmount = _playerSo.MaxHealth / _playerLife.CurrentHealth;
         }
     }
 }

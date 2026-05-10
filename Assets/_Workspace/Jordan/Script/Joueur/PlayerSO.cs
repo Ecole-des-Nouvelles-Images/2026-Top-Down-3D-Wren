@@ -18,6 +18,5 @@ namespace _Workspace.Jordan.Script.Joueur
         
         [Header("Life Settings")]
         public int MaxHealth;
-        public float CurrentHealth;
     }
 }

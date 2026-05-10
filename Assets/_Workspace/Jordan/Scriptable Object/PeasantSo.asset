@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e28e50609d2bb4ba3f7ac233ab03f1, type: 3}
-  m_Name: PlayerSO
-  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerSo
-  MoveSpeed: 5
-  DashSpeed: 12
-  DashDuration: 0.2
+  m_Script: {fileID: 11500000, guid: eb0097d236457f84895d9b6f20ede1b8, type: 3}
+  m_Name: PeasantSo
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.PeasantSo
+  AttackRange: 1
+  Cooldown: 1.750692
   Damage: 10
-  Cooldown: 2
-  MaxHealth: 20
+  NextAttackTime: 2
+  CanAttack: 0

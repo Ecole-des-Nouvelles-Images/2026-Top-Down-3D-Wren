@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
@@ -7,22 +8,23 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] PlayerSo _playerSo;
         
         public Healthbar HealthBar;
-
-        private float _currentHealth;
-
+        
+        // pour séparer la vie des joueurs du SO
+        public float CurrentHealth;
+        
         public void Awake()
         {
-            _currentHealth = _playerSo.MaxHealth; 
+            CurrentHealth = _playerSo.MaxHealth; 
         }
         
         public void TakeDamage(float damage)
         {
-            _currentHealth -= damage;
+            CurrentHealth -= damage;
             
-            if (_currentHealth >= 0)
+            if (CurrentHealth >= 0)
             {
             }
-            if (_currentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 Die();
             }
