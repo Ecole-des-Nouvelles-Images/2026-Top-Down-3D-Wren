@@ -1,0 +1,146 @@
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace _Workspace.Jordan.Script.Joueur
+{
+    [RequireComponent(typeof(CharacterController))]
+    public class PlayerControllerTom : MonoBehaviour
+    {
+        public static event Action<bool> OnInputDeviceChanged;
+
+        [Header("Settings")]
+        [SerializeField] private float _moveSpeed = 5f;
+        [SerializeField] private float _dashSpeed = 12f;
+        [SerializeField] private float _dashDuration = 0.2f;
+        [SerializeField] private float _inputDeadZone = 0.1f;
+
+        [Header("Gravity")]
+        [SerializeField] private float _gravity = -9.81f;
+        [SerializeField] private float _groundedForce = -2f;
+
+        [Header("Animation")]
+        [SerializeField] private Animator _animator;
+
+        [Header("Visual")]
+        [SerializeField] private Transform _visual;
+        [SerializeField] private float _rotationSpeed = 12f;
+
+        private Vector2 _move;
+        private CharacterController _controller;
+        private bool _isControllerConnected;
+
+        private bool _isDashing;
+        private float _dashTimer;
+        private Vector3 _dashDirection;
+
+        private float _verticalVelocity;
+
+        private void Awake()
+        {
+            _controller = GetComponent<CharacterController>();
+
+            if (_animator == null)
+                _animator = GetComponentInChildren<Animator>();
+
+            if (_visual == null && _animator != null)
+                _visual = _animator.transform;
+        }
+
+        private void Update()
+        {
+            Vector3 move = new Vector3(_move.x, 0, _move.y);
+
+            HandleGravity();
+
+            if (_isDashing)
+            {
+                Vector3 dashMove = _dashDirection * _dashSpeed;
+                dashMove.y = _verticalVelocity;
+
+                RotateVisual(_dashDirection);
+
+                _controller.Move(dashMove * Time.deltaTime);
+
+                _dashTimer -= Time.deltaTime;
+
+                if (_dashTimer <= 0f)
+                    _isDashing = false;
+
+                UpdateAnimation(_dashDirection.magnitude);
+                return;
+            }
+
+            HandleMovement(move);
+            UpdateAnimation(move.magnitude);
+        }
+
+        private void HandleMovement(Vector3 move)
+        {
+            if (move.magnitude < _inputDeadZone)
+            {
+                move = Vector3.zero;
+            }
+            else
+            {
+                move = move.normalized;
+                RotateVisual(move);
+            }
+
+            Vector3 horizontalVelocity = move * _moveSpeed;
+
+            Vector3 finalMove = new Vector3(
+                horizontalVelocity.x,
+                _verticalVelocity,
+                horizontalVelocity.z
+            );
+
+            _controller.Move(finalMove * Time.deltaTime);
+        }
+
+        private void RotateVisual(Vector3 direction)
+        {
+            if (_visual == null || direction.sqrMagnitude < 0.001f) return;
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            _visual.rotation = Quaternion.Slerp(
+                _visual.rotation,
+                targetRotation,
+                _rotationSpeed * Time.deltaTime
+            );
+        }
+
+        private void UpdateAnimation(float inputMagnitude)
+        {
+            if (_animator == null) return;
+
+            float speed = inputMagnitude < _inputDeadZone ? 0f : 1f;
+
+            _animator.SetFloat("Speed", speed);
+            _animator.SetBool("IsDashing", _isDashing);
+        }
+
+        private void HandleGravity()
+        {
+            if (_controller.isGrounded && _verticalVelocity < 0)
+                _verticalVelocity = _groundedForce;
+            else
+                _verticalVelocity += _gravity * Time.deltaTime;
+        }
+
+        public void OnMove(InputValue value)
+        {
+            _move = value.Get<Vector2>();
+        }
+
+        public void OnSprint()
+        {
+            if (_move.magnitude < _inputDeadZone) return;
+
+            _isDashing = true;
+            _dashTimer = _dashDuration;
+
+            _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;
+        }
+    }
+}
