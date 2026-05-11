@@ -6,6 +6,9 @@ namespace _Workspace.Jordan.Script.ennemi
     [CreateAssetMenu(fileName = "PeasantSo", menuName = "Scriptable Objects/PeasantSo")]
     public class PeasantSo : ScriptableObject
     {
+        [Header("Move Settings")]
+        public float MoveSpeed;
+        
         [Header("Attack Settings")]
         public float AttackRange;
         public float Cooldown;

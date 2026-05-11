@@ -1,13 +1,13 @@
 using _Workspace.Jordan.Script.Joueur;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace _Workspace.Jordan.Script.ennemi
 {
-    public class AIController : MonoBehaviour
+    [RequireComponent(typeof(PriestSo))]
+    public class PriestAIController : MonoBehaviour
     {
-        [SerializeField] private PeasantSo _peasantSo;
+        [SerializeField] private PeasantSo _priestSo;
         [SerializeField] private Transform _player;
        
         private PlayerLife _playerLife;
@@ -23,13 +23,13 @@ namespace _Workspace.Jordan.Script.ennemi
 
         private void Update()
         {
-            _peasantSo.Cooldown += Time.deltaTime; 
+            _priestSo.Cooldown += Time.deltaTime; 
             
             if (_player == null) return;
 
             float distance = Vector3.Distance(transform.position, _agent.destination);
 
-            if (distance <= _peasantSo.AttackRange)
+            if (distance <= _priestSo.AttackRange)
             {
                 Attack();
             }
@@ -37,19 +37,19 @@ namespace _Workspace.Jordan.Script.ennemi
 
         private void Attack()
         {
-            if (_peasantSo.Cooldown >= _peasantSo.NextAttackTime)
+            if (_priestSo.Cooldown >= _priestSo.NextAttackTime)
             {
-                _peasantSo.CanAttack = true;
-                _peasantSo.Cooldown = 0f;
-                Debug.Log(_peasantSo.Cooldown);
+                _priestSo.CanAttack = true;
+                _priestSo.Cooldown = 0f;
+                Debug.Log(_priestSo.Cooldown);
                 Debug.Log("a attaqué");
             }
             
             // dégâts
-            if (_peasantSo.CanAttack)
+            if (_priestSo.CanAttack)
             {
-                _playerLife.TakeDamage(_peasantSo.Damage);
-                _peasantSo.CanAttack = false;
+                _playerLife.TakeDamage(_priestSo.Damage);
+                _priestSo.CanAttack = false;
             }
         }
     }

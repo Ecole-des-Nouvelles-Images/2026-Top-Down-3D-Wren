@@ -12,21 +12,31 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private PlayerSo _playerSo;
         [SerializeField] private GameObject _hitBox;
         
+        [Header("Animation")]
+        [SerializeField] private Animator _animator;
+        
+        [Header("Visual")]
+        [SerializeField] private Transform _visual;
+        [SerializeField] private float _rotationSpeed = 12f;
+        
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected;
-
         private bool _isDashing;
         private float _dashTimer;
         private Vector3 _dashDirection;
         private float _verticalVelocity;
         private float _inputDeadZone = 0.1f;
+        
+        // Gravité
         private float _gravity = -9.81f;
         private float _groundedForce = -2f;
 
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+            _animator = GetComponentInChildren<Animator>();
+            _visual = _animator.transform;
         }
 
         private void Update()
@@ -40,6 +50,8 @@ namespace _Workspace.Jordan.Script.Joueur
                 Vector3 dashMove = _dashDirection * _playerSo.DashSpeed;
                 dashMove.y = _verticalVelocity;
 
+                RotateVisual(_dashDirection);
+                
                 _controller.Move(dashMove * Time.deltaTime);
 
                 _dashTimer -= Time.deltaTime;
@@ -47,9 +59,11 @@ namespace _Workspace.Jordan.Script.Joueur
                 {
                     _isDashing = false;
                 }
+                UpdateAnimation(_dashDirection.magnitude);
                 return;
             }
             HandleMovement(move);
+            UpdateAnimation(move.magnitude);
         }
 
         private void HandleMovement(Vector3 move)
@@ -61,6 +75,7 @@ namespace _Workspace.Jordan.Script.Joueur
             else
             {
                 move = move.normalized;
+                RotateVisual(move);
             }
             
             Vector3 velocity = move * _playerSo.MoveSpeed;
@@ -71,6 +86,24 @@ namespace _Workspace.Jordan.Script.Joueur
                 velocity.z
             );
             _controller.Move(finalMove * Time.deltaTime);
+        }
+        
+        private void RotateVisual(Vector3 direction)
+        {
+            if (_visual == null || direction.sqrMagnitude < 0.001f) return;
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            _visual.rotation = Quaternion.Slerp(_visual.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+        }
+
+        private void UpdateAnimation(float inputMagnitude)
+        {
+            if (_animator == null) return;
+
+            float speed = inputMagnitude < _inputDeadZone ? 0f : 1f;
+
+            _animator.SetFloat("Speed", speed);
+            _animator.SetBool("IsDashing", _isDashing);
         }
 
         private void HandleGravity()

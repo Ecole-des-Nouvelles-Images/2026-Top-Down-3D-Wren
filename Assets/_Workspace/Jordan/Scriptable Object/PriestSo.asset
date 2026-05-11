@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0097d236457f84895d9b6f20ede1b8, type: 3}
-  m_Name: PeasantSo
-  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.PeasantSo
-  MoveSpeed: 10
-  AttackRange: 1
-  Cooldown: 1.3422136
+  m_Script: {fileID: 11500000, guid: 5921a3b7be0fc9b4da72d6151df0adce, type: 3}
+  m_Name: PriestSo
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.PriestSo
+  MoveSpeed: 5
+  Cooldown: 5
   Damage: 10
-  NextAttackTime: 2
-  CanAttack: 0
+  NextAttackTime: 0
+  DestroyLight: 5
