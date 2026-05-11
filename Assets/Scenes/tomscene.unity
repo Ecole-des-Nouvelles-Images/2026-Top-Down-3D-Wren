@@ -576,7 +576,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 60120864687175465, guid: dd2e237fc711042489525b50ce9cbd25, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1933297456}
+      addedObject: {fileID: 1933297464}
+    - targetCorrespondingSourceObject: {fileID: 3208484459599160124, guid: dd2e237fc711042489525b50ce9cbd25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1487649618}
   m_SourcePrefab: {fileID: 100100000, guid: dd2e237fc711042489525b50ce9cbd25, type: 3}
 --- !u!1 &1052979751 stripped
 GameObject:
@@ -663,6 +666,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1ca1045447a6848a2f952685ccf13a, type: 3}
+--- !u!1 &1487649613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3208484459599160124, guid: dd2e237fc711042489525b50ce9cbd25, type: 3}
+  m_PrefabInstance: {fileID: 1019233909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1487649618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487649613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc3818870920e543aa21b1a937a4f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerAttack
+  _playerSo: {fileID: 11400000, guid: 8b783430bfc9ff04a9088dd86af22441, type: 2}
 --- !u!1001 &1601266631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1296,11 +1317,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
   m_PrefabInstance: {fileID: 1936383162}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1667077482 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
-  m_PrefabInstance: {fileID: 1936383162}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1839311637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1557,7 +1573,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 60120864687175465, guid: dd2e237fc711042489525b50ce9cbd25, type: 3}
   m_PrefabInstance: {fileID: 1019233909}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1933297456
+--- !u!4 &1933297463 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7871725697163918398, guid: dd2e237fc711042489525b50ce9cbd25, type: 3}
+  m_PrefabInstance: {fileID: 1019233909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1933297464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1566,23 +1587,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1933297455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93233ac90b495941a3ec7e35e8929a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 1440c02d1a7a4cf1a2be5db291e6e2d5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerControllerTom
-  _moveSpeed: 5
-  _dashSpeed: 12
-  _dashDuration: 0.2
-  _inputDeadZone: 0.1
-  _gravity: -9.81
-  _groundedForce: -2
-  _animator: {fileID: 1667077482}
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerController
+  _playerSo: {fileID: 11400000, guid: 8b783430bfc9ff04a9088dd86af22441, type: 2}
+  _hitBox: {fileID: 1487649613}
   _visual: {fileID: 1667077481}
   _rotationSpeed: 12
---- !u!4 &1933297463 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7871725697163918398, guid: dd2e237fc711042489525b50ce9cbd25, type: 3}
-  m_PrefabInstance: {fileID: 1019233909}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1936383162
 PrefabInstance:
   m_ObjectHideFlags: 0
