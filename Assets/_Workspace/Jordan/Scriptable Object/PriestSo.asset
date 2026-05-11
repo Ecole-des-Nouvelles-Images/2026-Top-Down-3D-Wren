@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5921a3b7be0fc9b4da72d6151df0adce, type: 3}
   m_Name: PriestSo
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.PriestSo
-  MoveSpeed: 5
-  Cooldown: 5
+  MoveSpeed: 1
   Damage: 10
-  NextAttackTime: 0
-  DestroyLight: 5
+  NextAttackTime: 20

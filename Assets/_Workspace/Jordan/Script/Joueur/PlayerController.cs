@@ -12,8 +12,7 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private PlayerSo _playerSo;
         [SerializeField] private GameObject _hitBox;
         
-        [Header("Animation")]
-        [SerializeField] private Animator _animator;
+        private Animator _animator;
         
         [Header("Visual")]
         [SerializeField] private Transform _visual;

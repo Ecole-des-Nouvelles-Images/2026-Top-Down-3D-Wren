@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace _Workspace.Jordan.Script.ennemi
+namespace _Workspace.Jordan.Script.ennemi.Peasant
 {
     [CreateAssetMenu(fileName = "PeasantSo", menuName = "Scriptable Objects/PeasantSo")]
     public class PeasantSo : ScriptableObject
