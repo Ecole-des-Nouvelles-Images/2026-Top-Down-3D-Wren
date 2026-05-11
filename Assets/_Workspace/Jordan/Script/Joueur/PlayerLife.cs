@@ -5,26 +5,26 @@ namespace _Workspace.Jordan.Script.Joueur
 {
     public class PlayerLife : MonoBehaviour
     {
-        [SerializeField] private int _maxHealth;
+        [SerializeField] PlayerSo _playerSo;
         
         public Healthbar HealthBar;
-
-        private int _currentHealth;
-
+        
+        // pour séparer la vie des joueurs du SO
+        public float CurrentHealth;
+        
         public void Awake()
         {
-            _currentHealth = _maxHealth; 
-            HealthBar.SetMaxHealth(_maxHealth);
+            CurrentHealth = _playerSo.MaxHealth; 
         }
-
-        public void TakeDamage(int damage)
+        
+        public void TakeDamage(float damage)
         {
-            _currentHealth -= damage;
+            CurrentHealth -= damage;
             
-            if (_currentHealth >= 0)
+            if (CurrentHealth >= 0)
             {
             }
-            if (_currentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 Die();
             }

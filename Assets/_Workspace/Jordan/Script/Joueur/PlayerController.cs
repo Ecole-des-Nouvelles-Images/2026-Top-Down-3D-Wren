@@ -1,24 +1,17 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
-        public static event Action<bool> OnInputDeviceChanged;
-        
         [Header("Settings")] 
-        [SerializeField] private float _moveSpeed = 5f;
-        [SerializeField] private float _dashSpeed = 12f;
-        [SerializeField] private float _dashDuration = 0.2f;
-        [SerializeField] private float _inputDeadZone = 0.1f;
-
-        [Header("Gravity")]
-        [SerializeField] private float _gravity = -9.81f;
-        [SerializeField] private float _groundedForce = -2f;
-
+        [SerializeField] private PlayerSo _playerSo;
+        [SerializeField] private GameObject _hitBox;
+        
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected;
@@ -26,8 +19,10 @@ namespace _Workspace.Jordan.Script.Joueur
         private bool _isDashing;
         private float _dashTimer;
         private Vector3 _dashDirection;
-
         private float _verticalVelocity;
+        private float _inputDeadZone = 0.1f;
+        private float _gravity = -9.81f;
+        private float _groundedForce = -2f;
 
         private void Awake()
         {
@@ -42,7 +37,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
             if (_isDashing)
             {
-                Vector3 dashMove = _dashDirection * _dashSpeed;
+                Vector3 dashMove = _dashDirection * _playerSo.DashSpeed;
                 dashMove.y = _verticalVelocity;
 
                 _controller.Move(dashMove * Time.deltaTime);
@@ -68,14 +63,13 @@ namespace _Workspace.Jordan.Script.Joueur
                 move = move.normalized;
             }
             
-            Vector3 horizontalVelocity = move * _moveSpeed;
+            Vector3 velocity = move * _playerSo.MoveSpeed;
 
             Vector3 finalMove = new Vector3(
-                horizontalVelocity.x,
+                velocity.x,
                 _verticalVelocity,
-                horizontalVelocity.z
+                velocity.z
             );
-
             _controller.Move(finalMove * Time.deltaTime);
         }
 
@@ -90,20 +84,25 @@ namespace _Workspace.Jordan.Script.Joueur
                 _verticalVelocity += _gravity * Time.deltaTime;
             }
         }
-
-        public void OnMove(InputValue value)
+        
+        private void OnMove(InputValue value)
         {
             _move = value.Get<Vector2>();
         }
         
-        public void OnSprint()
+        private void OnSprint()
         {
             if (_move.magnitude < _inputDeadZone) return;
 
             _isDashing = true;
-            _dashTimer = _dashDuration;
+            _dashTimer = _playerSo.DashDuration;
 
             _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;
+        }
+
+        private void OnAttack()
+        {
+            _hitBox.SetActive(true);
         }
     }
 }
