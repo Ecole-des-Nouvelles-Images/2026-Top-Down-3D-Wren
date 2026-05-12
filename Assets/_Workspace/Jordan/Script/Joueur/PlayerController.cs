@@ -1,31 +1,29 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
-        [Header("Settings")] 
+        [Header("Settings")]
         [SerializeField] private PlayerSo _playerSo;
         [SerializeField] private GameObject _hitBox;
-        
+
         [Header("Visual")]
         [SerializeField] private Transform _visual;
         [SerializeField] private float _rotationSpeed = 12f;
-        
+
         private Vector2 _move;
         private CharacterController _controller;
-        private bool _isControllerConnected;
         private bool _isDashing;
         private float _dashTimer;
         private Vector3 _dashDirection;
         private float _verticalVelocity;
         private float _inputDeadZone = 0.1f;
         private Animator _animator;
-        
+
         // Gravité
         private float _gravity = -9.81f;
         private float _groundedForce = -2f;
@@ -35,6 +33,8 @@ namespace _Workspace.Jordan.Script.Joueur
             _controller = GetComponent<CharacterController>();
             _animator = GetComponentInChildren<Animator>();
             _visual = _animator.transform;
+
+            _hitBox.SetActive(false);
         }
 
         private void Update()
@@ -49,7 +49,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 dashMove.y = _verticalVelocity;
 
                 RotateVisual(_dashDirection);
-                
+
                 _controller.Move(dashMove * Time.deltaTime);
 
                 _dashTimer -= Time.deltaTime;
@@ -57,9 +57,11 @@ namespace _Workspace.Jordan.Script.Joueur
                 {
                     _isDashing = false;
                 }
+
                 UpdateAnimation(_dashDirection.magnitude);
                 return;
             }
+
             HandleMovement(move);
             UpdateAnimation(move.magnitude);
         }
@@ -75,7 +77,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 move = move.normalized;
                 RotateVisual(move);
             }
-            
+
             Vector3 velocity = move * _playerSo.MoveSpeed;
 
             Vector3 finalMove = new Vector3(
@@ -83,15 +85,21 @@ namespace _Workspace.Jordan.Script.Joueur
                 _verticalVelocity,
                 velocity.z
             );
+
             _controller.Move(finalMove * Time.deltaTime);
         }
-        
+
         private void RotateVisual(Vector3 direction)
         {
             if (_visual == null || direction.sqrMagnitude < 0.001f) return;
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            _visual.rotation = Quaternion.Slerp(_visual.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+
+            _visual.rotation = Quaternion.Slerp(
+                _visual.rotation,
+                targetRotation,
+                _rotationSpeed * Time.deltaTime
+            );
         }
 
         private void UpdateAnimation(float inputMagnitude)
@@ -115,12 +123,12 @@ namespace _Workspace.Jordan.Script.Joueur
                 _verticalVelocity += _gravity * Time.deltaTime;
             }
         }
-        
+
         private void OnMove(InputValue value)
         {
             _move = value.Get<Vector2>();
         }
-        
+
         private void OnSprint()
         {
             if (_move.magnitude < _inputDeadZone) return;
@@ -133,8 +141,22 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private void OnAttack()
         {
+            int attackIndex = UnityEngine.Random.Range(0, 2);
+
+            _animator.SetInteger("AttackIndex", attackIndex);
             _animator.SetTrigger("Attack");
+        }
+
+        // Animation Event
+        public void EnableHitBox()
+        {
             _hitBox.SetActive(true);
+        }
+
+        // Animation Event
+        public void DisableHitBox()
+        {
+            _hitBox.SetActive(false);
         }
     }
 }
