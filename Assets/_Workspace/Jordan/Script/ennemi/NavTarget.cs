@@ -10,8 +10,7 @@ namespace _Workspace.Jordan.Script.ennemi
     {
         [SerializeField] private Transform _target; 
         [SerializeField] private float _stopDistance;
-        
-        [SerializeField] private PriestSo _priestSo;
+        [SerializeField] private float _moveSpeed;
         
         private NavMeshAgent _agent;
 
@@ -23,12 +22,13 @@ namespace _Workspace.Jordan.Script.ennemi
 
         private void Update()
         {
-            _agent.speed = _priestSo.MoveSpeed;
+            _agent.speed = _moveSpeed;
             float distance = Vector3.Distance(transform.position, _target.position);
 
             if (distance <= _stopDistance)
             {
                 _agent.isStopped = true;
+                
                 _agent.ResetPath(); // évite les micro-corrections qui poussent le joueur
                 return;
             }

@@ -8,8 +8,7 @@ namespace _Workspace.Jordan.Script.ennemi
     {
         [SerializeField] private float _health = 100f;
         
-        
-        private Healthbar HealthBar;
+        private Healthbar _healthBar;
         private float _currentHealth;
         private Animator _animator;
         

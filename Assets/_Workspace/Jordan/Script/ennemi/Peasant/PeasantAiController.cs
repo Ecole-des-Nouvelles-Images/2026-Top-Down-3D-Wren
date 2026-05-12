@@ -1,19 +1,27 @@
 using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.ennemi.Peasant
 {
-    [RequireComponent(typeof(PeasantSo))]
-    public class AIController : MonoBehaviour
+    public class PeasantAIController : MonoBehaviour
     {
-        [SerializeField] private PeasantSo _peasantSo;
+        public float MoveSpeed;
+        
         [SerializeField] private Transform _player;
-       
+        
+        [Header("Attack Settings")]
+        private float _attackRange;
+        private float _cooldown;
+        private float _damage;
+        private float _nextAttackTime;
+        private bool _canAttack;
+
         private PlayerLife _playerLife;
         private Animator _animator;
         private NavMeshAgent  _agent;
-
+        
         private void Start()
         {
             _animator = GetComponent<Animator>();
@@ -22,14 +30,14 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         }
 
         private void Update()
-        {
-            _peasantSo.Cooldown += Time.deltaTime; 
+        { 
+            _cooldown += Time.deltaTime; 
             
             if (_player == null) return;
 
             float distance = Vector3.Distance(transform.position, _agent.destination);
 
-            if (distance <= _peasantSo.AttackRange)
+            if (distance <=  _attackRange)
             {
                 Attack();
             }
@@ -37,20 +45,20 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
         private void Attack()
         {
-            if (_peasantSo.Cooldown >= _peasantSo.NextAttackTime)
+            if (_cooldown >= _nextAttackTime)
             {
-                _peasantSo.CanAttack = true;
-                _peasantSo.Cooldown = 0f;
-                Debug.Log(_peasantSo.Cooldown);
+                _canAttack = true;
+                _cooldown = 0f;
+                Debug.Log(_cooldown);
                 Debug.Log("a attaqué");
             }
             
             // dégâts
-            if (_peasantSo.CanAttack)
+            if (_canAttack)
             {
                 UpdateAnimation();
-                _playerLife.TakeDamage(_peasantSo.Damage);
-                _peasantSo.CanAttack = false;
+                _playerLife.TakeDamage(_damage);
+                _canAttack = false;
             }
         }
         private void UpdateAnimation()

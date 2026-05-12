@@ -18,8 +18,8 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private Vector2 _move;
         private CharacterController _controller;
-        private bool _isControllerConnected;
-        private bool _isDashing;
+        private bool _isControllerConnected; 
+        public bool IsDashing;
         private float _dashTimer;
         private Vector3 _dashDirection;
         private float _verticalVelocity;
@@ -43,7 +43,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
             HandleGravity();
 
-            if (_isDashing)
+            if (IsDashing)
             {
                 Vector3 dashMove = _dashDirection * _playerSo.DashSpeed;
                 dashMove.y = _verticalVelocity;
@@ -55,7 +55,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 _dashTimer -= Time.deltaTime;
                 if (_dashTimer <= 0f)
                 {
-                    _isDashing = false;
+                    IsDashing = false;
                 }
                 UpdateAnimation(_dashDirection.magnitude);
                 return;
@@ -101,7 +101,7 @@ namespace _Workspace.Jordan.Script.Joueur
             float speed = inputMagnitude < _inputDeadZone ? 0f : 1f;
 
             _animator.SetFloat("Speed", speed);
-            _animator.SetBool("IsDashing", _isDashing);
+            _animator.SetBool("IsDashing", IsDashing);
         }
 
         private void HandleGravity()
@@ -125,7 +125,7 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             if (_move.magnitude < _inputDeadZone) return;
 
-            _isDashing = true;
+            IsDashing = true;
             _dashTimer = _playerSo.DashDuration;
 
             _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;

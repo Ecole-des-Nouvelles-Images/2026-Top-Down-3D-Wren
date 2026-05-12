@@ -5,7 +5,9 @@ namespace _Workspace.Jordan.Script.Joueur
 {
     public class PlayerAttack : MonoBehaviour
     {
-        [SerializeField] private PlayerSo _playerSo;
+        [Header("Attack Settings")]
+        [SerializeField] private float _damage;
+        [SerializeField] private float _cooldown;
         
         private EnnemyLife _ennemyLife;
         private float _time;
@@ -20,7 +22,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
                 if (ennemyLife != null)
                 {
-                    ennemyLife.TakeDamage(_playerSo.Damage);
+                    ennemyLife.TakeDamage(_damage);
                 }
             }
         }
@@ -29,7 +31,7 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             _time += Time.deltaTime;
 
-            if (_playerSo.Cooldown <= _time)
+            if (_cooldown <= _time)
             {
                 gameObject.SetActive(false);
                 _time = 0;
