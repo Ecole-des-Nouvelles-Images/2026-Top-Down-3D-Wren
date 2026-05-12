@@ -48,6 +48,7 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         {
             if (_pLayers == null || _pLayers.Count == 0) return;
 
+            _animator.SetTrigger("Attack");
             GameObject target = _pLayers[Random.Range(0, _pLayers.Count)];
             Vector3 pos = target.transform.position;
 

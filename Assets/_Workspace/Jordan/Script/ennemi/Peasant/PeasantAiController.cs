@@ -48,9 +48,16 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
             // dégâts
             if (_peasantSo.CanAttack)
             {
+                UpdateAnimation();
                 _playerLife.TakeDamage(_peasantSo.Damage);
                 _peasantSo.CanAttack = false;
             }
+        }
+        private void UpdateAnimation()
+        {
+            if (_animator == null) return;
+            
+            _animator.SetTrigger("Attack");
         }
     }
 }

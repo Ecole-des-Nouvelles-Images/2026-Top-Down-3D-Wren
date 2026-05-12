@@ -12,8 +12,6 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private PlayerSo _playerSo;
         [SerializeField] private GameObject _hitBox;
         
-        private Animator _animator;
-        
         [Header("Visual")]
         [SerializeField] private Transform _visual;
         [SerializeField] private float _rotationSpeed = 12f;
@@ -26,6 +24,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private Vector3 _dashDirection;
         private float _verticalVelocity;
         private float _inputDeadZone = 0.1f;
+        private Animator _animator;
         
         // Gravité
         private float _gravity = -9.81f;
@@ -134,6 +133,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private void OnAttack()
         {
+            _animator.SetTrigger("Attack");
             _hitBox.SetActive(true);
         }
     }
