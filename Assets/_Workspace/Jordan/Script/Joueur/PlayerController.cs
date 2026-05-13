@@ -16,6 +16,9 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private Transform _visual;
         [SerializeField] private float _rotationSpeed = 12f;
         
+        private float _time;
+        private float _attackTimer;
+        
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected; 
@@ -27,8 +30,8 @@ namespace _Workspace.Jordan.Script.Joueur
         private Animator _animator;
         
         // Gravité
-        private float _gravity = -9.81f;
-        private float _groundedForce = -2f;
+        // private float _gravity = -9.81f;
+        // private float _groundedForce = -2f;
 
         private void Awake()
         {
@@ -40,8 +43,10 @@ namespace _Workspace.Jordan.Script.Joueur
         private void Update()
         {
             Vector3 move = new Vector3(_move.x, 0, _move.y);
+            
+            _attackTimer += Time.deltaTime;
 
-            HandleGravity();
+           // HandleGravity();
 
             if (IsDashing)
             {
@@ -104,17 +109,17 @@ namespace _Workspace.Jordan.Script.Joueur
             _animator.SetBool("IsDashing", IsDashing);
         }
 
-        private void HandleGravity()
-        {
-            if (_controller.isGrounded && _verticalVelocity < 0)
-            {
-                _verticalVelocity = _groundedForce;
-            }
-            else
-            {
-                _verticalVelocity += _gravity * Time.deltaTime;
-            }
-        }
+        // private void HandleGravity()
+        // {
+        //     if (_controller.isGrounded && _verticalVelocity < 0)
+        //     {
+        //         _verticalVelocity = _groundedForce;
+        //     }
+        //     else
+        //     {
+        //         _verticalVelocity += _gravity * Time.deltaTime;
+        //     }
+        // }
         
         private void OnMove(InputValue value)
         {
@@ -133,8 +138,12 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private void OnAttack()
         {
-            _animator.SetTrigger("Attack");
-            _hitBox.SetActive(true);
+                if (_attackTimer < _playerSo.AttackCooldown) return;
+
+                _attackTimer = 0;
+
+                _animator.SetTrigger("Attack");
+                _hitBox.SetActive(true);
         }
     }
 }

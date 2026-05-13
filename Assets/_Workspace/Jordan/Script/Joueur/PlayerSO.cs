@@ -12,7 +12,8 @@ namespace _Workspace.Jordan.Script.Joueur
         public float DashSpeed;
         public float DashDuration;
         
-       
+        [Header("Attack Settings")]
+        public float AttackCooldown = 0.5f;
         
         [Header("Life Settings")]
         public int MaxHealth;

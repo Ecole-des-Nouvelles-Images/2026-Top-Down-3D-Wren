@@ -7,8 +7,6 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 {
     public class PeasantAIController : MonoBehaviour
     {
-        public float MoveSpeed;
-        
         [SerializeField] private Transform _player;
         
         [Header("Attack Settings")]
