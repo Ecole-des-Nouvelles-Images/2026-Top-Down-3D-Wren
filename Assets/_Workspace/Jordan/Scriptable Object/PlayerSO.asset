@@ -17,4 +17,4 @@ MonoBehaviour:
   DashDuration: 0.2
   Damage: 10
   Cooldown: 2
-  MaxHealth: 20
+  MaxHealth: 100

@@ -10,9 +10,5 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] PlayerLife _playerLife;
         [SerializeField] private Image _image;
         
-        private void Update()
-        {
-            _image.fillAmount = _playerSo.MaxHealth / _playerLife.CurrentHealth;
-        }
     }
 }

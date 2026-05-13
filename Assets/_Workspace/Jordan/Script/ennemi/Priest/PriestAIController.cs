@@ -7,23 +7,24 @@ using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.ennemi.Priest
 {
-    [RequireComponent(typeof(PriestSo))]
     public class PriestAIController : MonoBehaviour
     {
-        [SerializeField] private PriestSo _priestSo;
         [SerializeField] private Transform _player;
         [SerializeField] private PriestAttack _priestAttack;
         [SerializeField] private GameObject _lightPrefab;
         [SerializeField] private GameObject _warningPrefab;
+        [SerializeField] private List<GameObject> _pLayers;
+        
+        [Header("Attack Settings")]
+        [SerializeField] private float _nextAttackTime;
         [SerializeField] private float _warningTime;
         [SerializeField] private float _cooldown;
         [SerializeField] private float _destroyLight;
-        [SerializeField] private List<GameObject> _pLayers;
-       
+        
         private PlayerLife _playerLife;
         private Animator _animator;
         private NavMeshAgent  _agent;
-
+        
         private void Start()
         {
             _animator = GetComponent<Animator>();
@@ -37,7 +38,7 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
 
             _cooldown += Time.deltaTime;
 
-            if (_cooldown >= _priestSo.NextAttackTime)
+            if (_cooldown >= _nextAttackTime)
             {
                 _cooldown = 0f;
                 CastLight();
@@ -48,10 +49,11 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         {
             if (_pLayers == null || _pLayers.Count == 0) return;
 
-            _animator.SetTrigger("Attack");
+            //_animator.SetTrigger("Attack");
             GameObject target = _pLayers[Random.Range(0, _pLayers.Count)];
             Vector3 pos = target.transform.position;
 
+            Debug.Log("Start Cast");
             StartCoroutine(UseRoutine(pos));
         }
         
@@ -62,6 +64,7 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
             yield return new WaitForSeconds(_warningTime);
             Destroy(warning);
             
+            Debug.Log("Cast ");
             GameObject light = Instantiate(_lightPrefab, pos, Quaternion.identity);
             yield return new WaitForSeconds(_destroyLight);
             Destroy(light);

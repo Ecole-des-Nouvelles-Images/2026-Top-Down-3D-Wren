@@ -1,16 +1,18 @@
+using System.Diagnostics;
+using System.Linq.Expressions;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
     public class PlayerLife : MonoBehaviour
     {
         [SerializeField] PlayerSo _playerSo;
+        [SerializeField] private PlayerController _playerController;
         [SerializeField] private Animator _animator;
         
-        public Healthbar HealthBar;
-        
-        // pour séparer la vie des joueurs du SO
+        public Image Healthbar;
         public float CurrentHealth;
         
         public void Awake()
@@ -22,7 +24,8 @@ namespace _Workspace.Jordan.Script.Joueur
         public void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
-            _animator.SetTrigger("Hit");
+            Healthbar.fillAmount = CurrentHealth / _playerSo.MaxHealth;
+            //_animator.SetTrigger("Hit");
             
             if (CurrentHealth >= 0)
             {
@@ -32,9 +35,13 @@ namespace _Workspace.Jordan.Script.Joueur
                 Die();
             }
         }
+        
+        
         public void Die()
         {
-            _animator.SetBool("Dead", true);
+            _playerController.enabled = false;
+            
+            //_animator.SetBool("Dead", true);
             Debug.Log("est mort");
         }
     }
