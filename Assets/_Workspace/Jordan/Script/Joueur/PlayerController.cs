@@ -8,24 +8,22 @@ namespace _Workspace.Jordan.Script.Joueur
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
-        [Header("Settings")] 
-        [SerializeField] private PlayerSo _playerSo;
+        [Header("Settings")] [SerializeField] private PlayerSo _playerSo;
         [SerializeField] private GameObject _hitBox;
-        
-        [Header("Visual")]
-        [SerializeField] private Transform _visual;
+
+        [Header("Visual")] [SerializeField] private Transform _visual;
         [SerializeField] private float _rotationSpeed = 12f;
-        
+
         private Vector2 _move;
         private CharacterController _controller;
-        private bool _isControllerConnected; 
+        private bool _isControllerConnected;
         public bool IsDashing;
         private float _dashTimer;
         private Vector3 _dashDirection;
         private float _verticalVelocity;
         private float _inputDeadZone = 0.1f;
         private Animator _animator;
-        
+
         // Gravité
         private float _gravity = -9.81f;
         private float _groundedForce = -2f;
@@ -49,7 +47,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 dashMove.y = _verticalVelocity;
 
                 RotateVisual(_dashDirection);
-                
+
                 _controller.Move(dashMove * Time.deltaTime);
 
                 _dashTimer -= Time.deltaTime;
@@ -57,9 +55,11 @@ namespace _Workspace.Jordan.Script.Joueur
                 {
                     IsDashing = false;
                 }
+
                 UpdateAnimation(_dashDirection.magnitude);
                 return;
             }
+
             HandleMovement(move);
             UpdateAnimation(move.magnitude);
         }
@@ -75,7 +75,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 move = move.normalized;
                 RotateVisual(move);
             }
-            
+
             Vector3 velocity = move * _playerSo.MoveSpeed;
 
             Vector3 finalMove = new Vector3(
@@ -85,7 +85,7 @@ namespace _Workspace.Jordan.Script.Joueur
             );
             _controller.Move(finalMove * Time.deltaTime);
         }
-        
+
         private void RotateVisual(Vector3 direction)
         {
             if (_visual == null || direction.sqrMagnitude < 0.001f) return;
@@ -115,12 +115,12 @@ namespace _Workspace.Jordan.Script.Joueur
                 _verticalVelocity += _gravity * Time.deltaTime;
             }
         }
-        
+
         private void OnMove(InputValue value)
         {
             _move = value.Get<Vector2>();
         }
-        
+
         private void OnSprint()
         {
             if (_move.magnitude < _inputDeadZone) return;
@@ -133,7 +133,11 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private void OnAttack()
         {
+            int attackIndex = UnityEngine.Random.Range(0, 2);
+
+            _animator.SetInteger("AttackIndex", attackIndex);
             _animator.SetTrigger("Attack");
+
             _hitBox.SetActive(true);
         }
     }

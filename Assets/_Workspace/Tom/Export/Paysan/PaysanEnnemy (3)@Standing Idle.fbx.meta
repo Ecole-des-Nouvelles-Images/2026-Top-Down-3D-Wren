@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c0a61330c98dc284abe773162ba932a9
+guid: 907847f412ebba84ea23b1bb8b1be00d
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -260,18 +260,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: PaysanEnnemy (3)(Clone)
+    - name: PaysanEnnemy (3) (1)(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: EnnemyMaleFinal.002
-      parentName: PaysanEnnemy (3)(Clone)
+      parentName: PaysanEnnemy (3) (1)(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}
     - name: mixamorig:Hips
-      parentName: PaysanEnnemy (3)(Clone)
+      parentName: PaysanEnnemy (3) (1)(Clone)
       position: {x: -0.00016679615, y: 1.1105895, z: 0.00017523447}
       rotation: {x: -0, y: 0.7143913, z: -0, w: 0.69974643}
       scale: {x: 1, y: 1, z: 1}
@@ -407,7 +407,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 01e8ece2a0423724fb3b56e4f7859a88, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 32368c957da3c1c47b9308e6861b5979, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
