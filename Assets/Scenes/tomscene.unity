@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5628556833275934113, guid: 2b78d90075adec549abf281cc6d80445, type: 3}
+      propertyPath: _peasantSo
+      value: 
+      objectReference: {fileID: 11400000, guid: ea02121ff5c10924db3a946a053036c6, type: 2}
     - target: {fileID: 8469912599102322935, guid: 2b78d90075adec549abf281cc6d80445, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1989,6 +1993,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: VampireNoCape (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2631101390870024943, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Height
+      value: 0.5798672
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631101390870024943, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Radius
+      value: 0.053747494
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631101390870024943, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Center.x
+      value: 0.034317546
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631101390870024943, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Center.y
+      value: -0.008952498
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631101390870024943, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Center.z
+      value: -0.00000015529085
+      objectReference: {fileID: 0}
     - target: {fileID: 3304080524279878823, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1997,6 +2021,26 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: fcf6084f61250484dae332afd8dcab1d, type: 2}
+    - target: {fileID: 5724440058636629171, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Height
+      value: 0.7366791
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724440058636629171, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Radius
+      value: 0.059761226
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724440058636629171, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Center.x
+      value: 0.020238787
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724440058636629171, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Center.y
+      value: -0.06333948
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724440058636629171, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
+      propertyPath: m_Center.z
+      value: -0.0000002871133
+      objectReference: {fileID: 0}
     - target: {fileID: 6082120658725654523, guid: 1ffd7633a9c9cd84b9e9698a62dc08b4, type: 3}
       propertyPath: m_WarningMessage
       value: "\nBinding warning: Some generic clip(s) animate transforms that are
