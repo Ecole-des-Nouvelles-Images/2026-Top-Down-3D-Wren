@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
@@ -8,23 +9,23 @@ namespace _Workspace.Jordan.Script.Joueur
 {
     public class PlayerLife : MonoBehaviour
     {
-        [SerializeField] PlayerSo _playerSo;
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private Animator _animator;
-        
+       
+        public int MaxHealth;
         public Image Healthbar;
         public float CurrentHealth;
         
         public void Awake()
         {
             _animator = GetComponent<Animator>();
-            CurrentHealth = _playerSo.MaxHealth; 
+            CurrentHealth = MaxHealth; 
         }
         
         public void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
-            Healthbar.fillAmount = CurrentHealth / _playerSo.MaxHealth;
+            Healthbar.fillAmount = CurrentHealth / MaxHealth;
             //_animator.SetTrigger("Hit");
             
             if (CurrentHealth >= 0)

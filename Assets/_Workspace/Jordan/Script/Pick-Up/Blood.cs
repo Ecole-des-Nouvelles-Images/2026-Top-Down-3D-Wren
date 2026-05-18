@@ -6,14 +6,13 @@ namespace _Workspace.Jordan.Script.Pick_Up
     [CreateAssetMenu(menuName =  "Power-Up/Blood")]
     public class Blood : ScriptableObject
     {
-        // [SerializeField] private PlayerLife _playerlife;
-        public PlayerSo _playerSo;
+        [SerializeField] private PlayerLife _playerLife;
         public float _amount;
         
         public void Apply(PlayerLife playerLife)
         {
             playerLife.CurrentHealth += _amount;
-            playerLife.Healthbar.fillAmount = playerLife.CurrentHealth / _playerSo.MaxHealth;
+            playerLife.Healthbar.fillAmount = playerLife.CurrentHealth / _playerLife.MaxHealth;
         }
     }
 }

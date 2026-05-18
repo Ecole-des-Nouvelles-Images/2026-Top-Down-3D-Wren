@@ -6,8 +6,8 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
     public class NavTargetMalePeasant : MonoBehaviour
     {
         [SerializeField] private Transform _target;
-        [SerializeField] private float _stopDistance = 2f;
-        [SerializeField] private float _moveSpeed = 3.5f;
+        [SerializeField] private float _stopDistance;
+        [SerializeField] private float _moveSpeed;
 
         [Header("Visual")]
         [SerializeField] private Transform _visual;
@@ -71,7 +71,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
             Quaternion targetRotation = Quaternion.LookRotation(dir);
 
-            // Offset pour corriger une anim de marche de travers
+            // Offset pour corriger l'anim de marche de travers
             
             targetRotation *= Quaternion.Euler(0, _rotationOffset, 0);
             _visual.rotation = Quaternion.Slerp(_visual.rotation, targetRotation, Time.deltaTime * _rotationSpeed);

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
@@ -7,7 +8,10 @@ namespace _Workspace.Jordan.Script.Joueur
     public class PlayerController : MonoBehaviour
     {
         [Header("Settings")] 
-        [SerializeField] private PlayerSo _playerSo;
+        [SerializeField] private float _moveSpeed;
+        [SerializeField] private float _dashSpeed;
+        [SerializeField] private float _dashDuration;
+        [SerializeField] private float _attackCooldown;
         [SerializeField] private GameObject _hitBox;
         
         [Header("Visual")]
@@ -48,7 +52,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
             if (IsDashing)
             {
-                Vector3 dashMove = _dashDirection * _playerSo.DashSpeed;
+                Vector3 dashMove = _dashDirection * _dashSpeed;
                 dashMove.y = _verticalVelocity;
 
                 RotateVisual(_dashDirection);
@@ -79,7 +83,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 RotateVisual(move);
             }
             
-            Vector3 velocity = move * _playerSo.MoveSpeed;
+            Vector3 velocity = move * _moveSpeed;
 
             Vector3 finalMove = new Vector3(velocity.x, _verticalVelocity, velocity.z);
             
@@ -126,17 +130,16 @@ namespace _Workspace.Jordan.Script.Joueur
             if (_move.magnitude < _inputDeadZone) return;
 
             IsDashing = true;
-            _dashTimer = _playerSo.DashDuration;
+            _dashTimer = _dashDuration;
 
             _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;
         }
 
         private void OnAttack()
         {
-            
             int attackIndex = UnityEngine.Random.Range(0, 2);
             
-                if (_attackTimer < _playerSo.AttackCooldown) return;
+                if (_attackTimer < _attackCooldown) return;
 
                 _attackTimer = 0;
 
