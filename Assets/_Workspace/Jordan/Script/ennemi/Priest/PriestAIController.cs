@@ -27,7 +27,7 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         
         private void Start()
         {
-            _animator = GetComponent<Animator>();
+           // _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
             _playerLife = _player.gameObject.GetComponent<PlayerLife>();
         }

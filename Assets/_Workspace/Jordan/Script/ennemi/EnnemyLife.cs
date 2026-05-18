@@ -14,14 +14,14 @@ namespace _Workspace.Jordan.Script.ennemi
         
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            //_animator = GetComponent<Animator>();
             _currentHealth = _health;
         }
         
         public void TakeDamage(float damage)
         {
             _currentHealth -= damage;
-            _animator.SetTrigger("Hit");
+            //_animator.SetTrigger("Hit");
             Debug.Log("Enemy Hit");
 
             if (_currentHealth <= 0)
@@ -33,7 +33,7 @@ namespace _Workspace.Jordan.Script.ennemi
         private void Die()
         {
             Debug.Log("Enemy Dead");
-            _animator.SetBool("Dead", true);
+            //_animator.SetBool("Dead", true);
             
             Destroy(gameObject);
         }

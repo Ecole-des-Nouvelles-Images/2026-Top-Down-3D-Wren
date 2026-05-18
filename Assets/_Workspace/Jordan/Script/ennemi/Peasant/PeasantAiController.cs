@@ -1,22 +1,19 @@
 using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.ennemi.Peasant
 {
     public class PeasantAIController : MonoBehaviour
     {
-        public float MoveSpeed;
-        
         [SerializeField] private Transform _player;
         
         [Header("Attack Settings")]
-        private float _attackRange;
-        private float _cooldown;
-        private float _damage;
-        private float _nextAttackTime;
-        private bool _canAttack;
+        [SerializeField] private float _attackRange;
+        [SerializeField] private float _cooldown;
+        [SerializeField] private float _damage;
+        [SerializeField] private float _nextAttackTime;
+        [SerializeField] private bool _canAttack;
 
         private PlayerLife _playerLife;
         private Animator _animator;

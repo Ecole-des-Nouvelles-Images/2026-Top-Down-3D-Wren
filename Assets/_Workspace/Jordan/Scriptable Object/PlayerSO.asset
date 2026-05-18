@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e28e50609d2bb4ba3f7ac233ab03f1, type: 3}
   m_Name: PlayerSO
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerSo
-  MoveSpeed: 10
+  MoveSpeed: 5
   DashSpeed: 12
   DashDuration: 0.2
-  Damage: 10
-  Cooldown: 2
+  AttackCooldown: 2
   MaxHealth: 100
