@@ -1,8 +1,5 @@
-using _Workspace.Jordan.Script.ennemi.Peasant;
-using _Workspace.Jordan.Script.ennemi.Priest;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.ennemi
 {

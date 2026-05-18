@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
@@ -83,11 +81,8 @@ namespace _Workspace.Jordan.Script.Joueur
             
             Vector3 velocity = move * _playerSo.MoveSpeed;
 
-            Vector3 finalMove = new Vector3(
-                velocity.x,
-                _verticalVelocity,
-                velocity.z
-            );
+            Vector3 finalMove = new Vector3(velocity.x, _verticalVelocity, velocity.z);
+            
             _controller.Move(finalMove * Time.deltaTime);
         }
         
@@ -138,11 +133,16 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private void OnAttack()
         {
+            
+            int attackIndex = UnityEngine.Random.Range(0, 2);
+            
                 if (_attackTimer < _playerSo.AttackCooldown) return;
 
                 _attackTimer = 0;
 
+                _animator.SetInteger("AttackIndex", attackIndex);
                 _animator.SetTrigger("Attack");
+                
                 _hitBox.SetActive(true);
         }
     }
