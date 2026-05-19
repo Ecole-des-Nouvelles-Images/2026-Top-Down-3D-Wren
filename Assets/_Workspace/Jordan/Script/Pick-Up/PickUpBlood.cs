@@ -13,7 +13,7 @@ namespace _Workspace.Jordan.Script.Pick_Up
             {
                 //DoVFX();
                 Destroy(gameObject);
-                Blood.Apply(playerLife: collision.gameObject.GetComponent<PlayerLife>());
+                Blood.Apply(playerLife: collision.gameObject.GetComponent<PlayerController>());
                 Debug.Log("Pick Up Blood");
                 Debug.Log(Blood._amount + "récupère de la vie");
             }

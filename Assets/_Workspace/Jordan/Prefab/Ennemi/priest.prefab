@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 2905322882352904395}
   - component: {fileID: 5720321878677560102}
   - component: {fileID: 5598271661805769783}
+  - component: {fileID: 4925638143062751342}
   - component: {fileID: 322716211202002605}
-  - component: {fileID: 4126125881431613949}
   - component: {fileID: -3490378247214754069}
   - component: {fileID: 5238314274090987011}
   - component: {fileID: 701542428470001695}
   - component: {fileID: 4205430436701101565}
-  - component: {fileID: 584439966671550096}
   m_Layer: 0
   m_Name: priest
   m_TagString: Ennemy
@@ -37,7 +36,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7429821575186933928}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5720321878677560102
@@ -55,7 +55,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354639629576267324}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -97,30 +97,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &322716211202002605
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354639629576267324}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 1.8809547
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0.05952263, z: -0.00000011920929}
---- !u!54 &4126125881431613949
+--- !u!54 &4925638143062751342
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,6 +124,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &322716211202002605
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354639629576267324}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 1.8809547
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0.05952263, z: -0.00000011920929}
 --- !u!195 &-3490378247214754069
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -183,14 +183,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PriestAIControlle
   _player: {fileID: 0}
   _priestAttack: {fileID: 0}
-  _lightPrefab: {fileID: 0}
-  _warningPrefab: {fileID: 0}
-  _pLayers: []
+  _lightPrefab: {fileID: 1843944599737312793, guid: 534505ffadce4f74abae100aaebc4708, type: 3}
+  _warningPrefab: {fileID: 9146604621143166829, guid: e98a6afbd50d45446998ee249430b767, type: 3}
+  _pLayers:
+  - {fileID: 0}
   _castTime: 2
-  _nextAttackTime: 0
-  _warningTime: 0
+  _nextAttackTime: 10
+  _warningTime: 15
   _cooldown: 0
-  _destroyLight: 0
+  _destroyLight: 10
 --- !u!114 &701542428470001695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.NavTarget
   _target: {fileID: 0}
   _stopDistance: 1.5
-  _moveSpeed: 3.5
+  _moveSpeed: 1
 --- !u!114 &4205430436701101565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,17 +219,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c57c4111b4758e4cbc13e5fb07bf279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.EnnemyLife
-  _health: 100
---- !u!114 &584439966671550096
-MonoBehaviour:
+  _health: 20
+--- !u!1001 &6959959348511608643
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2905322882352904395}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_Name
+      value: CharaMaster_Priest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 420c1048d024dd5458ac0d23ed8fa700, type: 2}
+    - target: {fileID: 5866666021909216657, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+--- !u!4 &7429821575186933928 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+  m_PrefabInstance: {fileID: 6959959348511608643}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354639629576267324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fe930d6dffe760408a191e8629ec4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.PriestAttack
-  _damagePerSecond: 5

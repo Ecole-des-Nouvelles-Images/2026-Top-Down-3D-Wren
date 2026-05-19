@@ -9,7 +9,7 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private float _damage;
         [SerializeField] private float _cooldown;
         
-        private EnnemyLife _ennemyLife;
+        private EnemyLife _enemyLife;
         private float _time;
         
         private void OnTriggerEnter(Collider ennemy)
@@ -18,11 +18,11 @@ namespace _Workspace.Jordan.Script.Joueur
             {
                 Debug.Log(ennemy.name + " j'ai collidé");
 
-                EnnemyLife ennemyLife = ennemy.GetComponent<EnnemyLife>();
+                EnemyLife enemyLife = ennemy.GetComponent<EnemyLife>();
 
-                if (ennemyLife != null)
+                if (enemyLife != null)
                 {
-                    ennemyLife.TakeDamage(_damage);
+                    enemyLife.TakeDamage(_damage);
                 }
             }
         }

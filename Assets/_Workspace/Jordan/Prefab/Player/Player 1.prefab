@@ -279,9 +279,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361be4eb305aa3f429b00abcf314d4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerLife
-  _playerSo: {fileID: 11400000, guid: 8b783430bfc9ff04a9088dd86af22441, type: 2}
   _playerController: {fileID: -7054781214712368723}
   _animator: {fileID: 7691643760629123192}
+  ReviveItem: {fileID: 0}
+  MaxHealth: 100
   Healthbar: {fileID: 0}
   CurrentHealth: 0
 --- !u!114 &-7054781214712368723
@@ -296,8 +297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1440c02d1a7a4cf1a2be5db291e6e2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerController
-  _playerSo: {fileID: 11400000, guid: 8b783430bfc9ff04a9088dd86af22441, type: 2}
-  _hitBox: {fileID: 0}
+  _moveSpeed: 10
+  _dashSpeed: 5
+  _dashDuration: 2
+  _attackCooldown: 2
+  _hitBox: {fileID: 6831086858939341796}
   _visual: {fileID: 7871725697163918398}
   _rotationSpeed: 24
   IsDashing: 0
@@ -313,13 +317,14 @@ GameObject:
   - component: {fileID: 1498744845090980152}
   - component: {fileID: 4551895023009534664}
   - component: {fileID: 9044723876346765240}
+  - component: {fileID: 5196718925323516199}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4639115741928614423
 Transform:
   m_ObjectHideFlags: 0
@@ -328,13 +333,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6831086858939341796}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5710316, y: 1.2300001, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.13, y: 1.2, z: 0.8}
   m_LocalScale: {x: 0.5, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4349942787435385346}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &1498744845090980152
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -413,6 +418,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5196718925323516199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831086858939341796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc3818870920e543aa21b1a937a4f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerAttack
+  _damage: 100
+  _cooldown: 1
 --- !u!1001 &4311247311300113897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
       propertyPath: m_LocalPosition.z
@@ -461,6 +480,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6280007373338319155, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e439e55b248c70458c1eee9752265b1, type: 2}
     - target: {fileID: -4515422920086469386, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.77
@@ -468,6 +491,21 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
       propertyPath: m_Name
       value: VampireNoCape (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 02dff127b35b6004ea7cb5a0206ddaee, type: 2}
+    - target: {fileID: 5866666021909216657, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:LeftForeArm'\n\tFrom animation
+        clip 'Attack2Left'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
