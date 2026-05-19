@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using _Workspace.Jordan.Script.Pick_Up;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace _Workspace.Jordan.Script.Joueur
@@ -7,7 +10,10 @@ namespace _Workspace.Jordan.Script.Joueur
     public class PlayerController : MonoBehaviour
     {
         [Header("Settings")] 
-        [SerializeField] private PlayerSo _playerSo;
+        [SerializeField] private float _moveSpeed;
+        [SerializeField] private float _dashSpeed;
+        [SerializeField] private float _dashDuration;
+        [SerializeField] private float _attackCooldown;
         [SerializeField] private GameObject _hitBox;
         
         [Header("Visual")]
@@ -17,6 +23,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _time;
         private float _attackTimer;
         
+        private readonly Dictionary<Item, int> _inventory = new();
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected; 
@@ -27,9 +34,11 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _inputDeadZone = 0.1f;
         private Animator _animator;
         
+        public Dictionary<Item, int> Inventory => _inventory;
+        
         // Gravité
-        // private float _gravity = -9.81f;
-        // private float _groundedForce = -2f;
+        private float _gravity = -9.81f;
+        private float _groundedForce = -2f;
 
         private void Awake()
         {
@@ -44,11 +53,11 @@ namespace _Workspace.Jordan.Script.Joueur
             
             _attackTimer += Time.deltaTime;
 
-           // HandleGravity();
+            HandleGravity();
 
             if (IsDashing)
             {
-                Vector3 dashMove = _dashDirection * _playerSo.DashSpeed;
+                Vector3 dashMove = _dashDirection * _dashSpeed;
                 dashMove.y = _verticalVelocity;
 
                 RotateVisual(_dashDirection);
@@ -79,7 +88,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 RotateVisual(move);
             }
             
-            Vector3 velocity = move * _playerSo.MoveSpeed;
+            Vector3 velocity = move * _moveSpeed;
 
             Vector3 finalMove = new Vector3(velocity.x, _verticalVelocity, velocity.z);
             
@@ -104,17 +113,17 @@ namespace _Workspace.Jordan.Script.Joueur
             _animator.SetBool("IsDashing", IsDashing);
         }
 
-        // private void HandleGravity()
-        // {
-        //     if (_controller.isGrounded && _verticalVelocity < 0)
-        //     {
-        //         _verticalVelocity = _groundedForce;
-        //     }
-        //     else
-        //     {
-        //         _verticalVelocity += _gravity * Time.deltaTime;
-        //     }
-        // }
+        private void HandleGravity()
+        {
+            if (_controller.isGrounded && _verticalVelocity < 0)
+            {
+                _verticalVelocity = _groundedForce;
+            }
+            else
+            {
+                _verticalVelocity += _gravity * Time.deltaTime;
+            }
+        }
         
         private void OnMove(InputValue value)
         {
@@ -126,17 +135,16 @@ namespace _Workspace.Jordan.Script.Joueur
             if (_move.magnitude < _inputDeadZone) return;
 
             IsDashing = true;
-            _dashTimer = _playerSo.DashDuration;
+            _dashTimer = _dashDuration;
 
             _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;
         }
 
         private void OnAttack()
         {
-            
             int attackIndex = UnityEngine.Random.Range(0, 2);
             
-                if (_attackTimer < _playerSo.AttackCooldown) return;
+                if (_attackTimer < _attackCooldown) return;
 
                 _attackTimer = 0;
 
@@ -144,6 +152,40 @@ namespace _Workspace.Jordan.Script.Joueur
                 _animator.SetTrigger("Attack");
                 
                 _hitBox.SetActive(true);
+        }
+
+        public bool HasItemInInventory(Item item, int number)
+        {
+            if (_inventory.TryGetValue(item, out var value))
+            {
+                return value >= number;
+            }
+            
+            return false;
+        }
+        
+        public void AddItemToInventory(Item item, int number)
+        {
+            if (_inventory.ContainsKey(item))
+            {
+                _inventory[item]++;
+            }
+            else
+            {
+                _inventory.Add(item, number);
+            }
+        }
+
+        public void RemoveItemFromInventory(Item item, int number)
+        {
+            if (_inventory.ContainsKey(item))
+            {
+                _inventory[item]--;
+            }
+            else
+            {
+                throw new Exception("Item not found");
+            }
         }
     }
 }

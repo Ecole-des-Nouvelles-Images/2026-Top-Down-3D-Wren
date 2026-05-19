@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 809579203795825205}
   - component: {fileID: 7851826921613240969}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player 4
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerController
   _playerSo: {fileID: 11400000, guid: 8b783430bfc9ff04a9088dd86af22441, type: 2}
   _hitBox: {fileID: 8975322534651292572}
+  _visual: {fileID: 0}
+  _rotationSpeed: 12
+  IsDashing: 0
 --- !u!114 &2982554962508345762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerLife
   _playerSo: {fileID: 11400000, guid: 8b783430bfc9ff04a9088dd86af22441, type: 2}
-  HealthBar: {fileID: 0}
+  _playerController: {fileID: 0}
+  _animator: {fileID: 0}
+  Healthbar: {fileID: 0}
+  CurrentHealth: 0
 --- !u!114 &809579203795825205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +214,7 @@ GameObject:
   - component: {fileID: 5925098329863701914}
   - component: {fileID: 7522105459599973658}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

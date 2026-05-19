@@ -6,7 +6,7 @@ namespace _Workspace.Jordan.Script.ennemi
 {
     public class EnnemyLife : MonoBehaviour
     {
-        [SerializeField] private float _health = 100f;
+        [SerializeField] private float _health;
         
         private Healthbar _healthBar;
         private float _currentHealth;

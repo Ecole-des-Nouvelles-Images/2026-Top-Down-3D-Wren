@@ -8,16 +8,22 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
 {
     public class PriestAttack : MonoBehaviour
     {
-        [SerializeField] private PlayerLife _playerLife;
-        [SerializeField] private float _damage;
-        
-        private float _time;
-        
-        private void OnTriggerEnter(Collider other)
+        [SerializeField] private float _damagePerSecond;
+
+        private void OnTriggerStay(Collider other)
         {
+            Debug.Log("Quelqu'un est dans la lumière");
+
             if (other.CompareTag("Player"))
             {
-               other.GetComponent<PlayerLife>().TakeDamage(_damage);
+                Debug.Log("Le joueur prend des dégâts" +_damagePerSecond);
+
+                PlayerLife playerLife = other.GetComponent<PlayerLife>();
+
+                if (playerLife != null)
+                {
+                    playerLife.TakeDamage(_damagePerSecond * Time.deltaTime);
+                }
             }
         }
     }

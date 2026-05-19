@@ -117,9 +117,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 1.8809547
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 0.05952263, z: -0.00000011920929}
 --- !u!54 &4126125881431613949
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -181,6 +181,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e666747f868d0649826d4528f060c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PriestAIControlle
+  _player: {fileID: 0}
+  _priestAttack: {fileID: 0}
+  _lightPrefab: {fileID: 0}
+  _warningPrefab: {fileID: 0}
+  _pLayers: []
+  _castTime: 2
+  _nextAttackTime: 0
+  _warningTime: 0
+  _cooldown: 0
+  _destroyLight: 0
 --- !u!114 &701542428470001695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.NavTarget
   _target: {fileID: 0}
   _stopDistance: 1.5
+  _moveSpeed: 3.5
 --- !u!114 &4205430436701101565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +231,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe930d6dffe760408a191e8629ec4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.PriestAttack
-  _pLayers: []
-  _priestSo: {fileID: 11400000, guid: 2c9c7f322c5ce6942adfc768306f6026, type: 2}
-  _lightPrefab: {fileID: 1843944599737312793, guid: 534505ffadce4f74abae100aaebc4708, type: 3}
+  _damagePerSecond: 5

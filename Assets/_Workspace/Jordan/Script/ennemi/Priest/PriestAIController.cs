@@ -16,6 +16,8 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         [SerializeField] private List<GameObject> _pLayers;
         
         [Header("Attack Settings")]
+        [SerializeField] private float _castTime = 2f;
+        private bool _isCasting;
         [SerializeField] private float _nextAttackTime;
         [SerializeField] private float _warningTime;
         [SerializeField] private float _cooldown;
@@ -35,6 +37,14 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         private void Update()
         {
             if (_player == null) return;
+            
+            if (_isCasting)
+            {
+                _agent.isStopped = true;
+                return;
+            }
+
+            _agent.isStopped = false;
 
             _cooldown += Time.deltaTime;
 
@@ -48,8 +58,7 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         private void CastLight()
         {
             if (_pLayers == null || _pLayers.Count == 0) return;
-
-            //_animator.SetTrigger("Attack");
+            
             GameObject target = _pLayers[Random.Range(0, _pLayers.Count)];
             Vector3 pos = target.transform.position;
 
@@ -60,14 +69,17 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         // permet d'instancier un gameobject pendant x temps puis de le detruire ( en gros mettre pause au timer avant destruction)
         private IEnumerator UseRoutine(Vector3 pos)
         {
+            _isCasting = true;
+            //_animator.SetTrigger("Attack");
             GameObject warning = Instantiate(_warningPrefab, pos, Quaternion.identity);
-            yield return new WaitForSeconds(_warningTime);
+            yield return new WaitForSeconds(_castTime);
             Destroy(warning);
-            
-            Debug.Log("Cast ");
+
             GameObject light = Instantiate(_lightPrefab, pos, Quaternion.identity);
             yield return new WaitForSeconds(_destroyLight);
             Destroy(light);
+            _isCasting = false;
+            _animator.SetTrigger("Walk");
         }
     }
 }
