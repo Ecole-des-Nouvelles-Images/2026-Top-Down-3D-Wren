@@ -562,6 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3799794374501958062}
   - component: {fileID: 5460856587963509712}
+  - component: {fileID: 3078408408338033030}
   m_Layer: 5
   m_Name: VolumeGeneral
   m_TagString: Untagged
@@ -581,10 +582,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3351126504567526006}
   - {fileID: 7514895101545273269}
   - {fileID: 7672160151556960673}
   - {fileID: 289611153860446185}
-  - {fileID: 3351126504567526006}
   m_Father: {fileID: 1525074861603062656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.65}
@@ -605,10 +606,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 764208966519993718}
+    m_SelectOnDown: {fileID: 686766003142749214}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -636,13 +637,27 @@ MonoBehaviour:
   m_FillRect: {fileID: 6479980281158027678}
   m_HandleRect: {fileID: 4302641912289717781}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3078408408338033030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2180957154245181914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179575dcb63366a488510efb475145c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.MenuPrincipale.SliderValue
+  _slider: {fileID: 5460856587963509712}
+  _valueText: {fileID: 207004333182072855}
 --- !u!1 &2489904825017757971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1337,7 @@ GameObject:
   - component: {fileID: 8580612413278300530}
   - component: {fileID: 207004333182072855}
   m_Layer: 5
-  m_Name: General
+  m_Name: TitleGeneral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

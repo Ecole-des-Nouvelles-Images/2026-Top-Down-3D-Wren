@@ -10,6 +10,7 @@ namespace _Workspace.Jordan.Script.MenuPrincipale
         public void LoadScene()
         {
             SceneManager.LoadScene(NextSceneName);
+            Debug.Log("Scene Charged is " + NextSceneName);
         }
     }
 }
