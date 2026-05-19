@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Linq.Expressions;
+using _Workspace.Jordan.Script.Pick_Up;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -11,7 +12,8 @@ namespace _Workspace.Jordan.Script.Joueur
     {
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private Animator _animator;
-       
+        [SerializeField] private Item ReviveItem;
+        
         public int MaxHealth;
         public Image Healthbar;
         public float CurrentHealth;
@@ -36,7 +38,6 @@ namespace _Workspace.Jordan.Script.Joueur
                 Die();
             }
         }
-        
         
         public void Die()
         {

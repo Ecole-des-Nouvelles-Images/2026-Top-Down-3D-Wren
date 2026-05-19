@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using _Workspace.Jordan.Script.Pick_Up;
+using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
@@ -21,6 +23,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _time;
         private float _attackTimer;
         
+        private readonly Dictionary<Item, int> _inventory = new();
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected; 
@@ -31,9 +34,11 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _inputDeadZone = 0.1f;
         private Animator _animator;
         
+        public Dictionary<Item, int> Inventory => _inventory;
+        
         // Gravité
-        // private float _gravity = -9.81f;
-        // private float _groundedForce = -2f;
+        private float _gravity = -9.81f;
+        private float _groundedForce = -2f;
 
         private void Awake()
         {
@@ -48,7 +53,7 @@ namespace _Workspace.Jordan.Script.Joueur
             
             _attackTimer += Time.deltaTime;
 
-           // HandleGravity();
+            HandleGravity();
 
             if (IsDashing)
             {
@@ -108,17 +113,17 @@ namespace _Workspace.Jordan.Script.Joueur
             _animator.SetBool("IsDashing", IsDashing);
         }
 
-        // private void HandleGravity()
-        // {
-        //     if (_controller.isGrounded && _verticalVelocity < 0)
-        //     {
-        //         _verticalVelocity = _groundedForce;
-        //     }
-        //     else
-        //     {
-        //         _verticalVelocity += _gravity * Time.deltaTime;
-        //     }
-        // }
+        private void HandleGravity()
+        {
+            if (_controller.isGrounded && _verticalVelocity < 0)
+            {
+                _verticalVelocity = _groundedForce;
+            }
+            else
+            {
+                _verticalVelocity += _gravity * Time.deltaTime;
+            }
+        }
         
         private void OnMove(InputValue value)
         {
@@ -147,6 +152,40 @@ namespace _Workspace.Jordan.Script.Joueur
                 _animator.SetTrigger("Attack");
                 
                 _hitBox.SetActive(true);
+        }
+
+        public bool HasItemInInventory(Item item, int number)
+        {
+            if (_inventory.TryGetValue(item, out var value))
+            {
+                return value >= number;
+            }
+            
+            return false;
+        }
+        
+        public void AddItemToInventory(Item item, int number)
+        {
+            if (_inventory.ContainsKey(item))
+            {
+                _inventory[item]++;
+            }
+            else
+            {
+                _inventory.Add(item, number);
+            }
+        }
+
+        public void RemoveItemFromInventory(Item item, int number)
+        {
+            if (_inventory.ContainsKey(item))
+            {
+                _inventory[item]--;
+            }
+            else
+            {
+                throw new Exception("Item not found");
+            }
         }
     }
 }

@@ -36,8 +36,11 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
             if (distance <=  _attackRange)
             {
+                _agent.isStopped = true;
                 Attack();
             }
+
+            _agent.isStopped = false;
         }
 
         private void Attack()

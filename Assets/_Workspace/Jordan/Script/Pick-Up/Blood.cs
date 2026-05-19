@@ -4,7 +4,7 @@ using UnityEngine;
 namespace _Workspace.Jordan.Script.Pick_Up
 {
     [CreateAssetMenu(menuName =  "Power-Up/Blood")]
-    public class Blood : ScriptableObject
+    public class Blood : Item
     {
         [SerializeField] private PlayerLife _playerLife;
         public float _amount;
