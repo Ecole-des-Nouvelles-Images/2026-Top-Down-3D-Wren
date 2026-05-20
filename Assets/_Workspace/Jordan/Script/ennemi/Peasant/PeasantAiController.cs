@@ -6,8 +6,6 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 {
     public class PeasantAIController : MonoBehaviour
     {
-        [SerializeField] private Transform _player;
-        
         [Header("Attack Settings")]
         [SerializeField] private float _attackRange;
         [SerializeField] private float _cooldown;
@@ -15,7 +13,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         [SerializeField] private float _nextAttackTime;
         [SerializeField] private bool _canAttack;
 
-        private PlayerLife _playerLife;
+        private PlayerController _currentTarget;
         private Animator _animator;
         private NavMeshAgent  _agent;
         
@@ -23,14 +21,15 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         {
             _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
-            _playerLife = _player.gameObject.GetComponent<PlayerLife>();
         }
 
         private void Update()
         { 
+            UpdateNearestTarget();
+            
             _cooldown += Time.deltaTime; 
             
-            if (_player == null) return;
+            if (_currentTarget == null) return;
 
             float distance = Vector3.Distance(transform.position, _agent.destination);
 
@@ -43,6 +42,32 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
             _agent.isStopped = false;
         }
 
+        private void UpdateNearestTarget()
+        {
+            float nearestDistance = Mathf.Infinity;
+            foreach (PlayerController playerController in PlayerController.PlayersControllers)
+            {
+                if (Vector3.Distance(transform.position, playerController.transform.position) < nearestDistance)
+                {
+                    nearestDistance = Vector3.Distance(transform.position, playerController.transform.position);
+                    _currentTarget = playerController;
+                }
+            }
+        }
+        
+        private void UpdateWeakestTarget()
+        {
+            float nearestDistance = Mathf.Infinity;
+            foreach (PlayerController playerController in PlayerController.PlayersControllers)
+            {
+                if (Vector3.Distance(transform.position, playerController.transform.position) < nearestDistance)
+                {
+                    nearestDistance = Vector3.Distance(transform.position, playerController.transform.position);
+                    _currentTarget = playerController;
+                }
+            }
+        }
+        
         private void Attack()
         {
             if (_cooldown >= _nextAttackTime)
@@ -57,7 +82,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
             if (_canAttack)
             {
                 UpdateAnimation();
-                _playerLife.TakeDamage(_damage);
+                _currentTarget.TakeDamage(_damage);
                 _canAttack = false;
             }
         }
@@ -67,5 +92,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
             
             _animator.SetTrigger("Attack");
         }
+
+
     }
 }

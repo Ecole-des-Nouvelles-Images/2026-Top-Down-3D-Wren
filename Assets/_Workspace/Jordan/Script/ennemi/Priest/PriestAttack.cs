@@ -18,11 +18,11 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
             {
                 Debug.Log("Le joueur prend des dégâts" +_damagePerSecond);
 
-                PlayerLife playerLife = other.GetComponent<PlayerLife>();
+                PlayerController playerController = other.GetComponent<PlayerController>();
 
-                if (playerLife != null)
+                if (playerController != null)
                 {
-                    playerLife.TakeDamage(_damagePerSecond * Time.deltaTime);
+                    playerController.TakeDamage(_damagePerSecond * Time.deltaTime);
                 }
             }
         }

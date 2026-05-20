@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8469912599102322935}
   - component: {fileID: 7186669521904554642}
   - component: {fileID: 4905783220710620214}
+  - component: {fileID: 7353726581342968691}
   - component: {fileID: 5628556833275934113}
   - component: {fileID: 7811192008229631814}
   - component: {fileID: 1658358801413466565}
@@ -133,7 +134,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -141,6 +142,33 @@ CapsuleCollider:
   m_Height: 1.8985949
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7353726581342968691
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181480333825909922}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &5628556833275934113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,9 +214,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.Peasant.NavTargetMalePeasant
   _target: {fileID: 0}
   _stopDistance: 2
-  _moveSpeed: 3.5
+  _moveSpeed: 1
   _visual: {fileID: 6466933436112669761}
-  _rotationOffset: -90
+  _rotationOffset: 45
   _rotationSpeed: 8
 --- !u!1001 &6788491232519318442
 PrefabInstance:

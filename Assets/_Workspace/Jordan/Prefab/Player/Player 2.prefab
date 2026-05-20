@@ -120,7 +120,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!208 &-2690636431834348480
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
   m_TimeToStationary: 0.5
 --- !u!114 &-3535561942916880685
 MonoBehaviour:
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerLife
   _playerController: {fileID: -3535561942916880685}
   _animator: {fileID: 8955312726603388354}
+  ReviveItem: {fileID: 0}
   MaxHealth: 100
   Healthbar: {fileID: 0}
   CurrentHealth: 0
@@ -330,7 +331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2bbe406ff8b36af4d8684dbf876171fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2bbe406ff8b36af4d8684dbf876171fb, type: 3}
       propertyPath: m_LocalPosition.z

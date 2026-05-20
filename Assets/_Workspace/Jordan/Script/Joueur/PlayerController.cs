@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Workspace.Jordan.Script.Pick_Up;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
@@ -23,7 +24,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _time;
         private float _attackTimer;
         
-        private readonly Dictionary<Item, int> _inventory = new();
+        //private readonly Dictionary<Item, int> _inventory = new();
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected; 
@@ -34,7 +35,17 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _inputDeadZone = 0.1f;
         private Animator _animator;
         
-        public Dictionary<Item, int> Inventory => _inventory;
+        [Header("Bounds")]
+        [Tooltip("Collider that defines playable area. X/Z will be clamped to its bounds.")]
+        public Collider MovementBoundsCollider;
+        
+        [Header("Health")]
+        public int MaxHealth;
+        public float CurrentHealth;
+        
+        [SerializeField] private Item ReviveItem;
+
+        public static readonly List<PlayerController> PlayersControllers = new();
         
         // Gravité
         private float _gravity = -9.81f;
@@ -45,6 +56,17 @@ namespace _Workspace.Jordan.Script.Joueur
             _controller = GetComponent<CharacterController>();
             _animator = GetComponentInChildren<Animator>();
             _visual = _animator.transform;
+            CurrentHealth = MaxHealth;
+        }
+
+        private void OnEnable()
+        {
+            PlayersControllers.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            PlayersControllers.Remove(this);
         }
 
         private void Update()
@@ -61,8 +83,12 @@ namespace _Workspace.Jordan.Script.Joueur
                 dashMove.y = _verticalVelocity;
 
                 RotateVisual(_dashDirection);
-                
-                _controller.Move(dashMove * Time.deltaTime);
+                // Apply dash movement but clamp XZ to MovementBoundsCollider if provided
+                float dtDash = Time.deltaTime;
+                Vector3 desiredDashPos = transform.position + dashMove * dtDash;
+                Vector3 clampedDashPos = ClampToMovementBounds(desiredDashPos);
+                Vector3 dashDelta = clampedDashPos - transform.position;
+                _controller.Move(dashDelta);
 
                 _dashTimer -= Time.deltaTime;
                 if (_dashTimer <= 0f)
@@ -91,8 +117,24 @@ namespace _Workspace.Jordan.Script.Joueur
             Vector3 velocity = move * _moveSpeed;
 
             Vector3 finalMove = new Vector3(velocity.x, _verticalVelocity, velocity.z);
-            
-            _controller.Move(finalMove * Time.deltaTime);
+
+            // Calculate desired position and clamp X/Z to movement bounds if provided
+            float dt = Time.deltaTime;
+            Vector3 desiredPos = transform.position + finalMove * dt;
+            Vector3 clampedPos = ClampToMovementBounds(desiredPos);
+            Vector3 moveDelta = clampedPos - transform.position;
+
+            _controller.Move(moveDelta);
+        }
+
+        private Vector3 ClampToMovementBounds(Vector3 worldPos)
+        {
+            if (MovementBoundsCollider == null) return worldPos;
+
+            Bounds b = MovementBoundsCollider.bounds;
+            float x = Mathf.Clamp(worldPos.x, b.min.x, b.max.x);
+            float z = Mathf.Clamp(worldPos.z, b.min.z, b.max.z);
+            return new Vector3(x, worldPos.y, z);
         }
         
         private void RotateVisual(Vector3 direction)
@@ -154,38 +196,52 @@ namespace _Workspace.Jordan.Script.Joueur
                 _hitBox.SetActive(true);
         }
 
-        public bool HasItemInInventory(Item item, int number)
+        public void TakeDamage(float damage)
         {
-            if (_inventory.TryGetValue(item, out var value))
-            {
-                return value >= number;
-            }
+            CurrentHealth -= damage;
             
-            return false;
-        }
-        
-        public void AddItemToInventory(Item item, int number)
-        {
-            if (_inventory.ContainsKey(item))
+            if (CurrentHealth <= 0)
             {
-                _inventory[item]++;
-            }
-            else
-            {
-                _inventory.Add(item, number);
+                Die();
             }
         }
 
-        public void RemoveItemFromInventory(Item item, int number)
+        public void Die()
         {
-            if (_inventory.ContainsKey(item))
-            {
-                _inventory[item]--;
-            }
-            else
-            {
-                throw new Exception("Item not found");
-            }
+            enabled = false;
+            Debug.Log($"{gameObject.name} est mort");
         }
+
+        // public bool HasItemInInventory(Item item, int number)
+        //     {
+        //         return value >= number;
+        //     }
+        //     
+        //     return false;
+        // }
+        //
+        // public void AddItemToInventory(Item item, int number)
+        // {
+        //     if (_inventory.ContainsKey(item))
+        //     {
+        //         _inventory[item]++;
+        //     }
+        //     else
+        //     {
+        //         _inventory.Add(item, number);
+        //     }
+        // }
+        //
+        // public void RemoveItemFromInventory(Item item, int number)
+        // {
+        //     if (_inventory.ContainsKey(item))
+        //     {
+        //         _inventory[item]--;
+        //     }
+        //     else
+        //     {
+        //         throw new Exception("Item not found");
+        //     }
+        // }
     }
 }

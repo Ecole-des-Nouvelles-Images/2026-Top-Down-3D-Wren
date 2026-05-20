@@ -23,7 +23,6 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         [SerializeField] private float _cooldown;
         [SerializeField] private float _destroyLight;
         
-        private PlayerLife _playerLife;
         private Animator _animator;
         private NavMeshAgent  _agent;
         
@@ -31,7 +30,6 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         {
            // _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
-            _playerLife = _player.gameObject.GetComponent<PlayerLife>();
         }
 
         private void Update()
