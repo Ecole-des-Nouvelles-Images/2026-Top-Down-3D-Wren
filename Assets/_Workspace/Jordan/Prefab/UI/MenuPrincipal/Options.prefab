@@ -128,7 +128,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90.2
+  m_fontSize: 106.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -263,10 +263,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 469597242488397726}
+    m_SelectOnDown: {fileID: 5460856587963509712}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -293,7 +293,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4989524062238579528}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7790720357598513195}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1177297851721256218
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,10 +723,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 686766003142749214}
+    m_SelectOnDown: {fileID: 764208966519993718}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -843,7 +855,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 78.75
+  m_fontSize: 96.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1055,7 +1067,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.25
+  m_fontSize: 58
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1417,7 +1429,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.6
+  m_fontSize: 86.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1701,7 +1713,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 121.7
+  m_fontSize: 135.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1832,7 +1844,7 @@ GameObject:
   - component: {fileID: 1525074861603062656}
   - component: {fileID: 4048231382082544320}
   - component: {fileID: 2147179484524803815}
-  - component: {fileID: 7764134357075451725}
+  - component: {fileID: 4931774176244387557}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -1902,7 +1914,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7764134357075451725
+--- !u!114 &4931774176244387557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1911,11 +1923,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7790720357598513195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26402bc2b7b4f1543945b84532550710, type: 3}
+  m_Script: {fileID: 11500000, guid: efb9068fb88fdd4429fefff4fbe3cda0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CustomButtonPosition
-  _firstselectedbutton: {fileID: 945811576390917398}
-  _returnselectedbutton: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.UI.InGame.ButtonSelect
+  Firstselectedbutton: {fileID: 945811576390917398}
 --- !u!1 &8513010098922645275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,10 +1980,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 5460856587963509712}
+    m_SelectOnDown: {fileID: 469597242488397726}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
