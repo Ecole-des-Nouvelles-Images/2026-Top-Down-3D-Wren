@@ -42,6 +42,7 @@ namespace _Workspace.Jordan.Script.Joueur
         [Header("Health")]
         public int MaxHealth;
         public float CurrentHealth;
+        public bool IsDead; 
         
         [SerializeField] private Item ReviveItem;
 
@@ -209,7 +210,7 @@ namespace _Workspace.Jordan.Script.Joueur
         public void Die()
         {
             enabled = false;
-            Debug.Log($"{gameObject.name} est mort");
+            Debug.Log("{gameObject.name} est mort");
         }
 
         // public bool HasItemInInventory(Item item, int number)

@@ -7,7 +7,7 @@ namespace _Workspace.Jordan.Script.Pick_Up
     [CreateAssetMenu(menuName =  "Power-Up/Blood")]
     public class Blood : Item
     {
-        [FormerlySerializedAs("_playerLife")] [SerializeField] private PlayerController _playerController;
+        [SerializeField] private PlayerController _playerController;
         public float _amount;
         
         public void Apply(PlayerController playerLife)

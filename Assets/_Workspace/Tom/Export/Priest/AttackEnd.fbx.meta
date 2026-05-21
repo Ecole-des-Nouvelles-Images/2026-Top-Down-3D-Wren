@@ -260,13 +260,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: CharaMaster_Priest(Clone)
+    - name: CharaMaster_Priest2(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Armature
-      parentName: CharaMaster_Priest(Clone)
+      parentName: CharaMaster_Priest2(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.000000037748947, y: 0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -396,7 +396,7 @@ ModelImporter:
       rotation: {x: 0.0000000745058, y: -0.00000009802169, z: -0.000000020780133, w: 1}
       scale: {x: 0.9999999, y: 0.9999998, z: 1.0000001}
     - name: priest.002
-      parentName: CharaMaster_Priest(Clone)
+      parentName: CharaMaster_Priest2(Clone)
       position: {x: -0.000000009601935, y: 2.9802333e-10, z: 0.0000000014342367}
       rotation: {x: -0.7071069, y: 2.7658864e-10, z: -1.4487977e-10, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}
@@ -412,7 +412,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: d927f8f00efcbf04cab23ec2dd7ffff8, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 308f1bc664837074eb20253a783c945f, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
