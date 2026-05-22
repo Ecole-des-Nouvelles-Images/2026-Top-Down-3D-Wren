@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UI
   - Ennemy
+  - ReviveZone
   layers:
   - Default
   - TransparentFX
