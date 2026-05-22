@@ -13,7 +13,7 @@ namespace _Workspace.Jordan.Script
 
         private void LateUpdate()
         {
-            transform.forward = _cam.transform.forward;
+            transform.up = _cam.transform.up;
         }
     }
 }

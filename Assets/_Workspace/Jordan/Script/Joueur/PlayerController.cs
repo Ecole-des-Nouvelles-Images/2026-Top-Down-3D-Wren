@@ -26,16 +26,16 @@ namespace _Workspace.Jordan.Script.Joueur
         public Collider MovementBoundsCollider;
         
         [Header("Health")]
+        [SerializeField] private int _newLife; 
         public int MaxHealth;
         public float CurrentHealth;
-        [SerializeField] private int _newLife;
-        [SerializeField] public bool _isDead;
+        public bool IsDead;
         
         [Header("Revive")]
         [SerializeField] private Item _reviveItem;
         [SerializeField] private GameObject _circleRevive;
         [SerializeField] private ReviveZone _reviveZone;
-        [SerializeField] private Canvas _canvas;
+        [SerializeField] private GameObject _canvas;
         
         //attack settings
         private float _time;
@@ -67,7 +67,7 @@ namespace _Workspace.Jordan.Script.Joueur
             _visual = _animator.transform;
             CurrentHealth = MaxHealth;
             
-            _isDead = false;
+            IsDead = false;
             if (_circleRevive != null)
                 _circleRevive.SetActive(false);
         }
@@ -106,10 +106,24 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("ReviveZone"))
+            if (other.CompareTag("ReviveZone") && other.gameObject != _circleRevive.gameObject)
             { 
                 _reviveZone = other.GetComponent<ReviveZone>();
-                _canvas = other.GetComponent<Canvas>();
+                
+                _canvas.SetActive(true);
+                _canvas.transform.SetParent(null, true);
+                _canvas.transform.position = other.transform.position;
+            }
+        }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("ReviveZone") && other.gameObject != _circleRevive.gameObject)
+            { 
+                _reviveZone = null;
+                
+                _canvas.SetActive(false);
+                _canvas.transform.parent = transform;
             }
         }
 
@@ -236,21 +250,20 @@ namespace _Workspace.Jordan.Script.Joueur
         [ContextMenu("Die")]
         public void Die()
         {
-            _isDead = true;
+            IsDead = true;
             enabled = false;
-            
-            
             
             if (_circleRevive != null)
                 _circleRevive.SetActive(true);
-            Debug.Log("{gameObject.name} est mort");
+            
+            Debug.Log( name + "est mort");
         }
 
         public void Revive()
         {
-            if (!_isDead) return;
+            if (!IsDead) return;
     
-            _isDead = false;
+            IsDead = false;
             enabled = true;
             
             CurrentHealth = _newLife;

@@ -7,8 +7,9 @@ namespace _Workspace.Jordan.Script.UI.InGame
     public class ReviveUI : MonoBehaviour
     {
         [SerializeField] private PlayerController _deadPlayer;
-        [SerializeField] private string _targetTag = "Player";
+        [SerializeField] private string _targetTag;
         [SerializeField] private List<GameObject> _targets;
+        [SerializeField] private ReviveZone _reviveZone;
 
         private void Start()
         {
@@ -28,9 +29,7 @@ namespace _Workspace.Jordan.Script.UI.InGame
                 return;
             }
 
-            if (otherPlayer == _deadPlayer) return;
-
-            if (_deadPlayer._isDead)
+            if (_deadPlayer.IsDead)
             {
                 ShowUI();
 
