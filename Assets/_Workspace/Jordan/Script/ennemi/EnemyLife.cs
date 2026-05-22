@@ -48,7 +48,7 @@ namespace _Workspace.Jordan.Script.ennemi
         {
             Debug.Log("Enemy Dead");
             //_animator.SetBool("Dead", true);
-            
+            WaveManager.Instance.EnemyKilled();
             Destroy(gameObject);
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Workspace.Jordan.Script.Pick_Up;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _Workspace.Jordan.Script.Joueur
@@ -21,53 +22,54 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private Transform _visual;
         [SerializeField] private float _rotationSpeed = 12f;
         
+        [Header("Bounds")]
+        public Collider MovementBoundsCollider;
+        
+        [Header("Health")]
+        [SerializeField] private int _newLife; 
+        public int MaxHealth;
+        public float CurrentHealth;
+        public bool IsDead;
+        
+        [Header("Revive")]
+        [SerializeField] private Item _reviveItem;
+        [SerializeField] private GameObject _circleRevive;
+        [SerializeField] private ReviveZone _reviveZone;
+        [SerializeField] private GameObject _canvas;
+        
+        //attack settings
         private float _time;
         private float _attackTimer;
+        
+        //Dash settings
+        public bool IsDashing;
+        private float _dashTimer;
+        private Vector3 _dashDirection;
         
         //private readonly Dictionary<Item, int> _inventory = new();
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected; 
-        public bool IsDashing;
-        private float _dashTimer;
-        private Vector3 _dashDirection;
         private float _verticalVelocity;
         private float _inputDeadZone = 0.1f;
         private Animator _animator;
         
-        [Header("Bounds")]
-        [Tooltip("Collider that defines playable area. X/Z will be clamped to its bounds.")]
-        public Collider MovementBoundsCollider;
-        
-        [Header("Health")]
-        public int MaxHealth;
-        public float CurrentHealth;
-        public bool IsDead; 
-        
-        [SerializeField] private Item ReviveItem;
-
         public static readonly List<PlayerController> PlayersControllers = new();
         
         // Gravité
         private float _gravity = -9.81f;
         private float _groundedForce = -2f;
-
+        
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
             _animator = GetComponentInChildren<Animator>();
             _visual = _animator.transform;
             CurrentHealth = MaxHealth;
-        }
-
-        private void OnEnable()
-        {
-            PlayersControllers.Add(this);
-        }
-
-        private void OnDisable()
-        {
-            PlayersControllers.Remove(this);
+            
+            IsDead = false;
+            if (_circleRevive != null)
+                _circleRevive.SetActive(false);
         }
 
         private void Update()
@@ -84,7 +86,6 @@ namespace _Workspace.Jordan.Script.Joueur
                 dashMove.y = _verticalVelocity;
 
                 RotateVisual(_dashDirection);
-                // Apply dash movement but clamp XZ to MovementBoundsCollider if provided
                 float dtDash = Time.deltaTime;
                 Vector3 desiredDashPos = transform.position + dashMove * dtDash;
                 Vector3 clampedDashPos = ClampToMovementBounds(desiredDashPos);
@@ -102,6 +103,29 @@ namespace _Workspace.Jordan.Script.Joueur
             HandleMovement(move);
             UpdateAnimation(move.magnitude);
         }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("ReviveZone") && other.gameObject != _circleRevive.gameObject)
+            { 
+                _reviveZone = other.GetComponent<ReviveZone>();
+                
+                _canvas.SetActive(true);
+                _canvas.transform.SetParent(null, true);
+                _canvas.transform.position = other.transform.position;
+            }
+        }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("ReviveZone") && other.gameObject != _circleRevive.gameObject)
+            { 
+                _reviveZone = null;
+                
+                _canvas.SetActive(false);
+                _canvas.transform.parent = transform;
+            }
+        }
 
         private void HandleMovement(Vector3 move)
         {
@@ -118,8 +142,7 @@ namespace _Workspace.Jordan.Script.Joueur
             Vector3 velocity = move * _moveSpeed;
 
             Vector3 finalMove = new Vector3(velocity.x, _verticalVelocity, velocity.z);
-
-            // Calculate desired position and clamp X/Z to movement bounds if provided
+            
             float dt = Time.deltaTime;
             Vector3 desiredPos = transform.position + finalMove * dt;
             Vector3 clampedPos = ClampToMovementBounds(desiredPos);
@@ -185,6 +208,13 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private void OnAttack()
         {
+            if (_reviveZone)
+            {
+                _reviveZone.RevivePlayer();
+                _reviveZone = null;
+                return;
+            }
+            
             int attackIndex = UnityEngine.Random.Range(0, 2);
             
                 if (_attackTimer < _attackCooldown) return;
@@ -206,11 +236,40 @@ namespace _Workspace.Jordan.Script.Joueur
                 Die();
             }
         }
+        
+        public void SetReviveTarget(ReviveZone zone)
+        {
+            _reviveZone = zone;
+        }
 
+        public void ClearReviveTarget()
+        {
+            _reviveZone = null;
+        }
+
+        [ContextMenu("Die")]
         public void Die()
         {
+            IsDead = true;
             enabled = false;
-            Debug.Log("{gameObject.name} est mort");
+            
+            if (_circleRevive != null)
+                _circleRevive.SetActive(true);
+            
+            Debug.Log( name + "est mort");
+        }
+
+        public void Revive()
+        {
+            if (!IsDead) return;
+    
+            IsDead = false;
+            enabled = true;
+            
+            CurrentHealth = _newLife;
+            
+            if (_circleRevive != null)
+                _circleRevive.SetActive(false);
         }
 
         // public bool HasItemInInventory(Item item, int number)
