@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Workspace.Jordan.Script.Pick_Up;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 namespace _Workspace.Jordan.Script.Joueur
 {
@@ -21,9 +20,6 @@ namespace _Workspace.Jordan.Script.Joueur
         [Header("Visual")]
         [SerializeField] private Transform _visual;
         [SerializeField] private float _rotationSpeed = 12f;
-        
-        [Header("Bounds")]
-        public Collider MovementBoundsCollider;
         
         [Header("Health")]
         [SerializeField] private int _newLife; 
@@ -53,6 +49,9 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _verticalVelocity;
         private float _inputDeadZone = 0.1f;
         private Animator _animator;
+        private Collider _playerLimits;
+        private CinemachineTargetGroup _cinemachineTargetGroup;
+        private Healthbar _healthbar;
         
         public static readonly List<PlayerController> PlayersControllers = new();
         
@@ -62,14 +61,33 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private void Awake()
         {
+            _cinemachineTargetGroup = FindFirstObjectByType<CinemachineTargetGroup>();
+            if (_cinemachineTargetGroup == null) throw new MissingComponentException("CinemachineTargetGroup not found");
+            
             _controller = GetComponent<CharacterController>();
             _animator = GetComponentInChildren<Animator>();
+            _playerLimits = GameObject.FindGameObjectWithTag("PlayerLimits")?.GetComponent<Collider>();
+            _healthbar = GameObject.FindGameObjectWithTag("Healthbar")?.GetComponent<Healthbar>();
+            
+            if (_playerLimits == null) throw new MissingComponentException("PlayerLimits not found");
+            if (_healthbar == null) throw new MissingComponentException("Healthbar not found");
+            
             _visual = _animator.transform;
             CurrentHealth = MaxHealth;
             
             IsDead = false;
             if (_circleRevive != null)
                 _circleRevive.SetActive(false);
+        }
+
+        private void OnEnable()
+        {
+            _cinemachineTargetGroup.AddMember(transform, 1f, 1f);
+        }
+
+        private void OnDisable()
+        {
+            _cinemachineTargetGroup.RemoveMember(transform);
         }
 
         private void Update()
@@ -153,9 +171,9 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private Vector3 ClampToMovementBounds(Vector3 worldPos)
         {
-            if (MovementBoundsCollider == null) return worldPos;
+            if (_playerLimits == null) return worldPos;
 
-            Bounds b = MovementBoundsCollider.bounds;
+            Bounds b = _playerLimits.bounds;
             float x = Mathf.Clamp(worldPos.x, b.min.x, b.max.x);
             float z = Mathf.Clamp(worldPos.z, b.min.z, b.max.z);
             return new Vector3(x, worldPos.y, z);
