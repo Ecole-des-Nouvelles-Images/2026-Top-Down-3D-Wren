@@ -914,6 +914,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -7054781214712368723, guid: dd2e237fc711042489525b50ce9cbd25, type: 3}
+      propertyPath: _moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7054781214712368723, guid: dd2e237fc711042489525b50ce9cbd25, type: 3}
       propertyPath: MovementBoundsCollider
       value: 
       objectReference: {fileID: 1396978905}
