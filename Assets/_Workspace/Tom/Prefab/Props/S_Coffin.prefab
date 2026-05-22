@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4290633323853971487
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.401
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.34
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.931
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.0070561813
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.53348553
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.84568954
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.012352039
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.629
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 179.929
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -64.491
+      objectReference: {fileID: 0}
+    - target: {fileID: -1461304994638716399, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bef9183f85fb2044e80ee9f83bae86b2, type: 2}
+    - target: {fileID: 919132149155446097, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: m_Name
+      value: S_Coffin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745302439343835087, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bef9183f85fb2044e80ee9f83bae86b2, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8095889484854739840}
+  m_SourcePrefab: {fileID: 100100000, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+--- !u!1 &3984011765200993614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5bc194a20fe227e4a924bab93ba7fe33, type: 3}
+  m_PrefabInstance: {fileID: 4290633323853971487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8095889484854739840
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984011765200993614}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5651736, y: 1, z: 1.061437}
+  m_Center: {x: -0.02807796, y: -6.386448e-11, z: 0.07019513}
