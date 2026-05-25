@@ -36,6 +36,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2166808726605355572}
+  - {fileID: 5159462800683337851}
+  - {fileID: 5414804441204114030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1189457666830163380
@@ -227,7 +229,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 2166808726605355572}
+  m_Father: {fileID: 7871725697163918398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3612212631928784479
 MeshFilter:
@@ -738,7 +740,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3192469505568375058}
-  m_Father: {fileID: 2166808726605355572}
+  m_Father: {fileID: 7871725697163918398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -878,12 +880,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9016532501754790248, guid: 0f59a20a47425bd4db3cca85fbdad3bc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6446433766002980791}
-    - targetCorrespondingSourceObject: {fileID: 9016532501754790248, guid: 0f59a20a47425bd4db3cca85fbdad3bc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5159462800683337851}
-    - targetCorrespondingSourceObject: {fileID: 9016532501754790248, guid: 0f59a20a47425bd4db3cca85fbdad3bc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5414804441204114030}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f59a20a47425bd4db3cca85fbdad3bc, type: 3}
 --- !u!4 &2166808726605355572 stripped

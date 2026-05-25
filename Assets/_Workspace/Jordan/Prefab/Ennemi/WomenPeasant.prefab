@@ -214,7 +214,7 @@ MonoBehaviour:
   _target: {fileID: 0}
   _stopDistance: 2
   _moveSpeed: 1
-  _visual: {fileID: 0}
+  _visual: {fileID: 4148844074293799011}
   _rotationOffset: 45
   _rotationSpeed: 8
 --- !u!1001 &6491350898673521565

@@ -36,6 +36,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2604564126208473434}
+  - {fileID: 6557185909998327354}
+  - {fileID: 192648884794727649}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1189457666830163380
@@ -185,7 +187,6 @@ MonoBehaviour:
   _hitBox: {fileID: 7194160087733006643}
   _visual: {fileID: 2604564126208473434}
   _rotationSpeed: 12
-  MovementBoundsCollider: {fileID: 0}
   _newLife: 25
   MaxHealth: 100
   CurrentHealth: 0
@@ -349,11 +350,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8006359916639252441}
-  m_Father: {fileID: 2604564126208473434}
+  m_Father: {fileID: 7871725697163918398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 9.49633, y: 0.84399986}
+  m_AnchoredPosition: {x: 9.49633, y: -0.056000113}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &706441861763801802
@@ -724,11 +725,11 @@ Transform:
   m_GameObject: {fileID: 9222298804823473758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.49633, y: -0.15600002, z: -3.4400005}
+  m_LocalPosition: {x: 9.49633, y: -1.056, z: -3.4400005}
   m_LocalScale: {x: 4, y: 0, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 2604564126208473434}
+  m_Father: {fileID: 7871725697163918398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7329632272739608208
 MeshFilter:
@@ -879,12 +880,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7734067132661680506, guid: 1c2c015e3f02a4049b71f8130d5a4c88, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1340236482828157194}
-    - targetCorrespondingSourceObject: {fileID: 7734067132661680506, guid: 1c2c015e3f02a4049b71f8130d5a4c88, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6557185909998327354}
-    - targetCorrespondingSourceObject: {fileID: 7734067132661680506, guid: 1c2c015e3f02a4049b71f8130d5a4c88, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 192648884794727649}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c2c015e3f02a4049b71f8130d5a4c88, type: 3}
 --- !u!4 &2604564126208473434 stripped

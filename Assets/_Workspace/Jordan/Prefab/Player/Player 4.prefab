@@ -36,6 +36,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5364268320224479430}
+  - {fileID: 8527454413161409844}
+  - {fileID: 2637703407158152425}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2521675235317249661
@@ -364,11 +366,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3662209812981511888}
-  m_Father: {fileID: 5364268320224479430}
+  m_Father: {fileID: 7871725697163918398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 5.133849, y: 0.3119197}
+  m_AnchoredPosition: {x: 5.133849, y: -0.5880803}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5125676429052947228
@@ -475,11 +477,11 @@ Transform:
   m_GameObject: {fileID: 7727966995964116069}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.1338496, y: -0.6880801, z: 1.5472198}
+  m_LocalPosition: {x: 5.1338496, y: -1.58808, z: 1.5472198}
   m_LocalScale: {x: 4, y: 0, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5364268320224479430}
+  m_Father: {fileID: 7871725697163918398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3455532973727286369
 MeshFilter:
@@ -878,12 +880,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9016532501754790248, guid: 0f59a20a47425bd4db3cca85fbdad3bc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1386018583941837133}
-    - targetCorrespondingSourceObject: {fileID: 9016532501754790248, guid: 0f59a20a47425bd4db3cca85fbdad3bc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8527454413161409844}
-    - targetCorrespondingSourceObject: {fileID: 9016532501754790248, guid: 0f59a20a47425bd4db3cca85fbdad3bc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2637703407158152425}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f59a20a47425bd4db3cca85fbdad3bc, type: 3}
 --- !u!4 &5364268320224479430 stripped
