@@ -91,6 +91,11 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             _cinemachineTargetGroup.RemoveMember(transform);
         }
+        
+        private void OnDestroy()
+        {
+            PlayersControllers.Remove(this);
+        }
 
         private void Update()
         {
