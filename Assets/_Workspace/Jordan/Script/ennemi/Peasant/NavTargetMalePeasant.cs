@@ -19,7 +19,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         private NavMeshAgent _agent;
         private Animator _animator;
 
-        private void Awake()
+        private void Start()
         {
             _agent = GetComponent<NavMeshAgent>();
 
@@ -45,7 +45,6 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
                 if (_animator != null)
                     _animator.SetBool("Walk", false);
-
                 return;
             }
 
@@ -54,7 +53,6 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
             if (_animator != null)
                 _animator.SetBool("Walk", true);
-
             RotateVisual();
         }
 
