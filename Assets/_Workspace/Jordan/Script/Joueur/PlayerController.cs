@@ -61,6 +61,8 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private void Awake()
         {
+            PlayersControllers.Add(this);
+            
             _cinemachineTargetGroup = FindFirstObjectByType<CinemachineTargetGroup>();
             if (_cinemachineTargetGroup == null) throw new MissingComponentException("CinemachineTargetGroup not found");
             
