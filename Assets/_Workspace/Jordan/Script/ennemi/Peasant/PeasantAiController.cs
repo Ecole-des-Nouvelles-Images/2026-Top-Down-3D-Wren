@@ -8,42 +8,48 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
     {
         [Header("Attack Settings")]
         [SerializeField] private float _attackRange;
-        [SerializeField] private float _cooldown;
         [SerializeField] private float _damage;
-        [SerializeField] private float _nextAttackTime;
-        [SerializeField] private bool _canAttack;
+        [SerializeField] private float _attackCooldown;
 
         private PlayerController _currentTarget;
         private Animator _animator;
         private NavMeshAgent  _agent;
+        private float _lastAttackTime;
         
         private void Start()
         {
-            _animator = GetComponent<Animator>();
+            _animator = GetComponentInChildren<Animator>();
             _agent = GetComponent<NavMeshAgent>();
         }
 
         private void Update()
         { 
-            UpdateNearestTarget();
-            
-            _cooldown += Time.deltaTime; 
-            
-            if (_currentTarget == null) return;
+                UpdateNearestTarget();
 
-            float distance = Vector3.Distance(transform.position, _agent.destination);
+                if (_currentTarget == null) return;
 
-            if (distance <=  _attackRange)
-            {
-                _agent.isStopped = true;
-                Attack();
-            }
+                float distance = Vector3.Distance(transform.position, _currentTarget.transform.position);
 
-            _agent.isStopped = false;
+                if (distance <= _attackRange)
+                {
+                    Debug.Log("Dans la range");
+                    
+                    _agent.isStopped = true;
+                    Attack();
+                }
+                else
+                {
+                    Debug.Log("Hors range");
+                    
+                    _agent.isStopped = false;
+                    _agent.SetDestination(_currentTarget.transform.position);
+                }
         }
 
         private void UpdateNearestTarget()
         {
+            Debug.Log(PlayerController.PlayersControllers.Count);
+            
             float nearestDistance = Mathf.Infinity;
             foreach (PlayerController playerController in PlayerController.PlayersControllers)
             {
@@ -70,29 +76,18 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         
         private void Attack()
         {
-            if (_cooldown >= _nextAttackTime)
+            Debug.Log("Attaque appeler");
+            if (Time.time >= _lastAttackTime + _attackCooldown)
             {
-                _canAttack = true;
-                _cooldown = 0f;
-                Debug.Log(_cooldown);
-                Debug.Log("a attaqué");
-            }
-            
-            // dégâts
-            if (_canAttack)
-            {
-                UpdateAnimation();
+                Debug.Log("Attaque lancer");
+                _lastAttackTime = Time.time;
+
+                _animator.SetTrigger("Attack");
+
                 _currentTarget.TakeDamage(_damage);
-                _canAttack = false;
+
+                Debug.Log("attaque");
             }
         }
-        private void UpdateAnimation()
-        {
-            if (_animator == null) return;
-            
-            _animator.SetTrigger("Attack");
-        }
-
-
     }
 }
