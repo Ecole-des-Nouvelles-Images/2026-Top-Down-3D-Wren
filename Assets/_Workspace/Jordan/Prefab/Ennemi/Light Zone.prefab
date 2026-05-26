@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe930d6dffe760408a191e8629ec4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.Priest.PriestAttack
-  _damagePerSecond: 5
+  _damagePerSecond: 10

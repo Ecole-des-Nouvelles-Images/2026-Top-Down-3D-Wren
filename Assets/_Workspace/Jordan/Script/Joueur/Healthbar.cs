@@ -8,10 +8,10 @@ namespace _Workspace.Jordan.Script.Joueur
         private PlayerController _playerController;
         [SerializeField] private Image _image;
 
-        // private void Start()
-        // {
-        //     _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        // }
+        private void Awake()
+        {
+          
+        }
         
         private void Update()
         {

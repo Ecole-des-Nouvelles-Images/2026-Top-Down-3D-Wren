@@ -9,11 +9,10 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
 {
     public class PriestAIController : MonoBehaviour
     {
-        [SerializeField] private Transform _player;
+        private Transform _player;
         [SerializeField] private PriestAttack _priestAttack;
         [SerializeField] private GameObject _lightPrefab;
         [SerializeField] private GameObject _warningPrefab;
-        [SerializeField] private List<GameObject> _pLayers;
         
         [Header("Attack Settings")]
         [SerializeField] private float _castTime = 2f;
@@ -30,6 +29,11 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         {
            // _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
+            
+            var playerController = FindObjectOfType<PlayerController>();
+            if (playerController != null) _player = playerController.transform;
+            else
+                Debug.LogError("Aucun joueur trouvé !");
         }
 
         private void Update()
@@ -55,13 +59,13 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         // permet de choisir un joueur au hasard et d'invoquer la lumiere
         private void CastLight()
         {
-            if (_pLayers == null || _pLayers.Count == 0) return;
-            
-            GameObject target = _pLayers[Random.Range(0, _pLayers.Count)];
-            Vector3 pos = target.transform.position;
+            if (PlayerController.PlayersControllers.Count == 0) return;
 
-            Debug.Log("Start Cast");
-            StartCoroutine(UseRoutine(pos));
+            PlayerController target = PlayerController.PlayersControllers[Random.Range(0, PlayerController.PlayersControllers.Count)];
+
+            if (target == null) return;
+
+            StartCoroutine(UseRoutine(target.transform.position));
         }
         
         // permet d'instancier un gameobject pendant x temps puis de le detruire ( en gros mettre pause au timer avant destruction)
