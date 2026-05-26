@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: afebfa3b4958c8f4a9d5ed532130b78a
+guid: f38a06bd67252eb42af069dd9246c1b0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,23 +97,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Croix_0
+      name: ManetteControle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 317
-        height: 414
+        x: 35
+        y: 3
+        width: 1162
+        height: 779
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e7c42030eff3f9468562084cf1f50a1
-      internalID: 1511544652
+      spriteID: 55824b613faf163478c4bcf9cb20bd53
+      internalID: -368249563
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5bd11fe8868206c429c430cc681d5ffc
+    spriteID: 1e4232d94615449408f0e9414adeea48
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Croix_0: 1511544652
+      ManetteControle_0: -368249563
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
