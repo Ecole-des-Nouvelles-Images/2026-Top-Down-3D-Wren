@@ -7,6 +7,8 @@ TagManager:
   - UI
   - Ennemy
   - ReviveZone
+  - PlayerLimits
+  - Healthbar
   layers:
   - Default
   - TransparentFX
