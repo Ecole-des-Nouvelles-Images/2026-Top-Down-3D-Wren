@@ -296,6 +296,7 @@ MonoBehaviour:
   _circleRevive: {fileID: 8891134369322907708}
   _reviveZone: {fileID: 4257699507527882529}
   _canvas: {fileID: 7037067680445531713}
+  _attackSpeedLevel: 0
   IsDashing: 0
 --- !u!1 &5910030476033354001
 GameObject:
@@ -545,6 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerAttack
   _damage: 25
   _cooldown: 1
+  _damageLevel: 0
 --- !u!1 &7037067680445531713
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerAttack
   _damage: 25
   _cooldown: 1
+  _damageLevel: 0
 --- !u!1 &8891134369322907708
 GameObject:
   m_ObjectHideFlags: 0

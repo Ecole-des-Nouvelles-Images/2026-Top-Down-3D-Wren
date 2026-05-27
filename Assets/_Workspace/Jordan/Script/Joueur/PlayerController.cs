@@ -16,6 +16,9 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private float _dashDuration;
         [SerializeField] private float _attackCooldown;
         [SerializeField] private GameObject _hitBox;
+        [SerializeField] private float _anticipationSpeed = 0.2f;
+        [SerializeField] private float _activeSpeed = 1;
+        [SerializeField] private float _recoverySpeed = 0.5f;
         
         [Header("Visual")]
         [SerializeField] private Transform _visual;
@@ -33,6 +36,11 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private ReviveZone _reviveZone;
         [SerializeField] private GameObject _canvas;
         
+        [Header("Attack Speed Upgrade")]
+        [SerializeField] private int _attackSpeedLevel;
+
+        private const int LevelMaxAttackSpeed = 4;
+        
         //attack settings
         private float _time;
         private float _attackTimer;
@@ -42,7 +50,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _dashTimer;
         private Vector3 _dashDirection;
         
-        //private readonly Dictionary<Item, int> _inventory = new();
+        private readonly Dictionary<Item, int> _inventory = new();
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected; 
@@ -262,6 +270,22 @@ namespace _Workspace.Jordan.Script.Joueur
             }
         }
         
+        public void UpgradeAttackSpeed(float amount)
+        {
+            if (_attackSpeedLevel >= LevelMaxAttackSpeed) return;
+
+            _attackSpeedLevel++;
+
+            _attackCooldown -= amount;
+
+            if (_attackCooldown < 0.1f)
+            {
+                _attackCooldown = 0.1f;
+            }
+
+            Debug.Log("Attack speed upgraded : " + _attackCooldown);
+        }
+        
         public void SetReviveTarget(ReviveZone zone)
         {
             _reviveZone = zone;
@@ -297,36 +321,62 @@ namespace _Workspace.Jordan.Script.Joueur
                 _circleRevive.SetActive(false);
         }
 
-        // public bool HasItemInInventory(Item item, int number)
-        //     {
-        //         return value >= number;
-        //     }
-        //     
-        //     return false;
-        // }
-        //
-        // public void AddItemToInventory(Item item, int number)
-        // {
-        //     if (_inventory.ContainsKey(item))
-        //     {
-        //         _inventory[item]++;
-        //     }
-        //     else
-        //     {
-        //         _inventory.Add(item, number);
-        //     }
-        // }
-        //
-        // public void RemoveItemFromInventory(Item item, int number)
-        // {
-        //     if (_inventory.ContainsKey(item))
-        //     {
-        //         _inventory[item]--;
-        //     }
-        //     else
-        //     {
-        //         throw new Exception("Item not found");
-        //     }
-        // }
+        public bool HasItemInInventory(Item item, int number)
+        {
+            {
+              //  return value >= number;
+            } 
+            return false;
+        }
+        
+        public void AddItemToInventory(Item item, int number)
+        {
+            if (_inventory.ContainsKey(item))
+            {
+                _inventory[item]++;
+            }
+            else
+            {
+
+                _inventory.Add(item, number);
+            }
+        }
+        
+        public void RemoveItemFromInventory(Item item, int number)
+        {
+            if (_inventory.ContainsKey(item))
+            {
+                _inventory[item]--;
+            }
+            else
+            {
+                throw new Exception("Item not found");
+            }
+        }
+
+        public void OnAnticipationStart()
+        {
+            _animator.speed = _anticipationSpeed;
+        }
+        
+        public void OnActiveStart()
+        {
+            _animator.speed = _activeSpeed;
+        }
+
+        public void OnActiveHit()
+        {
+
+        }
+
+        public void OnRecoveryStart()
+        {
+            _animator.speed = _recoverySpeed;
+        }
+
+        public void OnRecoveryEnd()
+        {
+            _animator.speed = 1;
+        }
     }
 }
