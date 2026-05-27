@@ -182,10 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.AiController
   _attackRange: 2
-  _cooldown: 2
-  _damage: 1
-  _nextAttackTime: 2
-  _canAttack: 0
+  _damage: 10
+  _attackCooldown: 2
 --- !u!114 &7811192008229631814
 MonoBehaviour:
   m_ObjectHideFlags: 0

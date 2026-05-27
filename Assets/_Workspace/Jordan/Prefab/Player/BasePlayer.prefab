@@ -284,7 +284,7 @@ MonoBehaviour:
   _dashSpeed: 5
   _dashDuration: 2
   _attackCooldown: 2
-  _hitBox: {fileID: 0}
+  _hitBox: {fileID: 3064860475321726638}
   _visual: {fileID: 4089564133660642045}
   _rotationSpeed: 24
   _newLife: 25
