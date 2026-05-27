@@ -40485,6 +40485,64 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!1001 &1301915408
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.8755975
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.3399994
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.89424
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+      propertyPath: m_Name
+      value: VampireNoCape (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2037032808845276168, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0f8c893d7a17274e9033f060395e507, type: 3}
 --- !u!1001 &1330198530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60864,7 +60922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560293047769035875, guid: 7818f309d9829e4468c60b36c5adde34, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.47
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4560293047769035875, guid: 7818f309d9829e4468c60b36c5adde34, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime0
@@ -61378,7 +61436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560293047769035875, guid: 7818f309d9829e4468c60b36c5adde34, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.47
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4560293047769035875, guid: 7818f309d9829e4468c60b36c5adde34, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime0
@@ -61674,7 +61732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560293047769035875, guid: 7818f309d9829e4468c60b36c5adde34, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.47
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4560293047769035875, guid: 7818f309d9829e4468c60b36c5adde34, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime0
@@ -61948,3 +62006,4 @@ SceneRoots:
   - {fileID: 1876457004}
   - {fileID: 2064783438}
   - {fileID: 2107115685}
+  - {fileID: 1301915408}
