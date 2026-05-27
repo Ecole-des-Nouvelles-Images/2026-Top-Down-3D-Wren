@@ -282,10 +282,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerController
   _moveSpeed: 5
-  _dashSpeed: 5
-  _dashDuration: 2
+  _dashSpeed: 15
+  _dashDuration: 0.5
   _attackCooldown: 2
   _hitBox: {fileID: 7606089425544519168}
+  _anticipationSpeed: 0.2
+  _activeSpeed: 1
+  _recoverySpeed: 0.5
   _visual: {fileID: 7871725697163918398}
   _rotationSpeed: 24
   _newLife: 25
@@ -296,6 +299,7 @@ MonoBehaviour:
   _circleRevive: {fileID: 8891134369322907708}
   _reviveZone: {fileID: 4257699507527882529}
   _canvas: {fileID: 7037067680445531713}
+  _attackSpeedLevel: 0
   IsDashing: 0
 --- !u!1 &5910030476033354001
 GameObject:
@@ -797,6 +801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerAttack
   _damage: 25
   _cooldown: 1
+  _damageLevel: 0
 --- !u!1 &8891134369322907708
 GameObject:
   m_ObjectHideFlags: 0
