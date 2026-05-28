@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Pick_Up;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -19,6 +20,9 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private float _anticipationSpeed = 0.2f;
         [SerializeField] private float _activeSpeed = 1;
         [SerializeField] private float _recoverySpeed = 0.5f;
+        [SerializeField] private AudioClip _attack;
+        [SerializeField] private AudioClip _die;
+        [SerializeField] private AudioClip _hit;
         
         [Header("Visual")]
         [SerializeField] private Transform _visual;
@@ -35,11 +39,6 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private GameObject _circleRevive;
         [SerializeField] private ReviveZone _reviveZone;
         [SerializeField] private GameObject _canvas;
-        
-        [Header("Attack Speed Upgrade")]
-        [SerializeField] private int _attackSpeedLevel;
-
-        private const int LevelMaxAttackSpeed = 4;
         
         //attack settings
         private float _time;
@@ -256,6 +255,11 @@ namespace _Workspace.Jordan.Script.Joueur
 
                 _animator.SetInteger("AttackIndex", attackIndex);
                 _animator.SetTrigger("Attack");
+
+                if (_attack != null)
+                {
+                    SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
+                }
                 
                 _hitBox.SetActive(true);
         }
@@ -263,27 +267,15 @@ namespace _Workspace.Jordan.Script.Joueur
         public void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
+            if (_hit != null)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
+            }
             
             if (CurrentHealth <= 0)
             {
                 Die();
             }
-        }
-        
-        public void UpgradeAttackSpeed(float amount)
-        {
-            if (_attackSpeedLevel >= LevelMaxAttackSpeed) return;
-
-            _attackSpeedLevel++;
-
-            _attackCooldown -= amount;
-
-            if (_attackCooldown < 0.1f)
-            {
-                _attackCooldown = 0.1f;
-            }
-
-            Debug.Log("Attack speed upgraded : " + _attackCooldown);
         }
         
         public void SetReviveTarget(ReviveZone zone)
@@ -305,6 +297,11 @@ namespace _Workspace.Jordan.Script.Joueur
             if (_circleRevive != null)
                 _circleRevive.SetActive(true);
             
+            if (_die != null)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
+            }
+            
             Debug.Log( name + "est mort");
         }
 
@@ -321,38 +318,38 @@ namespace _Workspace.Jordan.Script.Joueur
                 _circleRevive.SetActive(false);
         }
 
-        public bool HasItemInInventory(Item item, int number)
-        {
-            {
-              //  return value >= number;
-            } 
-            return false;
-        }
+        // public bool HasItemInInventory(Item item, int number)
+        // {
+        //     {
+        //       //  return value >= number;
+        //     } 
+        //     return false;
+        // }
+        //
+        // public void AddItemToInventory(Item item, int number)
+        // {
+        //     if (_inventory.ContainsKey(item))
+        //     {
+        //         _inventory[item]++;
+        //     }
+        //     else
+        //     {
+        //
+        //         _inventory.Add(item, number);
+        //     }
+        // }
         
-        public void AddItemToInventory(Item item, int number)
-        {
-            if (_inventory.ContainsKey(item))
-            {
-                _inventory[item]++;
-            }
-            else
-            {
-
-                _inventory.Add(item, number);
-            }
-        }
-        
-        public void RemoveItemFromInventory(Item item, int number)
-        {
-            if (_inventory.ContainsKey(item))
-            {
-                _inventory[item]--;
-            }
-            else
-            {
-                throw new Exception("Item not found");
-            }
-        }
+        // public void RemoveItemFromInventory(Item item, int number)
+        // {
+        //     if (_inventory.ContainsKey(item))
+        //     {
+        //         _inventory[item]--;
+        //     }
+        //     else
+        //     {
+        //         throw new Exception("Item not found");
+        //     }
+        // }
 
         public void OnAnticipationStart()
         {

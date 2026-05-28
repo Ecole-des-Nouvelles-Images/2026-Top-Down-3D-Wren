@@ -14,7 +14,7 @@ namespace _Workspace.Jordan.Script.Pick_Up
             {
                 //DoVFX();
                 Destroy(gameObject);
-                _playerController.AddItemToInventory(Soul,1);
+               // _playerController.AddItemToInventory(Soul,1);
                 Debug.Log("Pick Up Soul");
             }
         }

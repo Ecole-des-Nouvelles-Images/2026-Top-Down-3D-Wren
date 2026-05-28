@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace _Workspace.Jordan.Script.ennemi
     public class EnemyLife : MonoBehaviour
     {
         [SerializeField] private float _health;
+        [SerializeField] private AudioClip _hit;
+        [SerializeField] private AudioClip _death;
         
         private Healthbar _healthBar;
         private float _currentHealth;
@@ -36,6 +39,7 @@ namespace _Workspace.Jordan.Script.ennemi
         {
             _currentHealth -= damage;
             //_animator.SetTrigger("Hit");
+            SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
             Debug.Log("Enemy Hit");
 
             if (_currentHealth <= 0)
@@ -48,6 +52,7 @@ namespace _Workspace.Jordan.Script.ennemi
         {
             Debug.Log("Enemy Dead");
             //_animator.SetBool("Dead", true);
+            SoundFXManager.Instance.PlaySoundFXClip(_death, SoundGroups.Sfx);
             WaveManager.Instance.EnemyKilled();
             Destroy(gameObject);
         }
