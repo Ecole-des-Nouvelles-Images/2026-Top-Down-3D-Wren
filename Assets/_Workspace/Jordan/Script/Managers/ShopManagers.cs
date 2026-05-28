@@ -11,15 +11,15 @@ namespace _Workspace.Jordan.Script.Managers
         [SerializeField] private PlayerAttack _playerAttack;
         [SerializeField] private Canvas _canvas;
 
-        public void BuyDamageUpgrade()
-        {
-            _playerAttack.UpgradeDamage(5f);
-        }
-
-        public void BuyAttackSpeedUpgrade()
-        {
-            _playerController.UpgradeAttackSpeed(0.1f);
-        }
+        // public void BuyDamageUpgrade()
+        // {
+        //     _playerAttack.UpgradeDamage(5f);
+        // }
+        //
+        // public void BuyAttackSpeedUpgrade()
+        // {
+        //     _playerController.UpgradeAttackSpeed(0.1f);
+        // }
 
         public void OnTriggerStay(Collider other)
         {
