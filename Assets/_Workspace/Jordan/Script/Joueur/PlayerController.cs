@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Pick_Up;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -16,6 +17,12 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private float _dashDuration;
         [SerializeField] private float _attackCooldown;
         [SerializeField] private GameObject _hitBox;
+        [SerializeField] private float _anticipationSpeed = 0.2f;
+        [SerializeField] private float _activeSpeed = 1;
+        [SerializeField] private float _recoverySpeed = 0.5f;
+        [SerializeField] private AudioClip _attack;
+        [SerializeField] private AudioClip _die;
+        [SerializeField] private AudioClip _hit;
         
         [Header("Visual")]
         [SerializeField] private Transform _visual;
@@ -42,7 +49,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _dashTimer;
         private Vector3 _dashDirection;
         
-        //private readonly Dictionary<Item, int> _inventory = new();
+        private readonly Dictionary<Item, int> _inventory = new();
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected; 
@@ -248,6 +255,11 @@ namespace _Workspace.Jordan.Script.Joueur
 
                 _animator.SetInteger("AttackIndex", attackIndex);
                 _animator.SetTrigger("Attack");
+
+                if (_attack != null)
+                {
+                    SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
+                }
                 
                 _hitBox.SetActive(true);
         }
@@ -255,6 +267,10 @@ namespace _Workspace.Jordan.Script.Joueur
         public void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
+            if (_hit != null)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
+            }
             
             if (CurrentHealth <= 0)
             {
@@ -281,6 +297,11 @@ namespace _Workspace.Jordan.Script.Joueur
             if (_circleRevive != null)
                 _circleRevive.SetActive(true);
             
+            if (_die != null)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
+            }
+            
             Debug.Log( name + "est mort");
         }
 
@@ -298,10 +319,10 @@ namespace _Workspace.Jordan.Script.Joueur
         }
 
         // public bool HasItemInInventory(Item item, int number)
+        // {
         //     {
-        //         return value >= number;
-        //     }
-        //     
+        //       //  return value >= number;
+        //     } 
         //     return false;
         // }
         //
@@ -313,10 +334,11 @@ namespace _Workspace.Jordan.Script.Joueur
         //     }
         //     else
         //     {
+        //
         //         _inventory.Add(item, number);
         //     }
         // }
-        //
+        
         // public void RemoveItemFromInventory(Item item, int number)
         // {
         //     if (_inventory.ContainsKey(item))
@@ -328,5 +350,30 @@ namespace _Workspace.Jordan.Script.Joueur
         //         throw new Exception("Item not found");
         //     }
         // }
+
+        public void OnAnticipationStart()
+        {
+            _animator.speed = _anticipationSpeed;
+        }
+        
+        public void OnActiveStart()
+        {
+            _animator.speed = _activeSpeed;
+        }
+
+        public void OnActiveHit()
+        {
+
+        }
+
+        public void OnRecoveryStart()
+        {
+            _animator.speed = _recoverySpeed;
+        }
+
+        public void OnRecoveryEnd()
+        {
+            _animator.speed = 1;
+        }
     }
 }

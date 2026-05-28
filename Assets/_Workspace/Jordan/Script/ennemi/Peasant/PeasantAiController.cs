@@ -1,3 +1,4 @@
+using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,6 +11,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         [SerializeField] private float _attackRange;
         [SerializeField] private float _damage;
         [SerializeField] private float _attackCooldown;
+        [SerializeField] private AudioClip _attack;
 
         private PlayerController _currentTarget;
         private Animator _animator;
@@ -84,6 +86,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
                 _animator.SetTrigger("Attack");
 
+                SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
                 _currentTarget.TakeDamage(_damage);
 
                 Debug.Log("attaque");

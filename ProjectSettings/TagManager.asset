@@ -9,6 +9,7 @@ TagManager:
   - ReviveZone
   - PlayerLimits
   - Healthbar
+  - Shop
   layers:
   - Default
   - TransparentFX

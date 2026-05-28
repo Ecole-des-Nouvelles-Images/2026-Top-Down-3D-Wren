@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
 using UnityEngine.AI;
@@ -21,6 +22,7 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         [SerializeField] private float _warningTime;
         [SerializeField] private float _cooldown;
         [SerializeField] private float _destroyLight;
+        [SerializeField] private AudioClip _cast;
         
         private Animator _animator;
         private NavMeshAgent  _agent;
@@ -65,6 +67,11 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
 
             if (target == null) return;
 
+            if (_cast != null)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(_cast, SoundGroups.Sfx);
+            }
+              
             StartCoroutine(UseRoutine(target.transform.position));
         }
         
