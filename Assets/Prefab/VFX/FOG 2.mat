@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FOG 1
-  m_Shader: {fileID: -6465566751694194690, guid: e5f1da61b3696354c946d6678f7f660e, type: 3}
+  m_Name: FOG 2
+  m_Shader: {fileID: -6465566751694194690, guid: 4af9c49f6d77ef74fb065afaee7077eb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -39,20 +39,20 @@ Material:
     m_Ints: []
     m_Floats:
     - _Contrast: 0
-    - _FadeEnd: 0.6
-    - _FadeStart: 0
-    - _FogAlpha: 1.7
-    - _FogMax: 0.9
-    - _FogMin: 0.5
-    - _NoiseScale: 4.15
-    - _NoiseSpeed: 0.01
+    - _FadeEnd: 1.07
+    - _FadeStart: 1.32
+    - _FogAlpha: 0.47
+    - _FogMax: 0.8
+    - _FogMin: 0.27
+    - _NoiseScale: 5.16
+    - _NoiseSpeed: 0.04
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WaveFrequency: 0
     - _WaveHeight: 0
-    - _WaveSpeed: 0
+    - _WaveSpeed: 1.56
     m_Colors:
-    - _Color: {r: 0.49056596, g: 0.49056596, b: 0.49056596, a: 1}
+    - _Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &4406167548772843252
