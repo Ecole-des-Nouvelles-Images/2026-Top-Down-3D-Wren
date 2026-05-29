@@ -17,9 +17,9 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private float _dashDuration;
         [SerializeField] private float _attackCooldown;
         [SerializeField] private GameObject _hitBox;
-        [SerializeField] private float _anticipationSpeed = 0.2f;
-        [SerializeField] private float _activeSpeed = 1;
-        [SerializeField] private float _recoverySpeed = 0.5f;
+        // [SerializeField] private float _anticipationSpeed = 0.2f;
+        // [SerializeField] private float _activeSpeed = 1;
+        // [SerializeField] private float _recoverySpeed = 0.5f;
         [SerializeField] private AudioClip _attack;
         [SerializeField] private AudioClip _die;
         [SerializeField] private AudioClip _hit;
@@ -55,7 +55,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private bool _isControllerConnected; 
         private float _verticalVelocity;
         private float _inputDeadZone = 0.1f;
-        private Animator _animator;
+        public Animator _animator;
         private Collider _playerLimits;
         private CinemachineTargetGroup _cinemachineTargetGroup;
         private Healthbar _healthbar;
@@ -351,29 +351,29 @@ namespace _Workspace.Jordan.Script.Joueur
         //     }
         // }
 
-        public void OnAnticipationStart()
-        {
-            _animator.speed = _anticipationSpeed;
-        }
-        
-        public void OnActiveStart()
-        {
-            _animator.speed = _activeSpeed;
-        }
-
-        public void OnActiveHit()
-        {
-
-        }
-
-        public void OnRecoveryStart()
-        {
-            _animator.speed = _recoverySpeed;
-        }
-
-        public void OnRecoveryEnd()
-        {
-            _animator.speed = 1;
-        }
+        // public void OnAnticipationStart()
+        // {
+        //     _animator.speed = _anticipationSpeed;
+        // }
+        //
+        // public void OnActiveStart()
+        // {
+        //     _animator.speed = _activeSpeed;
+        // }
+        //
+        // public void OnActiveHit()
+        // {
+        //
+        // }
+        //
+        // public void OnRecoveryStart()
+        // {
+        //     _animator.speed = _recoverySpeed;
+        // }
+        //
+        // public void OnRecoveryEnd()
+        // {
+        //     _animator.speed = 1;
+        // }
     }
 }
