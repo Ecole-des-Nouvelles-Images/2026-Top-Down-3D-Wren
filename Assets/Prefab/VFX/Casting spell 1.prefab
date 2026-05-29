@@ -19571,7 +19571,7 @@ ParticleSystemRenderer:
   m_VertexStreams: 00030409
   m_UseCustomTrailVertexStreams: 0
   m_TrailVertexStreams: 00010304
-  m_Mesh: {fileID: 2534964839176971238, guid: 4a8c064de5d1b4045a9e9d4ebd5d6575, type: 3}
+  m_Mesh: {fileID: 2534964839176971238, guid: f86ba2341f133944f9ee35c52e2bf124, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
