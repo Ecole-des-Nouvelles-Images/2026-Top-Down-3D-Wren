@@ -183,17 +183,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e666747f868d0649826d4528f060c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PriestAIControlle
-  _player: {fileID: 0}
   _priestAttack: {fileID: 1258186815907282934}
   _lightPrefab: {fileID: 1843944599737312793, guid: 534505ffadce4f74abae100aaebc4708, type: 3}
   _warningPrefab: {fileID: 9146604621143166829, guid: e98a6afbd50d45446998ee249430b767, type: 3}
-  _pLayers:
-  - {fileID: 0}
   _castTime: 2
   _nextAttackTime: 10
   _warningTime: 15
   _cooldown: 0
   _destroyLight: 10
+  _cast: {fileID: 0}
 --- !u!114 &701542428470001695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.NavTarget
   _target: {fileID: 0}
   _stopDistance: 1.5
-  _moveSpeed: 1
+  _moveSpeed: 0.5
 --- !u!114 &4205430436701101565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +219,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c57c4111b4758e4cbc13e5fb07bf279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.EnnemyLife
-  _health: 300
+  _health: 100
+  _hit: {fileID: 0}
+  _death: {fileID: 0}
+  _dropChance: 1
+  _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
 --- !u!1001 &2304559003779238397
 PrefabInstance:
   m_ObjectHideFlags: 0
