@@ -12,7 +12,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         [SerializeField] private float _damage;
         [SerializeField] private float _attackCooldown;
         [SerializeField] private AudioClip _attack;
-
+        
         private PlayerController _currentTarget;
         private Animator _animator;
         private NavMeshAgent  _agent;

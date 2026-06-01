@@ -12,6 +12,9 @@ namespace _Workspace.Jordan.Script.ennemi
         [SerializeField] private AudioClip _hit;
         [SerializeField] private AudioClip _death;
         
+        [SerializeField] private float _dropChance;
+        [SerializeField] private GameObject _healPrefab;
+        
         private Healthbar _healthBar;
         private float _currentHealth;
         private Animator _animator;
@@ -39,11 +42,17 @@ namespace _Workspace.Jordan.Script.ennemi
         {
             _currentHealth -= damage;
             //_animator.SetTrigger("Hit");
-            SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
+            if (_hit != null)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
+            }
+           
             Debug.Log("Enemy Hit");
 
             if (_currentHealth <= 0)
             {
+                TryDropHeal();
+                Debug.Log("drop heal activé");
                 Die();
             }
         }
@@ -52,9 +61,22 @@ namespace _Workspace.Jordan.Script.ennemi
         {
             Debug.Log("Enemy Dead");
             //_animator.SetBool("Dead", true);
-            SoundFXManager.Instance.PlaySoundFXClip(_death, SoundGroups.Sfx);
+            if (_death != null)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(_death, SoundGroups.Sfx);
+            }
             WaveManager.Instance.EnemyKilled();
             Destroy(gameObject);
+        }
+        
+        void TryDropHeal()
+        {
+            float randomValue = Random.value; // nombre entre 0 et 1
+
+            if (randomValue <= _dropChance)
+            {
+                Instantiate(_healPrefab, transform.position, Quaternion.identity);
+            }
         }
     }
 }
