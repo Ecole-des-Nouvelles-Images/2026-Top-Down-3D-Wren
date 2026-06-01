@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 8953473278065827429}
   - component: {fileID: 6035340359057560593}
   - component: {fileID: 931397177632901969}
+  - component: {fileID: 4170719925709344879}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -303,12 +304,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872555312315029508}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.35, z: 0.95}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3499999, z: 0.95}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6016912656145479325}
+  m_Father: {fileID: 5637798346800395933}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8953473278065827429
 MeshFilter:
@@ -388,6 +389,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4170719925709344879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872555312315029508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc3818870920e543aa21b1a937a4f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerAttack
+  _damage: 25
+  _cooldown: 2
 --- !u!1 &1013370468797028689
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caca81fc8bec8947a490507818e7120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.Healthbar
-  _playerController: {fileID: 0}
+  _playerController: {fileID: 8486637591455419003}
   _image: {fileID: 779149115696178166}
 --- !u!1 &1724943193686859967
 GameObject:
@@ -2198,6 +2213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5637798346800395933}
   - component: {fileID: 1791684354124000487}
+  - component: {fileID: 1875160609454944300}
   m_Layer: 0
   m_Name: NS_VampireMale (1)
   m_TagString: Untagged
@@ -2220,6 +2236,7 @@ Transform:
   m_Children:
   - {fileID: 3642759998338606595}
   - {fileID: 4358757656816657192}
+  - {fileID: 8164124828469755865}
   m_Father: {fileID: 6016912656145479325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1791684354124000487
@@ -2244,6 +2261,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1875160609454944300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005376144613190695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d7f698e25a95d4b869638d090c2da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.AnimationEventRouter
 --- !u!1 &5096353663144627907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,7 +3506,6 @@ Transform:
   - {fileID: 3072227492838570475}
   - {fileID: 8513639806399537309}
   - {fileID: 9155639821510141409}
-  - {fileID: 8164124828469755865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5388197337444762370
@@ -3721,22 +3749,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerController
   _moveSpeed: 5
-  _dashSpeed: 5
-  _dashDuration: 2
-  _attackCooldown: 2
+  _dashSpeed: 10
+  _dashDuration: 1
+  _attackCooldown: 1
   _hitBox: {fileID: 872555312315029508}
-  _anticipationSpeed: 0.2
-  _activeSpeed: 1
-  _recoverySpeed: 0.5
-  _attack: {fileID: 0}
-  _die: {fileID: 0}
-  _hit: {fileID: 0}
-  _visual: {fileID: 6016912656145479325}
+  _anticipationSpeed: 0.5
+  _activeSpeed: 1.5
+  _recoverySpeed: 0.7
+  _visual: {fileID: 5637798346800395933}
   _rotationSpeed: 24
   _newLife: 25
-  MaxHealth: 100
-  CurrentHealth: 0
-  IsDead: 1
+  MaxHealth: 200
+  CurrentHealth: 100
+  IsDead: 0
   _reviveItem: {fileID: 0}
   _circleRevive: {fileID: 3948544786342256827}
   _reviveZone: {fileID: 1429122204319945313}

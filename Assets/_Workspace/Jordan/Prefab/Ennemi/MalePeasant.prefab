@@ -184,6 +184,7 @@ MonoBehaviour:
   _attackRange: 2
   _damage: 10
   _attackCooldown: 2
+  _attack: {fileID: 0}
 --- !u!114 &7811192008229631814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c57c4111b4758e4cbc13e5fb07bf279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.EnnemyLife
-  _health: 75
+  _health: 50
+  _hit: {fileID: 0}
+  _death: {fileID: 0}
+  _dropChance: 0.5
+  _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
 --- !u!114 &1658358801413466565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.Peasant.NavTargetMalePeasant
   _target: {fileID: 0}
   _stopDistance: 2
-  _moveSpeed: 1
+  _moveSpeed: 2
   _visual: {fileID: 8220359959600318309}
   _rotationOffset: 45
   _rotationSpeed: 8
