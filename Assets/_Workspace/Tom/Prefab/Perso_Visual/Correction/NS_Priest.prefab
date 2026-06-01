@@ -50,12 +50,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0add0f99c80ff934aa87c9215a463ee1, type: 3}
       propertyPath: m_Name
-      value: CharaMaster_PriestV2
+      value: NS_Priest
       objectReference: {fileID: 0}
     - target: {fileID: 1610529337035684927, guid: 0add0f99c80ff934aa87c9215a463ee1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 16f27252c2bd7194a87354f2869afe34, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 0add0f99c80ff934aa87c9215a463ee1, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
