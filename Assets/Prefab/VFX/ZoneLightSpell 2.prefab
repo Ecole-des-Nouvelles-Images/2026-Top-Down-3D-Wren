@@ -14755,7 +14755,7 @@ GameObject:
   - component: {fileID: 4735740046546435390}
   - component: {fileID: 6527392796669262814}
   m_Layer: 0
-  m_Name: ZoneLightSpell
+  m_Name: ZoneLightSpell 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
