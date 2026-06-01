@@ -9,11 +9,6 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private float _damage;
         [SerializeField] private float _cooldown;
         
-        [Header("Damage Upgrade")]
-        [SerializeField] private int _damageLevel;
-
-        private const int LevelMaxDamage = 4;
-        
         private EnemyLife _enemyLife;
         private float _time;
         
@@ -30,18 +25,6 @@ namespace _Workspace.Jordan.Script.Joueur
                     enemyLife.TakeDamage(_damage);
                 }
             }
-        }
-
-        public void UpgradeDamage(float amount)
-        {
-            if (_damageLevel >= LevelMaxDamage) return;
-
-            _damageLevel++;
-
-            _damage += amount;
-
-            Debug.Log("Damage upgraded : " + _damage);
-
         }
         
         private void Update()

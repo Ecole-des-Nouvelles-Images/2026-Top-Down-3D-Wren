@@ -17,12 +17,12 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private float _dashDuration;
         [SerializeField] private float _attackCooldown;
         [SerializeField] private GameObject _hitBox;
-        // [SerializeField] private float _anticipationSpeed = 0.2f;
-        // [SerializeField] private float _activeSpeed = 1;
-        // [SerializeField] private float _recoverySpeed = 0.5f;
-        [SerializeField] private AudioClip _attack;
-        [SerializeField] private AudioClip _die;
-        [SerializeField] private AudioClip _hit;
+        [SerializeField] private float _anticipationSpeed = 0.2f;
+        [SerializeField] private float _activeSpeed = 1;
+        [SerializeField] private float _recoverySpeed = 0.5f;
+        // [SerializeField] private AudioClip _attack;
+        // [SerializeField] private AudioClip _die;
+        // [SerializeField] private AudioClip _hit;
         
         [Header("Visual")]
         [SerializeField] private Transform _visual;
@@ -55,7 +55,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private bool _isControllerConnected; 
         private float _verticalVelocity;
         private float _inputDeadZone = 0.1f;
-        public Animator _animator;
+        private Animator _animator;
         private Collider _playerLimits;
         private CinemachineTargetGroup _cinemachineTargetGroup;
         private Healthbar _healthbar;
@@ -76,10 +76,9 @@ namespace _Workspace.Jordan.Script.Joueur
             _controller = GetComponent<CharacterController>();
             _animator = GetComponentInChildren<Animator>();
             _playerLimits = GameObject.FindGameObjectWithTag("PlayerLimits")?.GetComponent<Collider>();
-            _healthbar = GameObject.FindGameObjectWithTag("Healthbar")?.GetComponent<Healthbar>();
+           
             
             if (_playerLimits == null) throw new MissingComponentException("PlayerLimits not found");
-            if (_healthbar == null) throw new MissingComponentException("Healthbar not found");
             
             _visual = _animator.transform;
             CurrentHealth = MaxHealth;
@@ -87,6 +86,12 @@ namespace _Workspace.Jordan.Script.Joueur
             IsDead = false;
             if (_circleRevive != null)
                 _circleRevive.SetActive(false);
+        }
+
+        private void Start()
+        {
+            _healthbar = GameObject.FindGameObjectWithTag("Healthbar")?.GetComponent<Healthbar>();
+            if (_healthbar == null) throw new MissingComponentException("Healthbar not found");
         }
 
         private void OnEnable()
@@ -256,10 +261,10 @@ namespace _Workspace.Jordan.Script.Joueur
                 _animator.SetInteger("AttackIndex", attackIndex);
                 _animator.SetTrigger("Attack");
 
-                if (_attack != null)
-                {
-                    SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
-                }
+                // if (_attack != null)
+                // {
+                //     SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
+                // }
                 
                 _hitBox.SetActive(true);
         }
@@ -267,10 +272,10 @@ namespace _Workspace.Jordan.Script.Joueur
         public void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
-            if (_hit != null)
-            {
-                SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
-            }
+            // if (_hit != null)
+            // {
+            //     SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
+            // }
             
             if (CurrentHealth <= 0)
             {
@@ -297,10 +302,10 @@ namespace _Workspace.Jordan.Script.Joueur
             if (_circleRevive != null)
                 _circleRevive.SetActive(true);
             
-            if (_die != null)
-            {
-                SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
-            }
+            // if (_die != null)
+            // {
+                 // SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
+            // }
             
             Debug.Log( name + "est mort");
         }
@@ -351,29 +356,29 @@ namespace _Workspace.Jordan.Script.Joueur
         //     }
         // }
 
-        // public void OnAnticipationStart()
-        // {
-        //     _animator.speed = _anticipationSpeed;
-        // }
-        //
-        // public void OnActiveStart()
-        // {
-        //     _animator.speed = _activeSpeed;
-        // }
-        //
-        // public void OnActiveHit()
-        // {
-        //
-        // }
-        //
-        // public void OnRecoveryStart()
-        // {
-        //     _animator.speed = _recoverySpeed;
-        // }
-        //
-        // public void OnRecoveryEnd()
-        // {
-        //     _animator.speed = 1;
-        // }
+        public void OnAnticipationStart()
+        {
+            _animator.speed = _anticipationSpeed;
+        }
+        
+        public void OnActiveStart()
+        {
+            _animator.speed = _activeSpeed;
+        }
+        
+        public void OnActiveHit()
+        {
+        
+        }
+        
+        public void OnRecoveryStart()
+        {
+            _animator.speed = _recoverySpeed;
+        }
+        
+        public void OnRecoveryEnd()
+        {
+            _animator.speed = 1;
+        }
     }
 }
