@@ -69,10 +69,28 @@ namespace _Workspace.Jordan.Script.ennemi
 
         private void SpawnEnemy()
         {
-            int randomSpawner = Random.Range(0, _spawners.Length);
+            int attempts = 0;
+            Spawnner chosenSpawner = null;
 
-            _spawners[randomSpawner].SpawnIA();
+            while (chosenSpawner == null && attempts < 50)
+            {
+                int index = Random.Range(0, _spawners.Length);
 
+                if (_currentWave >= _spawners[index].WaveRequired)
+                {
+                    chosenSpawner = _spawners[index];
+                }
+
+                attempts++;
+            }
+
+            if (chosenSpawner == null)
+            {
+                Debug.LogWarning("Aucun spawner disponible pour la wave " + _currentWave);
+                return;
+            }
+
+            chosenSpawner.SpawnIA();
             _enemiesAlive++;
         }
 

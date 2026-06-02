@@ -1,3 +1,4 @@
+using System;
 using _Workspace.Jordan.Script.ennemi;
 using UnityEngine;
 
@@ -11,14 +12,14 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private EnemyLife _enemyLife;
         private float _time;
-        
-        private void OnTriggerEnter(Collider ennemy)
-        {
-            if (ennemy.CompareTag("Ennemy"))
-            {
-                Debug.Log(ennemy.name + " j'ai collidé");
 
-                EnemyLife enemyLife = ennemy.GetComponent<EnemyLife>();
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Ennemy"))
+            {
+                Debug.Log(other.name + " j'ai collidé");
+
+                EnemyLife enemyLife = other.GetComponent<EnemyLife>();
 
                 if (enemyLife != null)
                 {

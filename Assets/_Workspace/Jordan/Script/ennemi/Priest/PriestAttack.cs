@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Workspace.Jordan.Script.ennemi.Priest
 {
