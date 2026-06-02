@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1820818700114116786}
   - component: {fileID: 9068060846951679860}
   - component: {fileID: 1121997692383123172}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: WomenPeasant
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -228,6 +228,98 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3295782297800040496}
     m_Modifications:
+    - target: {fileID: 88315846996139038, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 285658981991198366, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 407946901258871082, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 687234313304752910, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 897245027809219462, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561070993015244430, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722298295843686978, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886689834971737925, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284326409388029508, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703412376631260753, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994469007805126055, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179282557938227033, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372328747529508683, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483553903735805615, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678315530181496992, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061706579629837940, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331569370596470732, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594248635787824601, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815736639879228537, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916154000807709806, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705743697152693337, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906564373400846327, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154199585608132013, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7171505819150531582, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.25
@@ -268,9 +360,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7461002008205965268, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7551866041814311236, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
       propertyPath: m_Name
       value: CharaMaster_Paysanne
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551866041814311236, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711738484478346942, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076651924266213969, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250277348784440681, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8376083201466191412, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using _Workspace.Jordan.Script.AudioListener;
+﻿using System.Collections.Generic;
 using _Workspace.Jordan.Script.Pick_Up;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -11,8 +9,13 @@ namespace _Workspace.Jordan.Script.Joueur
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
+        [Header("References")]
+        [SerializeField] private Transform _pivot;
+        [SerializeField] private GameObject _hitBox;
+        
         [Header("Settings")] 
         [SerializeField] private float _moveSpeed;
+        [SerializeField] private float _rotationSpeed = 12f;
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashDuration;
         [SerializeField] private float _attackCooldown;
@@ -23,10 +26,6 @@ namespace _Workspace.Jordan.Script.Joueur
         // [SerializeField] private AudioClip _attack;
         // [SerializeField] private AudioClip _die;
         // [SerializeField] private AudioClip _hit;
-        
-        [Header("Visual")]
-        [SerializeField] private Transform _visual;
-        [SerializeField] private float _rotationSpeed = 12f;
         
         [Header("Health")]
         [SerializeField] private int _newLife; 
@@ -43,10 +42,10 @@ namespace _Workspace.Jordan.Script.Joueur
         //attack settings
         private float _time;
         private float _attackTimer;
-        public GameObject _hitBox;
+        private int _attackIndex;
         
         //Dash settings
-        public bool IsDashing;
+        private bool _isDashing;
         private float _dashTimer;
         private Vector3 _dashDirection;
         
@@ -59,7 +58,6 @@ namespace _Workspace.Jordan.Script.Joueur
         private Animator _animator;
         private Collider _playerLimits;
         private CinemachineTargetGroup _cinemachineTargetGroup;
-        private Healthbar _healthbar;
         private float _hitboxTimer;
         
         public static readonly List<PlayerController> PlayersControllers = new();
@@ -83,18 +81,11 @@ namespace _Workspace.Jordan.Script.Joueur
             
             if (_playerLimits == null) throw new MissingComponentException("PlayerLimits not found");
             
-            _visual = _animator.transform;
             CurrentHealth = MaxHealth;
             
             IsDead = false;
             if (_circleRevive != null)
                 _circleRevive.SetActive(false);
-        }
-
-        private void Start()
-        {
-            _healthbar = GameObject.FindGameObjectWithTag("Healthbar")?.GetComponent<Healthbar>();
-            if (_healthbar == null) throw new MissingComponentException("Healthbar not found");
         }
 
         private void OnEnable()
@@ -117,25 +108,25 @@ namespace _Workspace.Jordan.Script.Joueur
             Vector3 move = new Vector3(_move.x, 0, _move.y);
             
             _attackTimer += Time.deltaTime;
-
+            
             HandleGravity();
-
-            if (IsDashing)
+            
+            if (_isDashing)
             {
                 Vector3 dashMove = _dashDirection * _dashSpeed;
                 dashMove.y = _verticalVelocity;
-
+            
                 RotateVisual(_dashDirection);
                 float dtDash = Time.deltaTime;
                 Vector3 desiredDashPos = transform.position + dashMove * dtDash;
                 Vector3 clampedDashPos = ClampToMovementBounds(desiredDashPos);
                 Vector3 dashDelta = clampedDashPos - transform.position;
                 _controller.Move(dashDelta);
-
+            
                 _dashTimer -= Time.deltaTime;
                 if (_dashTimer <= 0f)
                 {
-                    IsDashing = false;
+                    _isDashing = false;
                 }
                 UpdateAnimation(_dashDirection.magnitude);
                 return;
@@ -213,10 +204,10 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private void RotateVisual(Vector3 direction)
         {
-            if (_visual == null || direction.sqrMagnitude < 0.001f) return;
+            if (_pivot == null || direction.sqrMagnitude < 0.001f) return;
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            _visual.rotation = Quaternion.Slerp(_visual.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            _pivot.rotation = Quaternion.Slerp(_pivot.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
         }
 
         private void UpdateAnimation(float inputMagnitude)
@@ -226,7 +217,7 @@ namespace _Workspace.Jordan.Script.Joueur
             float speed = inputMagnitude < _inputDeadZone ? 0f : 1f;
 
             _animator.SetFloat("Speed", speed);
-            _animator.SetBool("IsDashing", IsDashing);
+            _animator.SetBool("IsDashing", _isDashing);
         }
 
         private void HandleGravity()
@@ -250,7 +241,7 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             if (_move.magnitude < _inputDeadZone) return;
 
-            IsDashing = true;
+            _isDashing = true;
             _dashTimer = _dashDuration;
 
             _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;
@@ -264,21 +255,21 @@ namespace _Workspace.Jordan.Script.Joueur
                 _reviveZone = null;
                 return;
             }
+
+            _attackIndex++;
+            if (_attackIndex >= 2) _attackIndex = 0;
             
-            int attackIndex = UnityEngine.Random.Range(0, 2);
-            
-                if (_attackTimer < _attackCooldown) return;
+            if (_attackTimer < _attackCooldown) return;
 
-                _attackTimer = 0;
+            _attackTimer = 0;
 
-                _animator.SetInteger("AttackIndex", attackIndex);
-                _animator.SetTrigger("Attack");
+            _animator.SetInteger("AttackIndex", _attackIndex);
+            _animator.SetTrigger("Attack");
 
-                // if (_attack != null)
-                // {
-                //     SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
-                // }
-                
+            // if (_attack != null)
+            // {
+            //     SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
+            // }
         }
 
         public void TakeDamage(float damage)
