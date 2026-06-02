@@ -831,8 +831,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.27}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0021820068, y: 3.4517822}
-  m_SizeDelta: {x: 77.1109, y: 25.537}
+  m_AnchoredPosition: {x: 0, y: 4}
+  m_SizeDelta: {x: 77.1109, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7603357579236054587
 CanvasRenderer:
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.5
+  m_fontSize: 23.95
   m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2537,10 +2537,10 @@ MonoBehaviour:
   _dashSpeed: 10
   _dashDuration: 1
   _attackCooldown: 1
-  _hitBox: {fileID: 872555312315029508}
   _anticipationSpeed: 0.5
   _activeSpeed: 1.5
   _recoverySpeed: 0.7
+  _hitboxDuration: 0.5
   _attack: {fileID: 0}
   _die: {fileID: 0}
   _hit: {fileID: 0}
@@ -2554,6 +2554,7 @@ MonoBehaviour:
   _circleRevive: {fileID: 3948544786342256827}
   _reviveZone: {fileID: 1429122204319945313}
   _canvas: {fileID: 6274833051827804578}
+  _hitBox: {fileID: 872555312315029508}
   IsDashing: 0
 --- !u!1 &7221840675676709158
 GameObject:
