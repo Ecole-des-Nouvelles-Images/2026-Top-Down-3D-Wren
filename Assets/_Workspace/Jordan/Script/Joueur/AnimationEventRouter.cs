@@ -33,5 +33,15 @@ namespace _Workspace.Jordan.Script.Joueur
         public void OnRecoveryEnd() {
             _playerController.OnRecoveryEnd();
         }
+        
+        public void EnableHitbox()
+        {
+            _playerController.EnableHitbox();
+        }
+
+        public void DisableHitbox()
+        {
+            _playerController.DisableHitbox();
+        }
     }
 }

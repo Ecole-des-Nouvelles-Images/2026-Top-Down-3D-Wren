@@ -16,13 +16,13 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashDuration;
         [SerializeField] private float _attackCooldown;
-        [SerializeField] private GameObject _hitBox;
         [SerializeField] private float _anticipationSpeed = 0.2f;
         [SerializeField] private float _activeSpeed = 1;
         [SerializeField] private float _recoverySpeed = 0.5f;
-        // [SerializeField] private AudioClip _attack;
-        // [SerializeField] private AudioClip _die;
-        // [SerializeField] private AudioClip _hit;
+        [SerializeField] private float _hitboxDuration  = 0.5f;
+        [SerializeField] private AudioClip _attack;
+        [SerializeField] private AudioClip _die;
+        [SerializeField] private AudioClip _hit;
         
         [Header("Visual")]
         [SerializeField] private Transform _visual;
@@ -43,6 +43,7 @@ namespace _Workspace.Jordan.Script.Joueur
         //attack settings
         private float _time;
         private float _attackTimer;
+        public GameObject _hitBox;
         
         //Dash settings
         public bool IsDashing;
@@ -59,6 +60,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private Collider _playerLimits;
         private CinemachineTargetGroup _cinemachineTargetGroup;
         private Healthbar _healthbar;
+        private float _hitboxTimer;
         
         public static readonly List<PlayerController> PlayersControllers = new();
         
@@ -69,6 +71,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private void Awake()
         {
             PlayersControllers.Add(this);
+            _hitBox.SetActive(false);
             
             _cinemachineTargetGroup = FindFirstObjectByType<CinemachineTargetGroup>();
             if (_cinemachineTargetGroup == null) throw new MissingComponentException("CinemachineTargetGroup not found");
@@ -136,6 +139,16 @@ namespace _Workspace.Jordan.Script.Joueur
                 }
                 UpdateAnimation(_dashDirection.magnitude);
                 return;
+            }
+            
+            if (_hitBox.activeSelf)
+            {
+                _hitboxTimer -= Time.deltaTime;
+
+                if (_hitboxTimer <= 0f)
+                {
+                    _hitBox.SetActive(false);
+                }
             }
             HandleMovement(move);
             UpdateAnimation(move.magnitude);
@@ -266,7 +279,6 @@ namespace _Workspace.Jordan.Script.Joueur
                 //     SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
                 // }
                 
-                _hitBox.SetActive(true);
         }
 
         public void TakeDamage(float damage)
@@ -367,9 +379,7 @@ namespace _Workspace.Jordan.Script.Joueur
         }
         
         public void OnActiveHit()
-        {
-        
-        }
+        { }
         
         public void OnRecoveryStart()
         {
@@ -379,6 +389,17 @@ namespace _Workspace.Jordan.Script.Joueur
         public void OnRecoveryEnd()
         {
             _animator.speed = 1;
+        }
+        
+        public void EnableHitbox()
+        {
+            _hitBox.SetActive(true);
+            _hitboxTimer = _hitboxDuration;
+        }
+        
+        public void DisableHitbox()
+        {
+            _hitBox.SetActive(false);
         }
     }
 }

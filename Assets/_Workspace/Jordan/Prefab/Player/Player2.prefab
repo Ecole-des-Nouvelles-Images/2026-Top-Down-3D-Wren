@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 6035340359057560593}
   - component: {fileID: 931397177632901969}
   - component: {fileID: 4170719925709344879}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2267,7 +2267,7 @@ GameObject:
   - component: {fileID: 6078148508108152032}
   - component: {fileID: 706762711093107901}
   - component: {fileID: 8486637591455419003}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2541,6 +2541,9 @@ MonoBehaviour:
   _anticipationSpeed: 0.5
   _activeSpeed: 1.5
   _recoverySpeed: 0.7
+  _attack: {fileID: 0}
+  _die: {fileID: 0}
+  _hit: {fileID: 0}
   _visual: {fileID: 5637798346800395933}
   _rotationSpeed: 24
   _newLife: 25

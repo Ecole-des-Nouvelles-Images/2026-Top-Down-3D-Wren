@@ -26,26 +26,22 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
         private void Update()
         { 
-                UpdateNearestTarget();
+            UpdateNearestTarget();
 
-                if (_currentTarget == null) return;
+            if (_currentTarget == null) return;
 
-                float distance = Vector3.Distance(transform.position, _currentTarget.transform.position);
+            float distance = Vector3.Distance(transform.position, _currentTarget.transform.position);
 
-                if (distance <= _attackRange)
-                {
-                    Debug.Log("Dans la range");
-                    
-                    _agent.isStopped = true;
-                    Attack();
-                }
-                else
-                {
-                    Debug.Log("Hors range");
-                    
-                    _agent.isStopped = false;
-                    _agent.SetDestination(_currentTarget.transform.position);
-                }
+            if (distance <= _attackRange)
+            { 
+                _agent.isStopped = true;
+                Attack();
+            }
+            else
+            { 
+                _agent.isStopped = false;
+                _agent.SetDestination(_currentTarget.transform.position);
+            }
         }
 
         private void UpdateNearestTarget()
@@ -78,18 +74,14 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         
         private void Attack()
         {
-            Debug.Log("Attaque appeler");
             if (Time.time >= _lastAttackTime + _attackCooldown)
             {
-                Debug.Log("Attaque lancer");
                 _lastAttackTime = Time.time;
 
                 _animator.SetTrigger("Attack");
 
                 SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
                 _currentTarget.TakeDamage(_damage);
-
-                Debug.Log("attaque");
             }
         }
     }
