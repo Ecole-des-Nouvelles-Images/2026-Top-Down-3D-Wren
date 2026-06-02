@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -3842921090646387327, guid: b189913d7a23ac645b3e7e188c68d6f6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 69a22003e0d185c4aaba956566ed70d7, type: 2}
+      objectReference: {fileID: 2100000, guid: e54e3764d9bc4af438ddabaf87a71eef, type: 2}
     - target: {fileID: 919132149155446097, guid: b189913d7a23ac645b3e7e188c68d6f6, type: 3}
       propertyPath: m_Name
       value: NS_VampireMale (1)
