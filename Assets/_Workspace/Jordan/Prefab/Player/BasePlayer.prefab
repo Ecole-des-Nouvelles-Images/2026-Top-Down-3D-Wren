@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4546587346606514304}
   - component: {fileID: 7102104284647219421}
   - component: {fileID: 2199943735413995035}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -35,10 +35,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5144299209197590495}
   - {fileID: 4747898361733694859}
   - {fileID: 2118895851707227389}
   - {fileID: 1463123626694236545}
-  - {fileID: 1877330899356206009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2416157187945987938
@@ -281,7 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1440c02d1a7a4cf1a2be5db291e6e2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerController
+  _pivot: {fileID: 4089564133660642045}
+  _hitBox: {fileID: 8689539532070816688}
   _moveSpeed: 5
+  _rotationSpeed: 24
   _dashSpeed: 5
   _dashDuration: 2
   _attackCooldown: 2
@@ -289,11 +292,6 @@ MonoBehaviour:
   _activeSpeed: 1
   _recoverySpeed: 0.5
   _hitboxDuration: 0.5
-  _attack: {fileID: 0}
-  _die: {fileID: 0}
-  _hit: {fileID: 0}
-  _visual: {fileID: 4089564133660642045}
-  _rotationSpeed: 24
   _newLife: 25
   MaxHealth: 100
   CurrentHealth: 0
@@ -302,8 +300,6 @@ MonoBehaviour:
   _circleRevive: {fileID: 6741147945312820443}
   _reviveZone: {fileID: 8688589190750940673}
   _canvas: {fileID: 4347659936043148738}
-  _hitBox: {fileID: 7447443784678630500}
-  IsDashing: 0
 --- !u!1 &1140801764297021404
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +311,7 @@ GameObject:
   - component: {fileID: 2658583931124817180}
   - component: {fileID: 1881465272965399314}
   - component: {fileID: 6875154975750401346}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Cadre Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +387,7 @@ GameObject:
   - component: {fileID: 2602420494673638043}
   - component: {fileID: 3705804741070868142}
   - component: {fileID: 125346414615121832}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Joueur 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +464,7 @@ GameObject:
   - component: {fileID: 3029639532404477194}
   - component: {fileID: 3151211638932997436}
   - component: {fileID: 718194281178650949}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CanvasOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +565,7 @@ GameObject:
   - component: {fileID: 391950914393116170}
   - component: {fileID: 5060190314320791733}
   - component: {fileID: 3765678477730452747}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +641,7 @@ GameObject:
   - component: {fileID: 5901629156830697425}
   - component: {fileID: 740121500189288554}
   - component: {fileID: 8368702229174556948}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +782,7 @@ GameObject:
   - component: {fileID: 7017929033089984441}
   - component: {fileID: 3122021823073726630}
   - component: {fileID: 6159188506662909737}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CanvasWorldSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -900,7 +896,7 @@ GameObject:
   - component: {fileID: 3070908739318972222}
   - component: {fileID: 5088377478993178868}
   - component: {fileID: 3999689817239120061}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Healthbar
   m_TagString: Healthbar
   m_Icon: {fileID: 0}
@@ -976,7 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caca81fc8bec8947a490507818e7120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.Healthbar
-  _playerController: {fileID: 0}
+  _playerController: {fileID: 2199943735413995035}
   _image: {fileID: 5088377478993178868}
 --- !u!1 &4547464859944774105
 GameObject:
@@ -989,7 +985,7 @@ GameObject:
   - component: {fileID: 5692753206521713286}
   - component: {fileID: 818137614791140872}
   - component: {fileID: 8009568992194783559}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,7 +1122,7 @@ GameObject:
   - component: {fileID: 5424093319662749113}
   - component: {fileID: 7227131343569103645}
   - component: {fileID: 5877505418020299975}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: J1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1205,7 +1201,7 @@ GameObject:
   - component: {fileID: 5660570216732726187}
   - component: {fileID: 1258519315972869275}
   - component: {fileID: 6782633168465370954}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: PressButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1327,7 +1323,7 @@ GameObject:
   - component: {fileID: 2872200211360736306}
   - component: {fileID: 6105295020189416963}
   - component: {fileID: 8688589190750940673}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ReviveZone
   m_TagString: ReviveZone
   m_Icon: {fileID: 0}
@@ -1451,7 +1447,7 @@ GameObject:
   - component: {fileID: 7346030249943090988}
   - component: {fileID: 2021179233227311411}
   - component: {fileID: 4057938660897786167}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1577,7 +1573,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &7447443784678630500
+--- !u!1 &8689539532070816688
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1585,47 +1581,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1877330899356206009}
-  - component: {fileID: 1657450304860316165}
-  - component: {fileID: 4071400106848118897}
-  - component: {fileID: 7470818720596850481}
-  m_Layer: 0
+  - component: {fileID: 5144299209197590495}
+  - component: {fileID: 5030154673635075588}
+  - component: {fileID: 3535245674719280036}
+  - component: {fileID: 6558986316832986159}
+  - component: {fileID: 1225232720713581301}
+  m_Layer: 6
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &1877330899356206009
+--- !u!4 &5144299209197590495
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7447443784678630500}
+  m_GameObject: {fileID: 8689539532070816688}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.4, z: 1.1}
+  m_LocalScale: {x: 1.8, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4089564133660642045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1657450304860316165
+--- !u!33 &5030154673635075588
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7447443784678630500}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4071400106848118897
+  m_GameObject: {fileID: 8689539532070816688}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3535245674719280036
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7447443784678630500}
+  m_GameObject: {fileID: 8689539532070816688}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -1668,13 +1665,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7470818720596850481
-SphereCollider:
+--- !u!65 &6558986316832986159
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7447443784678630500}
+  m_GameObject: {fileID: 8689539532070816688}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1687,5 +1684,19 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1225232720713581301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689539532070816688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc3818870920e543aa21b1a937a4f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerAttack
+  _damage: 25
+  _cooldown: 1.25
