@@ -20,9 +20,9 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private float _activeSpeed = 1;
         [SerializeField] private float _recoverySpeed = 0.5f;
         [SerializeField] private float _hitboxDuration  = 0.5f;
-        [SerializeField] private AudioClip _attack;
-        [SerializeField] private AudioClip _die;
-        [SerializeField] private AudioClip _hit;
+        // [SerializeField] private AudioClip _attack;
+        // [SerializeField] private AudioClip _die;
+        // [SerializeField] private AudioClip _hit;
         
         [Header("Visual")]
         [SerializeField] private Transform _visual;
