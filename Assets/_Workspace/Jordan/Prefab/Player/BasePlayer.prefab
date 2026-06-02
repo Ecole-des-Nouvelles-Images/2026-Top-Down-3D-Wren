@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 699503690196591719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.35167, y: 7.96251, z: -12.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -285,10 +285,10 @@ MonoBehaviour:
   _dashSpeed: 5
   _dashDuration: 2
   _attackCooldown: 2
-  _hitBox: {fileID: 7447443784678630500}
   _anticipationSpeed: 0.2
   _activeSpeed: 1
   _recoverySpeed: 0.5
+  _hitboxDuration: 0.5
   _attack: {fileID: 0}
   _die: {fileID: 0}
   _hit: {fileID: 0}
@@ -302,6 +302,7 @@ MonoBehaviour:
   _circleRevive: {fileID: 6741147945312820443}
   _reviveZone: {fileID: 8688589190750940673}
   _canvas: {fileID: 4347659936043148738}
+  _hitBox: {fileID: 7447443784678630500}
   IsDashing: 0
 --- !u!1 &1140801764297021404
 GameObject:

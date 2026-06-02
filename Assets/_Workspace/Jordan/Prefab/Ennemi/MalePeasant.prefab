@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5628556833275934113}
   - component: {fileID: 7811192008229631814}
   - component: {fileID: 1658358801413466565}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MalePeasant
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ MonoBehaviour:
   _health: 50
   _hit: {fileID: 0}
   _death: {fileID: 0}
-  _dropChance: 0.5
+  _dropChance: 1
   _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
 --- !u!114 &1658358801413466565
 MonoBehaviour:

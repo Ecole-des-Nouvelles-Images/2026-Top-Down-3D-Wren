@@ -119,64 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &44935697
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.7210007
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728577895444162847, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-      propertyPath: m_Name
-      value: NS_Priest
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1940661906173346880, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
 --- !u!1 &189740874
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +674,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659236676}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37d7b69d6a9cdda4c9d6f0970a264e7e, type: 3}
   m_Name: 
@@ -962,7 +904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1894565850
 Transform:
   m_ObjectHideFlags: 0
@@ -990,10 +932,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24553b92e59fe0244b3a2aba5ad9b21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.AudioListener.AudioSettings
-  _sliderGeneral: {fileID: 0}
-  _sliderMusic: {fileID: 0}
-  _sliderSfx: {fileID: 0}
-  _audioMixer: {fileID: 0}
+  _sliderGeneral: {fileID: 8655985533195478916}
+  _sliderMusic: {fileID: 8655985533195478917}
+  _sliderSfx: {fileID: 8655985533195478918}
+  _audioMixer: {fileID: 24100000, guid: a773b7d1eb5d866428ba6ce714f58898, type: 2}
 --- !u!82 &1894565852
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1003,7 +945,7 @@ AudioSource:
   m_GameObject: {fileID: 1894565849}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1661254858260481644, guid: a773b7d1eb5d866428ba6ce714f58898, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -1100,7 +1042,7 @@ AudioSource:
   m_GameObject: {fileID: 1894565849}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3162174299065615365, guid: a773b7d1eb5d866428ba6ce714f58898, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -1197,9 +1139,9 @@ AudioSource:
   m_GameObject: {fileID: 1894565849}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3781269583414110563, guid: a773b7d1eb5d866428ba6ce714f58898, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 72763be6f8808664b9deca5653426fa2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1297,9 +1239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c315d6a8b96e11e46b5afa5891c20758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.AudioListener.SoundFXManagers
-  _musicAudioSource: {fileID: 0}
-  _sfxAudioSource: {fileID: 0}
-  _ambianceAudioSource: {fileID: 0}
+  _musicAudioSource: {fileID: 1894565854}
+  _sfxAudioSource: {fileID: 1894565854}
+  _ambianceAudioSource: {fileID: 1894565854}
 --- !u!114 &2134341937 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2908125199755562983, guid: d5bfd6074f547464d8fd839fda72d0e9, type: 3}
@@ -1337,7 +1279,7 @@ Transform:
   m_GameObject: {fileID: 2146526270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.19, y: -7.83, z: 16.68}
+  m_LocalPosition: {x: 26.28, y: -7.83, z: 7.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2162,6 +2104,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 911f8fabc4d559b42845fbfa0ee10454, type: 3}
+--- !u!114 &8655985533195478916 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2229600760187530202, guid: 911f8fabc4d559b42845fbfa0ee10454, type: 3}
+  m_PrefabInstance: {fileID: 8655985533195478915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &8655985533195478917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8078661166052506600, guid: 911f8fabc4d559b42845fbfa0ee10454, type: 3}
+  m_PrefabInstance: {fileID: 8655985533195478915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &8655985533195478918 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8508797944240517869, guid: 911f8fabc4d559b42845fbfa0ee10454, type: 3}
+  m_PrefabInstance: {fileID: 8655985533195478915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2180,4 +2155,3 @@ SceneRoots:
   - {fileID: 8655985533195478915}
   - {fileID: 6590678097971513392}
   - {fileID: 1815307674}
-  - {fileID: 44935697}
