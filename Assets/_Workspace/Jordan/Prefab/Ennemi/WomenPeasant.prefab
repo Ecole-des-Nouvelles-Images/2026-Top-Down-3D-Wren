@@ -324,6 +324,38 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7461002008205965268, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551866041814311236, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Name
+      value: NS_Paysanne Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551866041814311236, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711738484478346942, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076651924266213969, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250277348784440681, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8376083201466191412, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073033410235527172, guid: d409b2041a36a4641b156d47b6587d52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7073033410235527172, guid: d409b2041a36a4641b156d47b6587d52, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1
@@ -359,34 +391,6 @@ PrefabInstance:
     - target: {fileID: 7073033410235527172, guid: d409b2041a36a4641b156d47b6587d52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7461002008205965268, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7551866041814311236, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
-      propertyPath: m_Name
-      value: NS_Paysanne Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 7551866041814311236, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7711738484478346942, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076651924266213969, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250277348784440681, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8376083201466191412, guid: 79087649f70dfd046800dcb1779bfb00, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
