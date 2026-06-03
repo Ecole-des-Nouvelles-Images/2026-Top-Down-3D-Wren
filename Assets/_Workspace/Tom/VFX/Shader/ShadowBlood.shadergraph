@@ -660,7 +660,7 @@
     "m_AlphaMode": 0,
     "m_RenderFace": 0,
     "m_AlphaClip": false,
-    "m_CastShadows": false,
+    "m_CastShadows": true,
     "m_ReceiveShadows": true,
     "m_DisableTint": false,
     "m_Sort3DAs2DCompatible": false,
@@ -1340,7 +1340,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": -1.0099999904632569,
+        "e00": -0.5400000214576721,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
