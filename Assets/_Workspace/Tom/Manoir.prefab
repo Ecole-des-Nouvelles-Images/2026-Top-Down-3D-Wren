@@ -4727,7 +4727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2791203018618940995, guid: 989fe383bb2164b4c9973ff7223f483b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.2163105
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2791203018618940995, guid: 989fe383bb2164b4c9973ff7223f483b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23537,6 +23537,10 @@ PrefabInstance:
       value: Fog
       objectReference: {fileID: 0}
     - target: {fileID: 3568744760481545787, guid: ef165304441619e418cf9177e75a3997, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568744760481545787, guid: ef165304441619e418cf9177e75a3997, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -33569,7 +33573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7372688440141229426, guid: 7d86486548a211742b5a52e1f3a8a5bf, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36308,7 +36312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7372688440141229426, guid: 7d86486548a211742b5a52e1f3a8a5bf, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

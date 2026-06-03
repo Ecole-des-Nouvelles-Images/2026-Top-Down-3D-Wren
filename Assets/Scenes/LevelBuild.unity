@@ -1800,6 +1800,71 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7769404288245727952, guid: 25e77b85b033e4a478e1730183eaff4d, type: 3}
+--- !u!1001 &1831077286
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.84183
+      objectReference: {fileID: 0}
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.90267
+      objectReference: {fileID: 0}
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.71979
+      objectReference: {fileID: 0}
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 291132455410477345, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074438383824593154, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686474545521846682, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_Name
+      value: Global Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686474545521846682, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1ea92f46e797fb4f9d5f1530db5ac30, type: 3}
 --- !u!1001 &1856173191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2100,7 +2165,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 3
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2483,6 +2548,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9119277465548956766, guid: 0a347ee2993ed1b49b45e33225e0b2be, type: 3}
+      propertyPath: m_Intensity
+      value: 1.13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2496,49 +2565,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 469504447120443050, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06100011
-      objectReference: {fileID: 0}
-    - target: {fileID: 690852132870101414, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 127
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067997168642686495, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06100011
-      objectReference: {fileID: 0}
     - target: {fileID: 1093773913533629949, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
       propertyPath: m_Name
       value: Manoir
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339427448439486579, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_ReceiveGI
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339427448439486579, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339427448439486579, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339427448439486579, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339427448439486579, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StitchLightmapSeams
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2118568440856938284, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.050000012
-      objectReference: {fileID: 0}
-    - target: {fileID: 2343028671876727719, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.050000012
       objectReference: {fileID: 0}
     - target: {fileID: 2353719139405896335, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2578,250 +2607,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2353719139405896335, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2368721957181153429, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 127
-      objectReference: {fileID: 0}
-    - target: {fileID: 3040406313544923934, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146580709555455240, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146580709555455240, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146580709555455240, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213087727867475723, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 127
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301406021881516860, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301406021881516860, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301406021881516860, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 3342246722039472428, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06100011
-      objectReference: {fileID: 0}
-    - target: {fileID: 3728023702501594036, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06100005
-      objectReference: {fileID: 0}
-    - target: {fileID: 3887139898226202308, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06100011
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005901514300888798, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_ReceiveGI
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005901514300888798, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005901514300888798, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005901514300888798, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005901514300888798, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StitchLightmapSeams
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037881680081137584, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037881680081137584, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037881680081137584, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037881680081137584, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037881680081137584, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283184782794501656, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06100011
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314334514112151872, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_ReceiveGI
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314334514112151872, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314334514112151872, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314334514112151872, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314334514112151872, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StitchLightmapSeams
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542391004937016227, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06100011
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898573717556244344, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898573717556244344, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898573717556244344, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978166785583987199, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.050000012
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005199501320656928, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_ReceiveGI
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005199501320656928, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005199501320656928, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005199501320656928, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005199501320656928, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StitchLightmapSeams
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048484121654912443, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048484121654912443, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048484121654912443, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5114092693692738706, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.049999952
-      objectReference: {fileID: 0}
-    - target: {fileID: 5879889862773072757, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.050000012
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806898494259968501, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 127
-      objectReference: {fileID: 0}
-    - target: {fileID: 6888091137361044797, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06100011
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464570720459721726, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.050000012
-      objectReference: {fileID: 0}
-    - target: {fileID: 7734967346501636572, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.049999908
-      objectReference: {fileID: 0}
-    - target: {fileID: 7830699414074925789, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 127
-      objectReference: {fileID: 0}
-    - target: {fileID: 8081595275461727234, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8081595275461727234, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8081595275461727234, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8623487086439432968, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8623487086439432968, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_ReceiveGI
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8623487086439432968, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8623487086439432968, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8623487086439432968, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_RenderingLayerMask
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8623487086439432968, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8623487086439432968, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StitchLightmapSeams
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8717929364832466428, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8717929364832466428, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8717929364832466428, guid: 40f4b30bf186b824d98bfdf63bd0193b, type: 3}
-      propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2903,3 +2688,4 @@ SceneRoots:
   - {fileID: 865100037}
   - {fileID: 5237558713986706456}
   - {fileID: 2100086465}
+  - {fileID: 1831077286}
