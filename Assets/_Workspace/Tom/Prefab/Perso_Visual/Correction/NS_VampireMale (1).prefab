@@ -49,6 +49,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3842921090646387327, guid: b189913d7a23ac645b3e7e188c68d6f6, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3842921090646387327, guid: b189913d7a23ac645b3e7e188c68d6f6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e54e3764d9bc4af438ddabaf87a71eef, type: 2}
@@ -62,6 +66,18 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 1a402cc7252633540b48c80d3675f023, type: 2}
     - target: {fileID: 5866666021909216657, guid: b189913d7a23ac645b3e7e188c68d6f6, type: 3}
       propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487781416312844894, guid: b189913d7a23ac645b3e7e188c68d6f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487781416312844894, guid: b189913d7a23ac645b3e7e188c68d6f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487781416312844894, guid: b189913d7a23ac645b3e7e188c68d6f6, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

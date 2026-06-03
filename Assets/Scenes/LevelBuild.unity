@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2aa5e005e352fd6429078a4030a77783, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: eaf12b07010a48d469de1cb232dcd47c, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -1106,7 +1106,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -2198,7 +2198,7 @@ Transform:
   m_GameObject: {fileID: 1857360806}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23159955, y: 0.67751175, z: -0.2092187, w: 0.6660083}
-  m_LocalPosition: {x: -26.1, y: 28.7, z: -2.4}
+  m_LocalPosition: {x: -15.9, y: 11.81, z: -2.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2227,7 +2227,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 3
   m_AntialiasingQuality: 2
   m_StopNaN: 0
