@@ -115,7 +115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3073560024056754142, guid: af087aba2ba9d8346b0ec1232020aee0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.048
+      value: 0.113
       objectReference: {fileID: 0}
     - target: {fileID: 3073560024056754142, guid: af087aba2ba9d8346b0ec1232020aee0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -135,7 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7713718710205744141, guid: af087aba2ba9d8346b0ec1232020aee0, type: 3}
       propertyPath: m_Name
-      value: Player_Marker
+      value: VFX_PlayerMarker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -198,6 +198,14 @@ PrefabInstance:
     - target: {fileID: 2020333837704574670, guid: 2b612ad1c4085264f835dc7ebd918139, type: 3}
       propertyPath: m_Name
       value: NS_VampireMale (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352306318632722880, guid: 2b612ad1c4085264f835dc7ebd918139, type: 3}
+      propertyPath: m_Name
+      value: Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352306318632722880, guid: 2b612ad1c4085264f835dc7ebd918139, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
