@@ -834,7 +834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 409871107465878370, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 464753100729994461, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
       propertyPath: m_Layer
@@ -859,6 +859,10 @@ PrefabInstance:
     - target: {fileID: 2108387721801373424, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536860693294330009, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
+      propertyPath: m_Name
+      value: Visual
       objectReference: {fileID: 0}
     - target: {fileID: 2536860693294330009, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
       propertyPath: m_Layer
@@ -1015,6 +1019,10 @@ PrefabInstance:
     - target: {fileID: 6833620541369072046, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992204754673223044, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
+      propertyPath: m_Damping
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7098657562101862365, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
       propertyPath: m_Layer
