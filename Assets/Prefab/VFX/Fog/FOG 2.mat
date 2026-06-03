@@ -39,8 +39,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Contrast: 0
-    - _FadeEnd: 0.18
-    - _FadeStart: 0.05
+    - _FadeEnd: 0.35
+    - _FadeStart: 0.02
     - _FogAlpha: 0.71
     - _FogMax: 0.8
     - _FogMin: 0.27
