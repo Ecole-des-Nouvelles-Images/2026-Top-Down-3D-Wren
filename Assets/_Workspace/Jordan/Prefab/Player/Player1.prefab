@@ -973,6 +973,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4572099200264590699, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572099200264590699, guid: 6f90045797378ac47b8542ff74984c8e, type: 3}
       propertyPath: m_AABB.m_Center.x
       value: 0.0009905829
       objectReference: {fileID: 0}

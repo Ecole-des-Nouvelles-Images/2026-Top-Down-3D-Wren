@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.EnnemyLife
   _health: 75
-  _hit: {fileID: 0}
-  _death: {fileID: 0}
+  _hit: {fileID: 8300000, guid: daac42dd2b8b95549bf70d3fe9dc3441, type: 3}
+  _death: {fileID: 8300000, guid: ba9eef09428c52546bfd2c495c8f5978, type: 3}
   _dropChance: 0
   _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
 --- !u!114 &1121997692383123172
