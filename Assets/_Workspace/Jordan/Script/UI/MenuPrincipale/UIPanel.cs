@@ -5,11 +5,10 @@ namespace _Workspace.Jordan.Script.MenuPrincipale
 {
     public class UIPanel : MonoBehaviour
     {
-        [Header("Button Selected")]
+        [Header("References")]
         [SerializeField] private Selectable _buttonSelectable;
-    
-        public void OpenPanel() {
-            gameObject.SetActive(true);
+        
+        public void Awake() {
             if(_buttonSelectable!=null) _buttonSelectable.Select();
         }
     }
