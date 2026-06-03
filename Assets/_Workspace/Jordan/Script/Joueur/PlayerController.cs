@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Pick_Up;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -15,17 +16,18 @@ namespace _Workspace.Jordan.Script.Joueur
         
         [Header("Settings")] 
         [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _rotationSpeed = 12f;
+        [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashDuration;
         [SerializeField] private float _attackCooldown;
-        [SerializeField] private float _anticipationSpeed = 0.2f;
-        [SerializeField] private float _activeSpeed = 1;
-        [SerializeField] private float _recoverySpeed = 0.5f;
-        [SerializeField] private float _hitboxDuration  = 0.5f;
-        // [SerializeField] private AudioClip _attack;
-        // [SerializeField] private AudioClip _die;
-        // [SerializeField] private AudioClip _hit;
+        [SerializeField] private float _anticipationSpeed;
+        [SerializeField] private float _activeSpeed;
+        [SerializeField] private float _recoverySpeed;
+        [SerializeField] private float _hitboxDuration;
+        [SerializeField] private float _dashCooldown;
+        [SerializeField] private AudioClip _attack;
+        [SerializeField] private AudioClip _die;
+        [SerializeField] private AudioClip _hit;
         
         [Header("Health")]
         [SerializeField] private int _newLife; 
@@ -47,6 +49,7 @@ namespace _Workspace.Jordan.Script.Joueur
         //Dash settings
         private bool _isDashing;
         private float _dashTimer;
+        private float _dashCooldownTimer;
         private Vector3 _dashDirection;
         
         private readonly Dictionary<Item, int> _inventory = new();
@@ -70,6 +73,8 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             PlayersControllers.Add(this);
             _hitBox.SetActive(false);
+            
+            _dashCooldownTimer = _dashCooldown;
             
             _cinemachineTargetGroup = FindFirstObjectByType<CinemachineTargetGroup>();
             if (_cinemachineTargetGroup == null) throw new MissingComponentException("CinemachineTargetGroup not found");
@@ -108,6 +113,8 @@ namespace _Workspace.Jordan.Script.Joueur
             Vector3 move = new Vector3(_move.x, 0, _move.y);
             
             _attackTimer += Time.deltaTime;
+            _dashCooldownTimer += Time.deltaTime;
+            
             
             HandleGravity();
             
@@ -237,9 +244,16 @@ namespace _Workspace.Jordan.Script.Joueur
             _move = value.Get<Vector2>();
         }
         
+        
         private void OnSprint()
         {
+            if (_isDashing) return;
+
             if (_move.magnitude < _inputDeadZone) return;
+
+            if (_dashCooldownTimer < _dashCooldown) return;
+
+            _dashCooldownTimer = 0f;
 
             _isDashing = true;
             _dashTimer = _dashDuration;
@@ -266,19 +280,19 @@ namespace _Workspace.Jordan.Script.Joueur
             _animator.SetInteger("AttackIndex", _attackIndex);
             _animator.SetTrigger("Attack");
 
-            // if (_attack != null)
-            // {
-            //     SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
-            // }
+            if (_attack != null)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
+            }
         }
 
         public void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
-            // if (_hit != null)
-            // {
-            //     SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
-            // }
+            if (_hit != null)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
+            }
             
             if (CurrentHealth <= 0)
             {
@@ -305,10 +319,10 @@ namespace _Workspace.Jordan.Script.Joueur
             if (_circleRevive != null)
                 _circleRevive.SetActive(true);
             
-            // if (_die != null)
-            // {
-                 // SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
-            // }
+            if (_die != null)
+            {
+                 SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
+            }
             
             Debug.Log( name + "est mort");
         }
