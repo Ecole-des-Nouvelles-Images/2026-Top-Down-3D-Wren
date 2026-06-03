@@ -41,6 +41,13 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private ReviveZone _reviveZone;
         [SerializeField] private GameObject _canvas;
         
+        [Header("VFX")]
+        [SerializeField] private GameObject _attack1Vfx;
+        [SerializeField] private GameObject _attack2Vfx;
+        [SerializeField] private GameObject _dashVfx;
+        // [SerializeField] private GameObject _hitVfx;
+        // [SerializeField] private GameObject _deathVfx;
+        
         //attack settings
         private float _time;
         private float _attackTimer;
@@ -259,6 +266,8 @@ namespace _Workspace.Jordan.Script.Joueur
             _dashTimer = _dashDuration;
 
             _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;
+            
+            SpawnVfx(_dashVfx, transform.position, transform.rotation);
         }
 
         private void OnAttack()
@@ -289,6 +298,9 @@ namespace _Workspace.Jordan.Script.Joueur
         public void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
+            
+            // SpawnVfx(_hitVfx, transform.position, transform.rotation);
+            
             if (_hit != null)
             {
                 SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
@@ -323,8 +335,7 @@ namespace _Workspace.Jordan.Script.Joueur
             {
                  SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
             }
-            
-            Debug.Log( name + "est mort");
+            // SpawnVfx(_deathVfx, transform.position, transform.rotation);
         }
 
         public void Revive()
@@ -338,6 +349,14 @@ namespace _Workspace.Jordan.Script.Joueur
             
             if (_circleRevive != null)
                 _circleRevive.SetActive(false);
+        }
+        
+        private void SpawnVfx(GameObject vfxPrefab, Vector3 position, Quaternion rotation)
+        {
+            if (vfxPrefab == null) return;
+
+            GameObject vfx = Instantiate(vfxPrefab, position, rotation);
+            Destroy(vfx, 2f);
         }
 
         // public bool HasItemInInventory(Item item, int number)
@@ -400,6 +419,8 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             _hitBox.SetActive(true);
             _hitboxTimer = _hitboxDuration;
+            
+            SpawnVfx(_attack1Vfx, _hitBox.transform.position, transform.rotation);
         }
         
         public void DisableHitbox()
