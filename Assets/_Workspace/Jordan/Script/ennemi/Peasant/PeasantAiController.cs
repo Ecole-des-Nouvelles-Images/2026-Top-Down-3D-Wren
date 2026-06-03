@@ -39,7 +39,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
             }
             else
             { 
-                _agent.isStopped = false;
+                _agent.isStopped = false; 
                 _agent.SetDestination(_currentTarget.transform.position);
             }
         }
