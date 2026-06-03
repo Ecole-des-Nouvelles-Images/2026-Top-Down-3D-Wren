@@ -27,9 +27,11 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         private Animator _animator;
         private NavMeshAgent  _agent;
         
+        public bool IsCasting => _isCasting;
+        
         private void Start()
-        {
-           // _animator = GetComponent<Animator>();
+        { 
+            _animator = GetComponentInChildren<Animator>(); 
             _agent = GetComponent<NavMeshAgent>();
             
             var playerController = FindObjectOfType<PlayerController>();
@@ -40,24 +42,18 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
 
         private void Update()
         {
-            if (_player == null) return;
-            
-            if (_isCasting)
-            {
-                _agent.isStopped = true;
-                return;
-            }
+                if (_player == null || _isCasting)
+                    return;
 
-            _agent.isStopped = false;
+                _cooldown += Time.deltaTime;
 
-            _cooldown += Time.deltaTime;
-
-            if (_cooldown >= _nextAttackTime)
-            {
-                _cooldown = 0f;
-                CastLight();
-            }
+                if (_cooldown >= _nextAttackTime)
+                {
+                    _cooldown = 0f;
+                    CastLight();
+                }
         }
+        
         // permet de choisir un joueur au hasard et d'invoquer la lumiere
         private void CastLight()
         {
@@ -79,15 +75,25 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         private IEnumerator UseRoutine(Vector3 pos)
         {
             _isCasting = true;
-            //_animator.SetTrigger("Attack");
+            _agent.isStopped = true;
+
+            _animator.SetTrigger("Attack");
+
             GameObject warning = Instantiate(_warningPrefab, pos, Quaternion.identity);
+
             yield return new WaitForSeconds(_castTime);
+
             Destroy(warning);
 
             GameObject light = Instantiate(_lightPrefab, pos, Quaternion.identity);
+
             yield return new WaitForSeconds(_destroyLight);
+
             Destroy(light);
+
+            _agent.isStopped = false;
             _isCasting = false;
+
             _animator.SetTrigger("Walk");
         }
     }

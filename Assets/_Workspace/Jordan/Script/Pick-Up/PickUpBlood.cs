@@ -22,6 +22,7 @@ namespace _Workspace.Jordan.Script.Pick_Up
         // private void DoVFX()
         // {
         //     if (destroy != null)
+        // Pense à windows L ton pc bordel de merde Jordan.
         //     {
         //         // ParticleSystem clone = Instantiate(
         //         //     destroy,
