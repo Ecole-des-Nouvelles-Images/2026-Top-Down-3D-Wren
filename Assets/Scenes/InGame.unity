@@ -1006,18 +1006,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 940318003376531410, guid: de09cef9e61e5db4587b93513717c56a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 1549435894967541559, guid: de09cef9e61e5db4587b93513717c56a, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1580342029389158046, guid: de09cef9e61e5db4587b93513717c56a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 126
-      objectReference: {fileID: 0}
     - target: {fileID: 7332660469140157030, guid: de09cef9e61e5db4587b93513717c56a, type: 3}
       propertyPath: m_Name
       value: Manoir
@@ -1060,10 +1048,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8116210449621317210, guid: de09cef9e61e5db4587b93513717c56a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8818647095342431687, guid: de09cef9e61e5db4587b93513717c56a, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1585,17 +1569,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ee4964e8cbc07340ab79b4590849ad1, type: 3}
---- !u!114 &2134341937 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2908125199755562983, guid: d5bfd6074f547464d8fd839fda72d0e9, type: 3}
-  m_PrefabInstance: {fileID: 6590678097971513392}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9caca81fc8bec8947a490507818e7120, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.Healthbar
 --- !u!1 &2146526270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,3 +2448,4 @@ SceneRoots:
   - {fileID: 1815307674}
   - {fileID: 1805283119}
   - {fileID: 2028078619}
+  - {fileID: 1558441003}
