@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f363205f9a1c4254fbca6ee9f7e99cdf
-      internalID: 1463015414
+      spriteID: 95ca3c7de3faa524e94811ba01eb9303
+      internalID: -1324630275
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3fdb6af2f7dc19a4b947f85fc59b5396
+    spriteID: cb58337b03af1d54eb28f122340baba6
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      J4_0: 1463015414
+      J4_0: -1324630275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

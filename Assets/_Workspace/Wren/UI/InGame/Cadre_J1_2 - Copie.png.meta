@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e5e17a90950d7e94ba25b05d04579d27
+guid: 92e02ff3055f9a04281ce3a777d8df4e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,23 +97,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cadre_J4_1_0
+      name: Cadre_J1_2 - Copie_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 581
-        height: 334
+        width: 533
+        height: 274
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c08568389bd8e964388db23f476123d3
-      internalID: 1531423758
+      spriteID: 44e2bac8dd5c60e4f8a792c6aab25a12
+      internalID: 170353528
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ee37e34e83ed2444a914f63a2c716337
+    spriteID: b879f257bcc46674692bdd6566aa52cc
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cadre_J4_1_0: 1531423758
+      Cadre_J1_2 - Copie_0: 170353528
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
