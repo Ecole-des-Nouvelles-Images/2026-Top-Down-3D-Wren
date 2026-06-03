@@ -483,6 +483,34 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7054600438460010730, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147322910373083972, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792798262304695155, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965275259814019940, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647255828376428905, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138724195750707133, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1
@@ -518,30 +546,6 @@ PrefabInstance:
     - target: {fileID: 6920550526234063781, guid: bbaef98b77164d141b55bc057253d9db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054600438460010730, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7147322910373083972, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7792798262304695155, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7965275259814019940, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647255828376428905, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9138724195750707133, guid: 3c0e786b435838e4a9a9c6722647952f, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
