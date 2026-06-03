@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ namespace _Workspace.Jordan.Script.UI.InGame
         [SerializeField] private GameObject _menuPause;
 
         private bool _paused = false;
+        
 
         void Update()
         {
@@ -82,3 +84,5 @@ namespace _Workspace.Jordan.Script.UI.InGame
         }
     }
 }
+
+
