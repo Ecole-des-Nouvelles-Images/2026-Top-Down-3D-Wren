@@ -263,6 +263,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
             _attackTimer = 0;
 
+            
             _animator.SetInteger("AttackIndex", _attackIndex);
             _animator.SetTrigger("Attack");
 
