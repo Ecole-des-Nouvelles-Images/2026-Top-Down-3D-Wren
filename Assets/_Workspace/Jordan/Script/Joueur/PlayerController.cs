@@ -70,6 +70,9 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _verticalVelocity;
         private float _inputDeadZone = 0.1f;
         private Animator _animator;
+
+        private static readonly int HitTrigger = Animator.StringToHash("Hit");
+
         private Collider _playerLimits;
         private CinemachineTargetGroup _cinemachineTargetGroup;
         private float _hitboxTimer;
@@ -336,21 +339,30 @@ namespace _Workspace.Jordan.Script.Joueur
 
         public void TakeDamage(float damage)
         {
+            if (IsDead) return;
+
             CurrentHealth -= damage;
-            
+
+            // Déclenche l'animation Hit
+            if (_animator != null)
+            {
+                _animator.ResetTrigger("Hit");
+                _animator.SetTrigger("Hit");
+            }
+
             // SpawnVfx(_hitVfx, transform.position, transform.rotation);
-            
+
             if (_hit != null)
             {
                 SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
             }
-            
+
             if (CurrentHealth <= 0)
             {
                 Die();
             }
         }
-        
+
         public void SetReviveTarget(ReviveZone zone)
         {
             _reviveZone = zone;
