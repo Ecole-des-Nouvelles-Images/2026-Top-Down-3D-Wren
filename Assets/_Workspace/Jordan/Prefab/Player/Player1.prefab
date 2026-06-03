@@ -1271,6 +1271,26 @@ PrefabInstance:
       propertyPath: _anticipationSpeed
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 3535245674719280036, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535245674719280036, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535245674719280036, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535245674719280036, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535245674719280036, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 86040ebdc4e4cdb49bff3b3cdab31be0, type: 2}
     - target: {fileID: 4071400106848118897, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1369,10 +1389,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8689539532070816688, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8689539532070816688, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689539532070816688, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8716034459560588868, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
