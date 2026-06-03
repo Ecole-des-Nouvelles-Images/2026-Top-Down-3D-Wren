@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InGame.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Game_Loose.unity
+    guid: 9f745058db20af444aaa623452fc457e
+  - enabled: 1
+    path: Assets/Scenes/Game_Victory.unity
+    guid: 4a77a50927be6a44f92c1dd727a102de
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
