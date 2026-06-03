@@ -13,6 +13,7 @@ namespace _Workspace.Jordan.Script.Joueur
         [Header("References")]
         [SerializeField] private Transform _pivot;
         [SerializeField] private GameObject _hitBox;
+        [SerializeField] private GameObject _menuPause;
         
         [Header("Settings")] 
         [SerializeField] private float _moveSpeed;
@@ -59,6 +60,9 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _dashCooldownTimer;
         private Vector3 _dashDirection;
         
+        public float DashCooldown => _dashCooldown;
+        public float DashCooldownTimer => _dashCooldownTimer;
+        
         private readonly Dictionary<Item, int> _inventory = new();
         private Vector2 _move;
         private CharacterController _controller;
@@ -69,6 +73,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private Collider _playerLimits;
         private CinemachineTargetGroup _cinemachineTargetGroup;
         private float _hitboxTimer;
+        private bool _paused = false;
         
         public static readonly List<PlayerController> PlayersControllers = new();
         
@@ -252,7 +257,7 @@ namespace _Workspace.Jordan.Script.Joueur
         }
         
         
-        private void OnSprint()
+        public void OnSprint()
         {
             if (_isDashing) return;
 
@@ -294,6 +299,39 @@ namespace _Workspace.Jordan.Script.Joueur
             {
                 SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
             }
+        }
+        
+        public void OnPause(InputValue value)
+        {
+            TogglePause();
+        }
+
+        private void TogglePause()
+        {
+            if (_paused)
+                Resume();
+            else
+                Onpause();
+        }
+        
+        public void Resume()
+        {
+            _menuPause.SetActive(false);
+            Time.timeScale = 1f;
+            _paused = false;
+            
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        
+        private void Onpause()
+        {
+            _menuPause.SetActive(true);
+            Time.timeScale = 0f;
+            _paused = true;
+            
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void TakeDamage(float damage)

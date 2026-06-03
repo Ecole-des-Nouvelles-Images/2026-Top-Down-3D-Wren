@@ -14,22 +14,8 @@ namespace _Workspace.Jordan.Script.UI.InGame
 
         private bool _paused = false;
         
-
-        void Update()
+        public void OnPause(InputValue value)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (_paused)
-                    Resume();
-                else
-                    Pause();
-            }
-        }
-        public void OnPause(InputAction.CallbackContext ctx)
-        {
-            if (!ctx.performed)
-                return;
-
             TogglePause();
         }
 
