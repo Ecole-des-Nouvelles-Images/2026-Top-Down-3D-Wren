@@ -14,6 +14,10 @@ namespace _Workspace.Jordan.Script.ennemi
         [SerializeField] private float _dropChance;
         [SerializeField] private GameObject _healPrefab;
 
+        [Header("VFX")]
+        [SerializeField] private GameObject _bloodHitVFX;
+        [SerializeField] private Transform _bloodSpawnPoint;
+
         private Healthbar _healthBar;
         private float _currentHealth;
         private Animator _animator;
@@ -45,6 +49,8 @@ namespace _Workspace.Jordan.Script.ennemi
 
             _currentHealth -= damage;
 
+            SpawnBloodHitVFX(); // 🔥 AJOUT ICI
+
             if (_animator != null)
             {
                 _animator.ResetTrigger(HitTrigger);
@@ -56,20 +62,24 @@ namespace _Workspace.Jordan.Script.ennemi
                 SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
             }
 
-            Debug.Log("Enemy Hit");
-
             if (_currentHealth <= 0)
             {
                 TryDropHeal();
-                Debug.Log("drop heal activé");
                 Die();
             }
         }
 
+        private void SpawnBloodHitVFX()
+        {
+            if (_bloodHitVFX == null || _bloodSpawnPoint == null) return;
+
+            GameObject vfx = Instantiate(_bloodHitVFX, _bloodSpawnPoint.position, _bloodSpawnPoint.rotation);
+            Debug.Log("BloodHit instancier at point"+_bloodSpawnPoint.position);
+            
+        }
+
         private void Die()
         {
-            Debug.Log("Enemy Dead");
-
             if (_animator != null)
             {
                 _animator.SetBool(DeadBool, true);
@@ -82,7 +92,6 @@ namespace _Workspace.Jordan.Script.ennemi
 
             WaveManager.Instance.EnemyKilled();
 
-            // Laisse le temps à l'animation de mort de jouer
             Destroy(gameObject, 1.5f);
         }
 
