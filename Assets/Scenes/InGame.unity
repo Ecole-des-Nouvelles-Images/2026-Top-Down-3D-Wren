@@ -301,7 +301,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1815307675}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c8286c0799eda324b8ef92401592db0f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -614,7 +614,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1815307675}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c8286c0799eda324b8ef92401592db0f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1215,7 +1215,7 @@ PrefabInstance:
     - target: {fileID: 1549435894967541559, guid: de09cef9e61e5db4587b93513717c56a, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: fc959569c582126409007223856308be, type: 2}
+      objectReference: {fileID: 23800000, guid: 8ca2f4bc5afa18048b82bf11ac101a7e, type: 2}
     - target: {fileID: 1580342029389158046, guid: de09cef9e61e5db4587b93513717c56a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 126

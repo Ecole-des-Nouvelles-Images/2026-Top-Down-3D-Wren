@@ -3,7 +3,6 @@ using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
 
-
 namespace _Workspace.Jordan.Script.ennemi
 {
     public class EnemyLife : MonoBehaviour
@@ -11,22 +10,29 @@ namespace _Workspace.Jordan.Script.ennemi
         [SerializeField] private float _health;
         [SerializeField] private AudioClip _hit;
         [SerializeField] private AudioClip _death;
-        
+
         [SerializeField] private float _dropChance;
         [SerializeField] private GameObject _healPrefab;
-        
+
+        [Header("VFX")]
+        [SerializeField] private GameObject _bloodHitVFX;
+        [SerializeField] private Transform _bloodSpawnPoint;
+
         private Healthbar _healthBar;
         private float _currentHealth;
         private Animator _animator;
-        
+
+        private static readonly int HitTrigger = Animator.StringToHash("Hit");
+        private static readonly int DeadBool = Animator.StringToHash("Dead");
+
         public static readonly List<EnemyLife> EnemyLives = new();
-        
+
         private void Awake()
         {
-            //_animator = GetComponent<Animator>();
+            _animator = GetComponentInChildren<Animator>();
             _currentHealth = _health;
         }
-        
+
         private void OnEnable()
         {
             EnemyLives.Add(this);
@@ -37,41 +43,65 @@ namespace _Workspace.Jordan.Script.ennemi
             EnemyLives.Remove(this);
         }
 
-        
         public void TakeDamage(float damage)
         {
+            if (_currentHealth <= 0) return;
+
             _currentHealth -= damage;
-            //_animator.SetTrigger("Hit");
+
+            SpawnBloodHitVFX(); // 🔥 AJOUT ICI
+
+            if (_animator != null)
+            {
+                _animator.ResetTrigger(HitTrigger);
+                _animator.SetTrigger(HitTrigger);
+            }
+
             if (_hit != null)
             {
                 SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
             }
-           
-            Debug.Log("Enemy Hit");
 
             if (_currentHealth <= 0)
             {
                 TryDropHeal();
-                Debug.Log("drop heal activé");
                 Die();
             }
         }
 
+        private void SpawnBloodHitVFX()
+        {
+            if (_bloodHitVFX == null || _bloodSpawnPoint == null) return;
+
+            GameObject vfx = Instantiate(
+                _bloodHitVFX,
+                _bloodSpawnPoint.position,
+                _bloodSpawnPoint.rotation
+            );
+
+            vfx.transform.SetParent(null);
+        }
+
         private void Die()
         {
-            Debug.Log("Enemy Dead");
-            //_animator.SetBool("Dead", true);
+            if (_animator != null)
+            {
+                _animator.SetBool(DeadBool, true);
+            }
+
             if (_death != null)
             {
                 SoundFXManager.Instance.PlaySoundFXClip(_death, SoundGroups.Sfx);
             }
+
             WaveManager.Instance.EnemyKilled();
-            Destroy(gameObject);
+
+            Destroy(gameObject, 1.5f);
         }
-        
-        void TryDropHeal()
+
+        private void TryDropHeal()
         {
-            float randomValue = Random.value; // nombre entre 0 et 1
+            float randomValue = Random.value;
 
             if (randomValue <= _dropChance)
             {
