@@ -47,6 +47,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
         private void UpdateNearestTarget()
         {
+            Debug.Log(PlayerController.PlayersControllers.Count);
             
             float nearestDistance = Mathf.Infinity;
             foreach (PlayerController playerController in PlayerController.PlayersControllers)
