@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1541106772807580190}
-  - component: {fileID: 6890367458603001506}
   - component: {fileID: -7223414907833066297}
+  - component: {fileID: 6890367458603001506}
   m_Layer: 0
   m_Name: SpawnPlayer
   m_TagString: Untagged
@@ -33,24 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6890367458603001506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874596646455503194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26186ec1c9d24ac097bb69a9852fd03b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnnableCharacter
-  playerPrefabs:
-  - {fileID: 2780355431796264541, guid: 73c3f20d32dd4fd4d8a53574b6046977, type: 3}
-  - {fileID: 289156935205341138, guid: f0893df54522360418f53b0e10bc6361, type: 3}
-  - {fileID: 3387292082919608986, guid: 76ab0e95f8a28764eb2e68ff24d9a52d, type: 3}
-  - {fileID: 5959128583883235615, guid: 3097f82fdd8de334980a8d65732330b0, type: 3}
-  playerInput: {fileID: -7223414907833066297}
 --- !u!114 &-7223414907833066297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,3 +63,21 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6890367458603001506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874596646455503194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26186ec1c9d24ac097bb69a9852fd03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnnableCharacter
+  playerPrefabs:
+  - {fileID: 2780355431796264541, guid: 73c3f20d32dd4fd4d8a53574b6046977, type: 3}
+  - {fileID: 289156935205341138, guid: f0893df54522360418f53b0e10bc6361, type: 3}
+  - {fileID: 3387292082919608986, guid: 76ab0e95f8a28764eb2e68ff24d9a52d, type: 3}
+  - {fileID: 5959128583883235615, guid: 3097f82fdd8de334980a8d65732330b0, type: 3}
+  playerInput: {fileID: -7223414907833066297}

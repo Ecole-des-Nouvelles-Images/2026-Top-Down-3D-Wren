@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 226619106}
   - component: {fileID: 226619105}
   - component: {fileID: 226619107}
+  - component: {fileID: 226619108}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -400,7 +401,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 2780355431796264541, guid: 73c3f20d32dd4fd4d8a53574b6046977, type: 3}
+  m_PlayerPrefab: {fileID: 1874596646455503194, guid: f6627d87741098f499955113b595733c, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -432,7 +433,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226619104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42f1d19cd2afae646aeecf20f59078cc, type: 3}
   m_Name: 
@@ -442,6 +443,20 @@ MonoBehaviour:
   - {fileID: 289156935205341138, guid: f0893df54522360418f53b0e10bc6361, type: 3}
   - {fileID: 3387292082919608986, guid: 76ab0e95f8a28764eb2e68ff24d9a52d, type: 3}
   - {fileID: 5959128583883235615, guid: 3097f82fdd8de334980a8d65732330b0, type: 3}
+--- !u!114 &226619108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226619104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72feb75f646840ce9eccc8b3296d814a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPointManagers
+  spawnPoint:
+  - {x: 0, y: 3.5, z: 6.84}
 --- !u!1 &260514945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4500,7 +4515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1894565850
 Transform:
   m_ObjectHideFlags: 0
