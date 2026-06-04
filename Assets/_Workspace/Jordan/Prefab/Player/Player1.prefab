@@ -1201,7 +1201,7 @@ PrefabInstance:
     - target: {fileID: 2199943735413995035, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
       propertyPath: _attack1Vfx
       value: 
-      objectReference: {fileID: 2023249154043006325, guid: 8462ba7664ada854c90049d27b5c2ea2, type: 3}
+      objectReference: {fileID: 3098202869821892586, guid: eaae83a6ee2d21747b755a6abb919830, type: 3}
     - target: {fileID: 2199943735413995035, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
       propertyPath: _attack2Vfx
       value: 
@@ -1228,7 +1228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2199943735413995035, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
       propertyPath: _dashDuration
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2199943735413995035, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
       propertyPath: _flashColor.b
