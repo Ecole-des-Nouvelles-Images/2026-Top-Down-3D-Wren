@@ -22,6 +22,7 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
         [SerializeField] private float _warningTime;
         [SerializeField] private float _cooldown;
         [SerializeField] private float _destroyLight;
+        [SerializeField] private float _lifetime;
         [SerializeField] private AudioClip _cast;
         
         private Animator _animator;
@@ -67,25 +68,25 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
             {
                 SoundFXManager.Instance.PlaySoundFXClip(_cast, SoundGroups.Sfx);
             }
-              
             StartCoroutine(UseRoutine(target.transform.position));
         }
         
         // permet d'instancier un gameobject pendant x temps puis de le detruire ( en gros mettre pause au timer avant destruction)
         private IEnumerator UseRoutine(Vector3 pos)
         {
+            
             _isCasting = true;
             _agent.isStopped = true;
 
             _animator.SetTrigger("Attack");
 
-            GameObject warning = Instantiate(_warningPrefab, pos, Quaternion.identity);
+            GameObject warning = SpawnVfx(_warningPrefab, pos);
 
             yield return new WaitForSeconds(_castTime);
 
             Destroy(warning);
 
-            GameObject light = Instantiate(_lightPrefab, pos, Quaternion.identity);
+            GameObject light = SpawnVfx(_lightPrefab, pos);
 
             yield return new WaitForSeconds(_destroyLight);
 
@@ -95,6 +96,17 @@ namespace _Workspace.Jordan.Script.ennemi.Priest
             _isCasting = false;
 
             _animator.SetTrigger("Walk");
+            
+        }
+        private GameObject SpawnVfx(GameObject vfxPrefab, Vector3 position)
+        {
+            if (vfxPrefab == null)
+                return null;
+
+            GameObject vfx = Instantiate(vfxPrefab, position, Quaternion.identity);
+            Destroy(vfx, _lifetime);
+
+            return vfx;
         }
     }
 }
