@@ -223,12 +223,12 @@ MonoBehaviour:
   _hit: {fileID: 0}
   _death: {fileID: 0}
   _dropChance: 1
-  _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
+  _healPrefab: {fileID: 919132149155446097, guid: 38b50dd41e2c4dd4eba89e926e41aec7, type: 3}
   _renderer: {fileID: 1532874978228076325}
   _flashColor: {r: 1, g: 1, b: 1, a: 1}
   _flashDuration: 0.08
-  _bloodHitVFX: {fileID: 3829118343063586966, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
-  _bloodSpawnPoint: {fileID: 1576332329416918898}
+  _bloodHitPrefab: {fileID: 3829118343063586966, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+  _bloodSpawn: {fileID: 1576332329416918898}
 --- !u!1 &3406701683836411342
 GameObject:
   m_ObjectHideFlags: 0

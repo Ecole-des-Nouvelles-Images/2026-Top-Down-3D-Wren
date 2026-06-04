@@ -18,6 +18,9 @@ namespace _Workspace.Jordan.Script.ennemi
         [SerializeField] private Color _flashColor = Color.white;
         [SerializeField] private float _flashDuration = 0.08f;
 
+        [SerializeField] private GameObject _bloodHitPrefab;
+        [SerializeField] private Transform _bloodSpawn;
+        
         private Material _material;
         private Color _originalColor;
 
@@ -59,11 +62,26 @@ namespace _Workspace.Jordan.Script.ennemi
             EnemyLives.Remove(this);
         }
 
+        private void SpawnBloodHit()
+        {
+            if (_bloodHitPrefab == null) return;
+
+            Transform spawnPoint = _bloodSpawn != null ? _bloodSpawn : transform;
+
+            Instantiate(
+                _bloodHitPrefab,
+                spawnPoint.position,
+                spawnPoint.rotation
+            );
+        }
         public void TakeDamage(float damage)
         {
             if (_isDead) return;
 
             _currentHealth -= damage;
+
+            SpawnBloodHit();
+
             Flash();
 
             if (_currentHealth <= 0)
