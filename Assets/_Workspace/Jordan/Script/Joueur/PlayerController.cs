@@ -413,7 +413,7 @@ namespace _Workspace.Jordan.Script.Joueur
                  SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
             }
             
-            SpawnVfx(_deathVfx, transform.position, transform.rotation);
+           // SpawnVfx(_deathVfx, transform.position, transform.rotation);
         }
 
         public void Revive()
