@@ -3422,6 +3422,7 @@ GameObject:
   - component: {fileID: 1399146977}
   - component: {fileID: 1399146976}
   - component: {fileID: 1399146975}
+  - component: {fileID: 1399146980}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -3441,8 +3442,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5239e31bf0e38f440ac7e7af4adf1583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Timer
-  _timesRemaining: 900
+  _timesRemaining: 10
   _valueText: {fileID: 644523953}
+  _sceneChanger: {fileID: 1399146980}
 --- !u!114 &1399146976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3526,6 +3528,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1399146980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399146974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bba48efafc3a9b41a03a7f85347d831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.MenuPrincipale.SceneChanger
+  NextSceneName: Game_Victory
 --- !u!1 &1427243475
 GameObject:
   m_ObjectHideFlags: 0

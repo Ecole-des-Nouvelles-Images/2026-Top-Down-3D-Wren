@@ -332,7 +332,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189740874}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!4 &189740876
 Transform:
   m_ObjectHideFlags: 0
@@ -358,6 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 226619106}
   - component: {fileID: 226619105}
+  - component: {fileID: 226619107}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -399,7 +400,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 2780355431796264541, guid: 73c3f20d32dd4fd4d8a53574b6046977, type: 3}
+  m_PlayerPrefab: {fileID: 1874596646455503194, guid: f6627d87741098f499955113b595733c, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -424,6 +425,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 826058981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &226619107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226619104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72feb75f646840ce9eccc8b3296d814a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPointManagers
+  spawnPoint:
+  - {x: 0, y: 3.5, z: 7}
 --- !u!1 &260514945
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,6 +3403,7 @@ GameObject:
   - component: {fileID: 1399146977}
   - component: {fileID: 1399146976}
   - component: {fileID: 1399146975}
+  - component: {fileID: 1399146980}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -3409,6 +3425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Timer
   _timesRemaining: 900
   _valueText: {fileID: 644523953}
+  _sceneChanger: {fileID: 1399146980}
 --- !u!114 &1399146976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3492,6 +3509,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1399146980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399146974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bba48efafc3a9b41a03a7f85347d831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.MenuPrincipale.SceneChanger
+  NextSceneName: Game_Loose
 --- !u!4 &1432879074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8081223793705972024, guid: 8d0369cfc0f43a7429fb50219c0b8b65, type: 3}
