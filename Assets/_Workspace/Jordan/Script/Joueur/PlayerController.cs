@@ -283,6 +283,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private void OnMove(InputValue value)
         {
             _move = value.Get<Vector2>();
+            Debug.Log("currentvalue" + _move);
         }
         
         
