@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &641778465242644234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 836102446732235438}
+  m_Layer: 0
+  m_Name: bloospawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &836102446732235438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641778465242644234}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.211, z: -0.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3295782297800040496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8714918123476405541
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +68,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 836102446732235438}
   - {fileID: 3974042468640358004}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -164,8 +196,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -185,6 +217,7 @@ MonoBehaviour:
   _damage: 5
   _attackCooldown: 2
   _attack: {fileID: 8300000, guid: 37295a59864889c4f851ed0de7714bc6, type: 3}
+  _slash: {fileID: 0}
 --- !u!114 &9068060846951679860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +235,9 @@ MonoBehaviour:
   _death: {fileID: 8300000, guid: ba9eef09428c52546bfd2c495c8f5978, type: 3}
   _dropChance: 0
   _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
+  _renderer: {fileID: 0}
+  _flashColor: {r: 0.745283, g: 0, b: 0, a: 1}
+  _flashDuration: 0.08
 --- !u!114 &1121997692383123172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +433,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d409b2041a36a4641b156d47b6587d52, type: 3}
+--- !u!137 &2814907402978522027 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8223110742077341147, guid: d409b2041a36a4641b156d47b6587d52, type: 3}
+  m_PrefabInstance: {fileID: 6129070307133165168}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3974042468640358004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7073033410235527172, guid: d409b2041a36a4641b156d47b6587d52, type: 3}
