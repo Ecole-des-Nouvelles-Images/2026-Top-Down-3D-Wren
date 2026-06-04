@@ -51,7 +51,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private Material _material;
         private Color _originalColor;
         // [SerializeField] private GameObject _hitVfx;
-        // [SerializeField] private GameObject _deathVfx;
+         [SerializeField] private GameObject _deathVfx;
         
         //attack settings
         private float _time;
@@ -414,7 +414,7 @@ namespace _Workspace.Jordan.Script.Joueur
                  SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
             }
             
-           // SpawnVfx(_deathVfx, transform.position, transform.rotation);
+            SpawnVfx(_deathVfx, transform.position, transform.rotation);
         }
 
         public void Revive()
@@ -437,7 +437,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
             GameObject vfx = Instantiate(vfxPrefab, position, rotation);
 
-            Destroy(vfx, 2f);
+            Destroy(vfx, 4f);
         }
 
         // public bool HasItemInInventory(Item item, int number)
