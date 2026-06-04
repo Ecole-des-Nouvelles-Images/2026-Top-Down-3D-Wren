@@ -15,6 +15,7 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private Transform _pivot;
         [SerializeField] private GameObject _hitBox;
         [SerializeField] private GameObject _menuPause;
+        [SerializeField] private DefeatManagers _looseScene;
         
         [Header("Settings")] 
         [SerializeField] private float _moveSpeed;
@@ -51,7 +52,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private Material _material;
         private Color _originalColor;
         // [SerializeField] private GameObject _hitVfx;
-         [SerializeField] private GameObject _deathVfx;
+        [SerializeField] private GameObject _deathVfx;
         
         //attack settings
         private float _time;
@@ -403,6 +404,9 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             IsDead = true;
             enabled = false;
+                
+            _looseScene.PlayerDied();
+            Destroy(gameObject);
             
             if (_circleRevive != null)
                 _circleRevive.SetActive(true); 

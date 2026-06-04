@@ -336,10 +336,14 @@ PrefabInstance:
     - target: {fileID: 1484834255749709908, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1552571785}
+      objectReference: {fileID: 1552571787}
     - target: {fileID: 1484834255749709908, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainMenu
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484834255749709908, guid: cee57891147bf704e9c27211c9e24194, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _Workspace.Jordan.Script.MenuPrincipale.SceneChanger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1559432350668128113, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_AnchorMax.y
@@ -347,6 +351,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1559432350668128113, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559432350668128113, guid: cee57891147bf704e9c27211c9e24194, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559432350668128113, guid: cee57891147bf704e9c27211c9e24194, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1559432350668128113, guid: cee57891147bf704e9c27211c9e24194, type: 3}
@@ -363,6 +375,10 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 1730078786966396188, guid: cee57891147bf704e9c27211c9e24194, type: 3}
+      propertyPath: m_fontSize
+      value: 81.55
+      objectReference: {fileID: 0}
     - target: {fileID: 2042218958713340512, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -401,6 +417,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4799712680697449382, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4799712680697449382, guid: cee57891147bf704e9c27211c9e24194, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4799712680697449382, guid: cee57891147bf704e9c27211c9e24194, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4799712680697449382, guid: cee57891147bf704e9c27211c9e24194, type: 3}
@@ -424,6 +448,10 @@ PrefabInstance:
       value: 'Recommencer
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361171104084197873, guid: cee57891147bf704e9c27211c9e24194, type: 3}
+      propertyPath: m_fontSize
+      value: 81.55
       objectReference: {fileID: 0}
     - target: {fileID: 6121245803426133508, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_Pivot.x
@@ -451,11 +479,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6121245803426133508, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 420
       objectReference: {fileID: 0}
     - target: {fileID: 6121245803426133508, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 166.6
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6121245803426133508, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_LocalPosition.x
@@ -487,7 +515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6121245803426133508, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 161
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 6121245803426133508, guid: cee57891147bf704e9c27211c9e24194, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -852,9 +880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c3ab318a7ad734d9934779664890be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.MenuPrincipale.MenuManager
-  _menuControle: {fileID: 0}
-  _menuOptions: {fileID: 0}
-  _menuCredit: {fileID: 0}
 --- !u!114 &1552571785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,7 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba48efafc3a9b41a03a7f85347d831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.MenuPrincipale.SceneChanger
-  NextSceneName: MainMenu
+  NextSceneName: Menu_Principale
 --- !u!1 &1858563850
 GameObject:
   m_ObjectHideFlags: 0

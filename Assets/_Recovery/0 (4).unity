@@ -332,7 +332,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189740874}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!4 &189740876
 Transform:
   m_ObjectHideFlags: 0
@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 226619106}
   - component: {fileID: 226619105}
   - component: {fileID: 226619107}
+  - component: {fileID: 226619108}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -432,13 +433,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226619104}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f1d19cd2afae646aeecf20f59078cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Derniere_chance.CharacterSpawner
+  playerPrefabs:
+  - {fileID: 2780355431796264541, guid: 73c3f20d32dd4fd4d8a53574b6046977, type: 3}
+  - {fileID: 289156935205341138, guid: f0893df54522360418f53b0e10bc6361, type: 3}
+  - {fileID: 3387292082919608986, guid: 76ab0e95f8a28764eb2e68ff24d9a52d, type: 3}
+  - {fileID: 5959128583883235615, guid: 3097f82fdd8de334980a8d65732330b0, type: 3}
+--- !u!114 &226619108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226619104}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72feb75f646840ce9eccc8b3296d814a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPointManagers
   spawnPoint:
-  - {x: 0, y: 3.5, z: 7}
+  - {x: 0, y: 3.5, z: 6.84}
 --- !u!1 &260514945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,6 +1994,7 @@ Transform:
   - {fileID: 1659236678}
   - {fileID: 226619106}
   - {fileID: 1894565850}
+  - {fileID: 1427243476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &856663655
@@ -3423,7 +3442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5239e31bf0e38f440ac7e7af4adf1583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Timer
-  _timesRemaining: 900
+  _timesRemaining: 10
   _valueText: {fileID: 644523953}
   _sceneChanger: {fileID: 1399146980}
 --- !u!114 &1399146976
@@ -3521,7 +3540,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba48efafc3a9b41a03a7f85347d831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.MenuPrincipale.SceneChanger
-  NextSceneName: Game_Loose
+  NextSceneName: Game_Victory
+--- !u!1 &1427243475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1427243476}
+  - component: {fileID: 1427243477}
+  m_Layer: 0
+  m_Name: SpawnnerPlayerPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1427243476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427243475}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.15239, y: 0.53704, z: 1.25436}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 826058981}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1427243477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427243475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f1d19cd2afae646aeecf20f59078cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Derniere_chance.CharacterSpawner
+  playerPrefabs:
+  - {fileID: 2780355431796264541, guid: 73c3f20d32dd4fd4d8a53574b6046977, type: 3}
+  - {fileID: 3387292082919608986, guid: 76ab0e95f8a28764eb2e68ff24d9a52d, type: 3}
+  - {fileID: 289156935205341138, guid: f0893df54522360418f53b0e10bc6361, type: 3}
+  - {fileID: 5959128583883235615, guid: 3097f82fdd8de334980a8d65732330b0, type: 3}
 --- !u!4 &1432879074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8081223793705972024, guid: 8d0369cfc0f43a7429fb50219c0b8b65, type: 3}
@@ -3895,7 +3963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1659236677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4462,7 +4530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1894565850
 Transform:
   m_ObjectHideFlags: 0
