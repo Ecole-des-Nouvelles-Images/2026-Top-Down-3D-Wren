@@ -73,13 +73,9 @@ namespace _Workspace.Jordan.Script.ennemi
         {
             if (_bloodHitVFX == null || _bloodSpawnPoint == null) return;
 
-            GameObject vfx = Instantiate(
-                _bloodHitVFX,
-                _bloodSpawnPoint.position,
-                _bloodSpawnPoint.rotation
-            );
-
-            vfx.transform.SetParent(null);
+            GameObject vfx = Instantiate(_bloodHitVFX, _bloodSpawnPoint.position, _bloodSpawnPoint.rotation);
+            Debug.Log("BloodHit instancier at point"+_bloodSpawnPoint.position);
+            
         }
 
         private void Die()
