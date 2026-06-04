@@ -42,6 +42,7 @@ namespace _Workspace.Jordan.Script.Joueur
         [Header("VFX")]
         [SerializeField] private GameObject _attack1Vfx;
         [SerializeField] private GameObject _attack2Vfx;
+        [SerializeField] private GameObject _spawnvfx;
         [SerializeField] private List<TrailRenderer> _dashTrails;
         [SerializeField] private SkinnedMeshRenderer _renderer;
         [SerializeField] private Color _flashColor = Color.white;
