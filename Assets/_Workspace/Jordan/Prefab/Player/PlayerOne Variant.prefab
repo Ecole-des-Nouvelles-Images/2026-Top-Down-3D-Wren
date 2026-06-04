@@ -327,6 +327,10 @@ PrefabInstance:
       propertyPath: _hitBox
       value: 
       objectReference: {fileID: 8591274556884926787}
+    - target: {fileID: 2199943735413995035, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
+      propertyPath: _attack1Vfx
+      value: 
+      objectReference: {fileID: 2023249154043006325, guid: 8462ba7664ada854c90049d27b5c2ea2, type: 3}
     - target: {fileID: 2602420494673638043, guid: 13e80c64c79562d4d8cd4478703e5684, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

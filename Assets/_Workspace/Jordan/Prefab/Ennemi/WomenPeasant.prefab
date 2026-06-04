@@ -235,11 +235,9 @@ MonoBehaviour:
   _death: {fileID: 8300000, guid: ba9eef09428c52546bfd2c495c8f5978, type: 3}
   _dropChance: 0
   _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
-  _renderer: {fileID: 2814907402978522027}
-  _flashColor: {r: 1, g: 1, b: 1, a: 1}
+  _renderer: {fileID: 0}
+  _flashColor: {r: 0.745283, g: 0, b: 0, a: 1}
   _flashDuration: 0.08
-  _bloodHitVFX: {fileID: 3829118343063586966, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
-  _bloodSpawnPoint: {fileID: 836102446732235438}
 --- !u!114 &1121997692383123172
 MonoBehaviour:
   m_ObjectHideFlags: 0
