@@ -44,7 +44,7 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private GameObject _attack2Vfx;
         [SerializeField] private List<TrailRenderer> _dashTrails;
         [SerializeField] private GameObject _spawnvfx;
-        [SerializeField] private GameObject _deathVfx;
+        //[SerializeField] private GameObject _deathVfx;
         
         //attack settings
         private float _time;
@@ -407,7 +407,7 @@ namespace _Workspace.Jordan.Script.Joueur
                  SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
             }
             
-            SpawnVfx(_deathVfx, transform.position, transform.rotation);
+           // SpawnVfx(_deathVfx, transform.position, transform.rotation);
         }
 
         public void Revive()
