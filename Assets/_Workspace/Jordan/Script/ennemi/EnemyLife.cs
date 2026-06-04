@@ -13,13 +13,20 @@ namespace _Workspace.Jordan.Script.ennemi
 
         [SerializeField] private float _dropChance;
         [SerializeField] private GameObject _healPrefab;
+        
+        [SerializeField] private SkinnedMeshRenderer _renderer;
+        [SerializeField] private Color _flashColor = Color.white;
+        [SerializeField] private float _flashDuration = 0.08f;
 
-        private Healthbar _healthBar;
+        private Material _material;
+        private Color _originalColor;
+
         private float _currentHealth;
         private Animator _animator;
+        private bool _isDead;
 
         private static readonly int HitTrigger = Animator.StringToHash("Hit");
-        private static readonly int DeadBool = Animator.StringToHash("Dead");
+        private static readonly int DeadBool = Animator.StringToHash("IsDead");
 
         public static readonly List<EnemyLife> EnemyLives = new();
 
@@ -27,6 +34,19 @@ namespace _Workspace.Jordan.Script.ennemi
         {
             _animator = GetComponentInChildren<Animator>();
             _currentHealth = _health;
+
+            if (_renderer == null)
+                _renderer = GetComponentInChildren<SkinnedMeshRenderer>();
+
+            if (_renderer != null)
+            {
+                _material = _renderer.material;
+
+                if (_material.HasProperty("_BaseColor"))
+                {
+                    _originalColor = _material.GetColor("_BaseColor");
+                }
+            }
         }
 
         private void OnEnable()
@@ -41,9 +61,16 @@ namespace _Workspace.Jordan.Script.ennemi
 
         public void TakeDamage(float damage)
         {
-            if (_currentHealth <= 0) return;
+            if (_isDead) return;
 
             _currentHealth -= damage;
+            Flash();
+
+            if (_currentHealth <= 0)
+            {
+                Die();
+                return;
+            }
 
             if (_animator != null)
             {
@@ -57,22 +84,32 @@ namespace _Workspace.Jordan.Script.ennemi
             }
 
             Debug.Log("Enemy Hit");
-
-            if (_currentHealth <= 0)
-            {
-                TryDropHeal();
-                Debug.Log("drop heal activé");
-                Die();
-            }
         }
 
         private void Die()
         {
+            if (_isDead) return;
+
+            _isDead = true;
             Debug.Log("Enemy Dead");
+
+            TryDropHeal();
 
             if (_animator != null)
             {
+                // Empêche le HitEffect de se relancer pendant la mort
+                _animator.ResetTrigger(HitTrigger);
+
+                // Coupe le layer HitEffect
+               
+                if (_animator.layerCount > 1)
+                {
+                    _animator.SetLayerWeight(1, 0f);
+                }
+
+                // Active le bool de mort
                 _animator.SetBool(DeadBool, true);
+                
             }
 
             if (_death != null)
@@ -82,15 +119,29 @@ namespace _Workspace.Jordan.Script.ennemi
 
             WaveManager.Instance.EnemyKilled();
 
-            // Laisse le temps à l'animation de mort de jouer
-            Destroy(gameObject, 1.5f);
+            Destroy(gameObject, 2f);
+        }
+        private void Flash()
+        {
+            if (_material == null) return;
+
+            _material.SetColor("_BaseColor", _flashColor);
+
+            CancelInvoke(nameof(ResetFlash));
+            Invoke(nameof(ResetFlash), _flashDuration);
         }
 
+        private void ResetFlash()
+        {
+            if (_material == null) return;
+
+            _material.SetColor("_BaseColor", _originalColor);
+        }
         private void TryDropHeal()
         {
-            float randomValue = Random.value;
+            if (_healPrefab == null) return;
 
-            if (randomValue <= _dropChance)
+            if (Random.value <= _dropChance)
             {
                 Instantiate(_healPrefab, transform.position, Quaternion.identity);
             }
