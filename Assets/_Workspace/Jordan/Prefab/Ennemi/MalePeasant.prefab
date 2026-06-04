@@ -203,6 +203,9 @@ MonoBehaviour:
   _death: {fileID: 8300000, guid: ca7b8b7f71305f44d88855cfc912ac15, type: 3}
   _dropChance: 1
   _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
+  _renderer: {fileID: 0}
+  _flashColor: {r: 0.6698113, g: 0, b: 0, a: 1}
+  _flashDuration: 0.08
 --- !u!114 &1658358801413466565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,22 +232,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5265117329310376429}
     m_Modifications:
-    - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
-      propertyPath: 
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 45857448063328856, guid: 5a3407ad87b7aae4d8d5531d54fcf84c, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -404,6 +391,22 @@ PrefabInstance:
     - target: {fileID: 9013589237280403298, guid: 5a3407ad87b7aae4d8d5531d54fcf84c, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
+      propertyPath: 
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

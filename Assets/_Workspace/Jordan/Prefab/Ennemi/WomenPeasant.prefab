@@ -185,6 +185,7 @@ MonoBehaviour:
   _damage: 5
   _attackCooldown: 2
   _attack: {fileID: 8300000, guid: 37295a59864889c4f851ed0de7714bc6, type: 3}
+  _slash: {fileID: 0}
 --- !u!114 &9068060846951679860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +203,9 @@ MonoBehaviour:
   _death: {fileID: 8300000, guid: ba9eef09428c52546bfd2c495c8f5978, type: 3}
   _dropChance: 0
   _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
+  _renderer: {fileID: 0}
+  _flashColor: {r: 0.745283, g: 0, b: 0, a: 1}
+  _flashDuration: 0.08
 --- !u!114 &1121997692383123172
 MonoBehaviour:
   m_ObjectHideFlags: 0
