@@ -21,6 +21,11 @@ namespace _Workspace.Jordan.Script.ennemi
         private Material _material;
         private Color _originalColor;
 
+        [Header("VFX")]
+        [SerializeField] private GameObject _bloodHitVFX;
+        [SerializeField] private Transform _bloodSpawnPoint;
+
+        private Healthbar _healthBar;
         private float _currentHealth;
         private Animator _animator;
         private bool _isDead;
@@ -72,6 +77,8 @@ namespace _Workspace.Jordan.Script.ennemi
                 return;
             }
 
+            SpawnBloodHitVFX(); // 🔥 AJOUT ICI
+
             if (_animator != null)
             {
                 _animator.ResetTrigger(HitTrigger);
@@ -83,7 +90,21 @@ namespace _Workspace.Jordan.Script.ennemi
                 SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
             }
 
+            if (_currentHealth <= 0)
+            {
+                TryDropHeal();
+                Die();
+            }
             Debug.Log("Enemy Hit");
+        }
+
+        private void SpawnBloodHitVFX()
+        {
+            if (_bloodHitVFX == null || _bloodSpawnPoint == null) return;
+
+            GameObject vfx = Instantiate(_bloodHitVFX, _bloodSpawnPoint.position, _bloodSpawnPoint.rotation);
+            Debug.Log("BloodHit instancier at point"+_bloodSpawnPoint.position);
+            
         }
 
         private void Die()

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7186669521904554642}
   - component: {fileID: 4905783220710620214}
   - component: {fileID: 7353726581342968691}
+  - component: {fileID: -452184065227744483}
   - component: {fileID: 5628556833275934113}
   - component: {fileID: 7811192008229631814}
   - component: {fileID: 1658358801413466565}
@@ -37,6 +38,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1631919804853614933}
   - {fileID: 8160647004944366627}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -164,12 +166,12 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5628556833275934113
+--- !u!114 &-452184065227744483
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,13 +180,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 181480333825909922}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b18ab6718d2b9941ae0f1be6595894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.Peasant.PeasantAIController1
+  _attackRange: 2
+  _damage: 10
+  _attackCooldown: 2
+  _attack: {fileID: 0}
+  _slashVFX: {fileID: 3976593873911704484, guid: 76d88adb4c4009f4a85d7c6f3196658e, type: 3}
+--- !u!114 &5628556833275934113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181480333825909922}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56ebcc733342631499b02fccea286909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.AiController
   _attackRange: 2
   _damage: 10
   _attackCooldown: 2
-  _attack: {fileID: 8300000, guid: 987994e66f566e040a74336011ac69c7, type: 3}
+  _attack: {fileID: 0}
 --- !u!114 &7811192008229631814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,11 +216,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c57c4111b4758e4cbc13e5fb07bf279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.EnnemyLife
-  _health: 50
-  _hit: {fileID: 8300000, guid: 596d318d67bca554a9b08b5d7647c785, type: 3}
-  _death: {fileID: 8300000, guid: ca7b8b7f71305f44d88855cfc912ac15, type: 3}
+  _health: 5000
+  _hit: {fileID: 0}
+  _death: {fileID: 0}
   _dropChance: 1
   _healPrefab: {fileID: 277319513288772622, guid: 466157a3e107ea744b9b0faef6dbfdfc, type: 3}
+  _bloodHitVFX: {fileID: 3829118343063586966, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+  _bloodSpawnPoint: {fileID: 1631919804853614933}
 --- !u!114 &1658358801413466565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +241,38 @@ MonoBehaviour:
   _visual: {fileID: 8160647004944366627}
   _rotationOffset: 45
   _rotationSpeed: 8
+--- !u!1 &5782547009095012863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1631919804853614933}
+  m_Layer: 0
+  m_Name: BloodSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1631919804853614933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5782547009095012863}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 732521969060097788}
+  m_Father: {fileID: 5265117329310376429}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7281725828714713335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,7 +291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -0.88
       objectReference: {fileID: 0}
     - target: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -413,4 +466,66 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1462986228940123348, guid: 1d903e156ea5f34498bab3b52ce0265e, type: 3}
   m_PrefabInstance: {fileID: 7281725828714713335}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8925717079771036506
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1631919804853614933}
+    m_Modifications:
+    - target: {fileID: 3829118343063586966, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_Name
+      value: BloodHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+--- !u!4 &732521969060097788 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8211457114441029030, guid: b0d13d72fdd9b104e99cb90a10667ed7, type: 3}
+  m_PrefabInstance: {fileID: 8925717079771036506}
   m_PrefabAsset: {fileID: 0}
