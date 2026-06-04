@@ -35,7 +35,6 @@ namespace _Workspace.Jordan.Script.Joueur
         public bool IsDead;
         
         [Header("Revive")]
-        [SerializeField] private Item _reviveItem;
         [SerializeField] private GameObject _circleRevive;
         [SerializeField] private ReviveZone _reviveZone;
         [SerializeField] private GameObject _canvas;
@@ -44,8 +43,8 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private GameObject _attack1Vfx;
         [SerializeField] private GameObject _attack2Vfx;
         [SerializeField] private List<TrailRenderer> _dashTrails;
-        // [SerializeField] private GameObject _hitVfx;
-        // [SerializeField] private GameObject _deathVfx;
+        [SerializeField] private GameObject _spawnvfx;
+        [SerializeField] private GameObject _deathVfx;
         
         //attack settings
         private float _time;
@@ -90,6 +89,8 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             PlayersControllers.Add(this);
             _hitBox.SetActive(false);
+            
+             SpawnVfx(_spawnvfx, transform.position, transform.rotation);
             
             _dashCooldownTimer = _dashCooldown;
             
@@ -369,8 +370,6 @@ namespace _Workspace.Jordan.Script.Joueur
                 _animator.SetTrigger("Hit");
             }
 
-            // SpawnVfx(_hitVfx, transform.position, transform.rotation);
-
             if (_hit != null)
             {
                 SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
@@ -407,7 +406,8 @@ namespace _Workspace.Jordan.Script.Joueur
             {
                  SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
             }
-            // SpawnVfx(_deathVfx, transform.position, transform.rotation);
+            
+            SpawnVfx(_deathVfx, transform.position, transform.rotation);
         }
 
         public void Revive()
