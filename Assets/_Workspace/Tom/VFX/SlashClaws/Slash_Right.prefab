@@ -40,9 +40,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 71776461202794699}
     m_Modifications:
+    - target: {fileID: 343916364250413927, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 492194814091456004, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
       propertyPath: m_Name
       value: Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 788539107179413618, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593550976175638724, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2040031573870072802, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -83,6 +95,42 @@ PrefabInstance:
     - target: {fileID: 2040031573870072802, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614963448731816155, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674999564613759001, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715263246627981401, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720740011065516266, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962609498066285596, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217620460784329965, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719151955663703355, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047821239599494553, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068838838249705100, guid: b1f3bf3af26fb664991a8c9ac427e42a, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

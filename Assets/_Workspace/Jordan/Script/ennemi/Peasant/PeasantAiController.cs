@@ -12,6 +12,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         [SerializeField] private float _damage;
         [SerializeField] private float _attackCooldown;
         [SerializeField] private AudioClip _attack;
+        [SerializeField] private GameObject _slash;
         
         private PlayerController _currentTarget;
         private Animator _animator;
@@ -74,15 +75,28 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         
         private void Attack()
         {
-            if (Time.time >= _lastAttackTime + _attackCooldown)
-            {
-                _lastAttackTime = Time.time;
+                if (Time.time >= _lastAttackTime + _attackCooldown)
+                {
+                    _lastAttackTime = Time.time;
 
-                _animator.SetTrigger("Attack");
+                    _animator.SetTrigger("Attack");
 
-                SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
-                _currentTarget.TakeDamage(_damage);
-            }
+                    SpawnVfx(_slash, transform.position, transform.rotation);
+
+                    SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
+
+                    _currentTarget.TakeDamage(_damage);
+                }
+        }
+        
+        private void SpawnVfx(GameObject vfxPrefab, Vector3 position, Quaternion rotation)
+        {
+            if (vfxPrefab == null)
+                return;
+
+            GameObject vfx = Instantiate(vfxPrefab, position, rotation);
+
+            Destroy(vfx, 2f);
         }
     }
 }

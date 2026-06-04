@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2416157187945987938}
   - component: {fileID: 977310185975049090}
   - component: {fileID: 4044667615138192973}
-  - component: {fileID: 4546587346606514304}
   - component: {fileID: 7102104284647219421}
   - component: {fileID: 2199943735413995035}
   m_Layer: 6
@@ -123,22 +122,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!208 &4546587346606514304
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 699503690196591719}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!114 &7102104284647219421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,15 +266,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Joueur.PlayerController
   _pivot: {fileID: 4089564133660642045}
   _hitBox: {fileID: 8689539532070816688}
+  _menuPause: {fileID: 0}
   _moveSpeed: 5
   _rotationSpeed: 24
-  _dashSpeed: 5
-  _dashDuration: 2
   _attackCooldown: 2
   _anticipationSpeed: 0.2
   _activeSpeed: 1
   _recoverySpeed: 0.5
   _hitboxDuration: 0.5
+  _attack: {fileID: 0}
+  _die: {fileID: 0}
+  _hit: {fileID: 0}
   _newLife: 25
   MaxHealth: 100
   CurrentHealth: 0
@@ -300,6 +285,13 @@ MonoBehaviour:
   _circleRevive: {fileID: 6741147945312820443}
   _reviveZone: {fileID: 8688589190750940673}
   _canvas: {fileID: 4347659936043148738}
+  _attack1Vfx: {fileID: 0}
+  _attack2Vfx: {fileID: 0}
+  _dashTrails: []
+  _trailTimer: 0.2
+  _dashCooldown: 0
+  _dashSpeed: 5
+  _dashDuration: 2
 --- !u!1 &1140801764297021404
 GameObject:
   m_ObjectHideFlags: 0

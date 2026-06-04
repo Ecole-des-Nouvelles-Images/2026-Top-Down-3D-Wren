@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Pick_Up;
+using NUnit.Framework;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,14 +19,11 @@ namespace _Workspace.Jordan.Script.Joueur
         [Header("Settings")] 
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _rotationSpeed;
-        [SerializeField] private float _dashSpeed;
-        [SerializeField] private float _dashDuration;
         [SerializeField] private float _attackCooldown;
         [SerializeField] private float _anticipationSpeed;
         [SerializeField] private float _activeSpeed;
         [SerializeField] private float _recoverySpeed;
         [SerializeField] private float _hitboxDuration;
-        [SerializeField] private float _dashCooldown;
         [SerializeField] private AudioClip _attack;
         [SerializeField] private AudioClip _die;
         [SerializeField] private AudioClip _hit;
@@ -45,7 +43,7 @@ namespace _Workspace.Jordan.Script.Joueur
         [Header("VFX")]
         [SerializeField] private GameObject _attack1Vfx;
         [SerializeField] private GameObject _attack2Vfx;
-        [SerializeField] private GameObject _dashVfx;
+        [SerializeField] private List<TrailRenderer> _dashTrails;
         // [SerializeField] private GameObject _hitVfx;
         // [SerializeField] private GameObject _deathVfx;
         
@@ -54,11 +52,15 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _attackTimer;
         private int _attackIndex;
         
-        //Dash settings
+        [Header("Dash Settings")]
         private bool _isDashing;
         private float _dashTimer;
         private float _dashCooldownTimer;
         private Vector3 _dashDirection;
+        [SerializeField] private float _trailTimer;
+        [SerializeField] private float _dashCooldown;
+        [SerializeField] private float _dashSpeed;
+        [SerializeField] private float _dashDuration;
         
         public float DashCooldown => _dashCooldown;
         public float DashCooldownTimer => _dashCooldownTimer;
@@ -76,7 +78,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private Collider _playerLimits;
         private CinemachineTargetGroup _cinemachineTargetGroup;
         private float _hitboxTimer;
-        private bool _paused = false;
+        private bool _paused;
         
         public static readonly List<PlayerController> PlayersControllers = new();
         
@@ -129,7 +131,11 @@ namespace _Workspace.Jordan.Script.Joueur
             
             _attackTimer += Time.deltaTime;
             _dashCooldownTimer += Time.deltaTime;
-            
+
+            if (_dashTimer <= 0f)
+            {
+                _isDashing = false;
+            }
             
             HandleGravity();
             
@@ -146,10 +152,22 @@ namespace _Workspace.Jordan.Script.Joueur
                 _controller.Move(dashDelta);
             
                 _dashTimer -= Time.deltaTime;
-                if (_dashTimer <= 0f)
+                if (_dashTimer <= _trailTimer)
                 {
                     _isDashing = false;
                 }
+
+                if (_dashTimer <= _trailTimer)
+                {
+                    if (_dashTrails != null)
+                    {
+                        foreach (TrailRenderer dashTrail in _dashTrails)
+                        {
+                            dashTrail.emitting = false;
+                        }
+                    }
+                }
+                
                 UpdateAnimation(_dashDirection.magnitude);
                 return;
             }
@@ -263,19 +281,23 @@ namespace _Workspace.Jordan.Script.Joueur
         public void OnSprint()
         {
             if (_isDashing) return;
-
             if (_move.magnitude < _inputDeadZone) return;
-
             if (_dashCooldownTimer < _dashCooldown) return;
 
+            if (!_isDashing && _dashTrails != null)
+            {
+                foreach (TrailRenderer dashTrail in _dashTrails)
+                {
+                    dashTrail.emitting = true;
+                }
+            }
+            
             _dashCooldownTimer = 0f;
 
             _isDashing = true;
             _dashTimer = _dashDuration;
 
             _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;
-            
-            SpawnVfx(_dashVfx, transform.position, transform.rotation);
         }
 
         private void OnAttack()
@@ -286,17 +308,15 @@ namespace _Workspace.Jordan.Script.Joueur
                 _reviveZone = null;
                 return;
             }
-
-            _attackIndex++;
-            if (_attackIndex >= 2) _attackIndex = 0;
+            
             
             if (_attackTimer < _attackCooldown) return;
 
-            _attackTimer = 0;
+            _attackTimer = 0f;
 
-            
             _animator.SetInteger("AttackIndex", _attackIndex);
             _animator.SetTrigger("Attack");
+            
 
             if (_attack != null)
             {
@@ -342,8 +362,7 @@ namespace _Workspace.Jordan.Script.Joueur
             if (IsDead) return;
 
             CurrentHealth -= damage;
-
-            // Déclenche l'animation Hit
+            
             if (_animator != null)
             {
                 _animator.ResetTrigger("Hit");
@@ -380,7 +399,9 @@ namespace _Workspace.Jordan.Script.Joueur
             enabled = false;
             
             if (_circleRevive != null)
-                _circleRevive.SetActive(true);
+                _circleRevive.SetActive(true); 
+            
+            _animator.SetBool("Death", IsDead);
             
             if (_die != null)
             {
@@ -404,9 +425,11 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private void SpawnVfx(GameObject vfxPrefab, Vector3 position, Quaternion rotation)
         {
-            if (vfxPrefab == null) return;
+            if (vfxPrefab == null)
+                return;
 
             GameObject vfx = Instantiate(vfxPrefab, position, rotation);
+
             Destroy(vfx, 2f);
         }
 
@@ -471,7 +494,16 @@ namespace _Workspace.Jordan.Script.Joueur
             _hitBox.SetActive(true);
             _hitboxTimer = _hitboxDuration;
             
-            SpawnVfx(_attack1Vfx, _hitBox.transform.position, transform.rotation);
+            if (_attackIndex == 0)
+            { 
+                SpawnVfx(_attack2Vfx, transform.position, transform.rotation);
+                _attackIndex = 1;
+            }
+            else
+            { 
+                SpawnVfx(_attack1Vfx, transform.position, transform.rotation);
+                _attackIndex = 0;
+            }
         }
         
         public void DisableHitbox()
