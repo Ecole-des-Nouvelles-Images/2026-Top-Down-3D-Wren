@@ -61,7 +61,6 @@ namespace _Workspace.Jordan.Script.ennemi
             if (_currentHealth <= 0)
             {
                 TryDropHeal();
-                Debug.Log("drop heal activé");
                 Die();
             }
         }

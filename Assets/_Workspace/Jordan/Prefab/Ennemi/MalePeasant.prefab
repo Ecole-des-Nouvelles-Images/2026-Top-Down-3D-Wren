@@ -185,6 +185,7 @@ MonoBehaviour:
   _damage: 10
   _attackCooldown: 2
   _attack: {fileID: 8300000, guid: 987994e66f566e040a74336011ac69c7, type: 3}
+  _slash: {fileID: 3976593873911704484, guid: 76d88adb4c4009f4a85d7c6f3196658e, type: 3}
 --- !u!114 &7811192008229631814
 MonoBehaviour:
   m_ObjectHideFlags: 0
