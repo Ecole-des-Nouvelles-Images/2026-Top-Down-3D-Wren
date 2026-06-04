@@ -49,7 +49,7 @@ namespace _Workspace.Jordan.Script.ennemi
 
             _currentHealth -= damage;
 
-            SpawnBloodHitVFX(); // 🔥 AJOUT ICI
+            SpawnBloodHitVFX(); 
 
             if (_animator != null)
             {
@@ -71,15 +71,13 @@ namespace _Workspace.Jordan.Script.ennemi
 
         private void SpawnBloodHitVFX()
         {
-            if (_bloodHitVFX == null || _bloodSpawnPoint == null) return;
+            if (VFXManager.Instance == null) return;
 
-            GameObject vfx = Instantiate(
-                _bloodHitVFX,
-                _bloodSpawnPoint.position,
-                _bloodSpawnPoint.rotation
-            );
+            Vector3 pos = _bloodSpawnPoint != null
+                ? _bloodSpawnPoint.position
+                : transform.position;
 
-            vfx.transform.SetParent(null);
+            VFXManager.Instance.SpawnBlood(pos, Quaternion.identity);
         }
 
         private void Die()
