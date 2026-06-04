@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Pick_Up;
+using NUnit.Framework;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -380,7 +381,9 @@ namespace _Workspace.Jordan.Script.Joueur
             enabled = false;
             
             if (_circleRevive != null)
-                _circleRevive.SetActive(true);
+                _circleRevive.SetActive(true); 
+            
+            _animator.SetBool("Death", IsDead);
             
             if (_die != null)
             {
