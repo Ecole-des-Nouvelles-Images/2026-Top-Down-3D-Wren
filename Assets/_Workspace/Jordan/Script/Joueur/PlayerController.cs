@@ -14,8 +14,8 @@ namespace _Workspace.Jordan.Script.Joueur
         [Header("References")]
         [SerializeField] private Transform _pivot;
         [SerializeField] private GameObject _hitBox;
-        [SerializeField] private GameObject _menuPause;
-        [SerializeField] private DefeatManagers _looseScene;
+        [SerializeField] private GameObject _menuPause; 
+        
         
         [Header("Settings")] 
         [SerializeField] private float _moveSpeed;
@@ -86,6 +86,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private CinemachineTargetGroup _cinemachineTargetGroup;
         private float _hitboxTimer;
         private bool _paused;
+        [SerializeField] private DefeatManagers _looseScene;
         
         public static readonly List<PlayerController> PlayersControllers = new();
         
@@ -95,7 +96,14 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private void Awake()
         {
-            PlayersControllers.Add(this);
+            
+                _looseScene = FindFirstObjectByType<DefeatManagers>();
+
+                if (_looseScene == null)
+                    Debug.LogError("DefeatManagers introuvable");
+            
+            
+                PlayersControllers.Add(this);
             _hitBox.SetActive(false);
             
              SpawnVfx(_spawnvfx, transform.position, transform.rotation);
@@ -404,7 +412,15 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             IsDead = true;
             enabled = false;
-                
+            
+            Debug.Log($"{name} est mort");
+
+            if (_looseScene == null)
+            {
+                Debug.LogError("DefeatManager introuvable !");
+                return;
+            }
+            
             _looseScene.PlayerDied();
             Destroy(gameObject);
             
