@@ -1,37 +1,45 @@
+using _Workspace.Jordan.Script.Joueur;
 using _Workspace.Jordan.Script.MenuPrincipale;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class DefeatManagers : MonoBehaviour
+namespace _Workspace.Jordan.Script
 {
-    [SerializeField] private SceneChanger _sceneChanger;
-
-    private int _playersAlive;
-    private bool _gameEnded = false;
-
-    public void RegisterPlayer()
+    public class DefeatManagers : MonoBehaviour
     {
-        _playersAlive++;
-    }
+        private SceneChanger _sceneChanger;
 
-    public void PlayerDied()
-    {
-        if (_gameEnded) return;
+        private bool _gameEnded;
 
-        _playersAlive--;
-
-        if (_playersAlive <= 0)
+        public void PlayerDied()
         {
-            _playersAlive = 0;
-            TriggerDefeat();
+            Debug.Log("PlayerDied appelé");
+
+            int alivePlayers = 0;
+
+            foreach (PlayerController player in PlayerController.PlayersControllers)
+            {
+                if (player != null && !player.IsDead)
+                {
+                    alivePlayers++;
+                }
+            }
+
+            Debug.Log($"Joueurs vivants : {alivePlayers}");
+
+            if (alivePlayers <= 0)
+            {
+                TriggerDefeat();
+            }
         }
-    }
 
-    private void TriggerDefeat()
-    {
-        _gameEnded = true;
-        
-        _sceneChanger.LoadScene();
+        public void TriggerDefeat()
+        {
+            _gameEnded = true;
 
-        Debug.Log("Défaite : tous les joueurs sont morts");
+            Debug.Log("Défaite : tous les joueurs sont morts");
+
+            SceneManager.LoadScene("Game_Loose");
+        }
     }
 }
