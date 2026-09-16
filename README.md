@@ -21,7 +21,7 @@
 ---
 
 ## Introduction
-**Bloobath** is a Action-survival developed by **Wren Feliza, Yohan Floch, Tom Goret, Jordan Naval** during **5 weeks**.  
+**Bloobath** is a Action-survival developed by **Wren FELIZA, Yohan FLOCH, Tom GORET, Jordan NAVAL** during **5 weeks**.  
 This project was created as part of **School Project**.  
 The development process included **preproduction(1 week), production (3 weeks) and postproduction (1 week)**.
 
@@ -64,7 +64,7 @@ If you encounter any bugs or have suggestions, please open an issue ticket.
 
 ## Special Thanks
 We would like to thank:
-[to the staff of the ensi]: frederic conil, frederic bast, jerome cros, yvan bladet and Tommy Ha Phuoc
+[to the staff of the ensi]: Frederic CONIL, Frederic BAST, Jérôme CROS, Yvan BLADET and Tommy HA PHUOC.
 
 ---
 
