@@ -37,12 +37,14 @@ This game was brought to life by **3 Artist and 1 Developper**:
 ---
 
 ## Gameplay
-[Describe the core gameplay loop, mechanics, and objectives of the game. Include details like number of players, perspective, and unique gameplay features.]
+Blood Bath is an action-survival game for 1 to 4 players in which you take on the role of vampires within their own mansions, striving to survive until daybreak.
+To succeed, you must stay alive while battling waves of diverse enemies—waves that grow increasingly numerous as the game progresses.
+Using your vampire abilities, you can fight, dash, and revive your teammates.
 
 ---
 
 ## Universe
-[Provide a brief story or lore for the game world, highlighting key characters, locations, or events. Explain how the story ties into the gameplay.]
+It takes place in the 1600s; vampires dwell in a dark manor located in a secluded wood. But one day, the villagers attack the manor to kill those who have already taken lives from them.
 
 ---
 
