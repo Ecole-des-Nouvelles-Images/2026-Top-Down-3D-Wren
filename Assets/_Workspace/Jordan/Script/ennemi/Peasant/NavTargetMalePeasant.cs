@@ -34,6 +34,9 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
         private void Update()
         {
+
+            if (_target == null) return;
+            
             _agent.speed = _moveSpeed;
 
             float distance = Vector3.Distance(transform.position, _target.position);
