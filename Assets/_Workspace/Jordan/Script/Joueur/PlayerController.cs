@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Pick_Up;
 using NUnit.Framework;
@@ -11,6 +12,8 @@ namespace _Workspace.Jordan.Script.Joueur
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] private PlayerVisual _playerVisual;
+        
         [Header("References")]
         [SerializeField] private Transform _pivot;
         [SerializeField] private GameObject _hitBox;
@@ -45,12 +48,12 @@ namespace _Workspace.Jordan.Script.Joueur
         [SerializeField] private GameObject _attack2Vfx;
         [SerializeField] private GameObject _spawnvfx;
         [SerializeField] private List<TrailRenderer> _dashTrails;
-        [SerializeField] private SkinnedMeshRenderer _renderer;
-        [SerializeField] private Color _flashColor = Color.white;
-        [SerializeField] private float _flashDuration = 0.08f;
+        //[SerializeField] private SkinnedMeshRenderer _renderer;
+        //[SerializeField] private Color _flashColor = Color.white;
+        //[SerializeField] private float _flashDuration = 0.08f;
 
-        private Material _material;
-        private Color _originalColor;
+        //private Material _material;
+        //private Color _originalColor;
         // [SerializeField] private GameObject _hitVfx;
         [SerializeField] private GameObject _deathVfx;
         
@@ -72,7 +75,7 @@ namespace _Workspace.Jordan.Script.Joueur
         public float DashCooldown => _dashCooldown;
         public float DashCooldownTimer => _dashCooldownTimer;
         
-        private readonly Dictionary<Item, int> _inventory = new();
+        //private readonly Dictionary<Item, int> _inventory = new();
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected; 
@@ -80,7 +83,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _inputDeadZone = 0.1f;
         private Animator _animator;
 
-        private static readonly int HitTrigger = Animator.StringToHash("Hit");
+        //private static readonly int HitTrigger = Animator.StringToHash("Hit");
 
         private Collider _playerLimits;
         private CinemachineTargetGroup _cinemachineTargetGroup;
@@ -94,16 +97,16 @@ namespace _Workspace.Jordan.Script.Joueur
         private float _gravity = -9.81f;
         private float _groundedForce = -2f;
         
-        private void Awake()
-        {
-            
-                _looseScene = FindFirstObjectByType<DefeatManagers>();
+        private PlayerInput _playerInput;
+        
+        private void Awake() {
+            _looseScene = FindFirstObjectByType<DefeatManagers>();
 
-                if (_looseScene == null)
-                    Debug.LogError("DefeatManagers introuvable");
+            if (_looseScene == null)
+                Debug.LogWarning("DefeatManagers introuvable");
             
             
-                PlayersControllers.Add(this);
+            PlayersControllers.Add(this);
             _hitBox.SetActive(false);
             
              SpawnVfx(_spawnvfx, transform.position, transform.rotation);
@@ -114,7 +117,7 @@ namespace _Workspace.Jordan.Script.Joueur
             if (_cinemachineTargetGroup == null) throw new MissingComponentException("CinemachineTargetGroup not found");
             
             _controller = GetComponent<CharacterController>();
-            _animator = GetComponentInChildren<Animator>();
+            //_animator = GetComponentInChildren<Animator>();
             _playerLimits = GameObject.FindGameObjectWithTag("PlayerLimits")?.GetComponent<Collider>();
            
             
@@ -122,28 +125,46 @@ namespace _Workspace.Jordan.Script.Joueur
             
             CurrentHealth = MaxHealth;
             
+            _playerInput =GetComponent<PlayerInput>();
+
             IsDead = false;
             if (_circleRevive != null)
                 _circleRevive.SetActive(false);
+            SetupVisual(_playerVisual);
         }
 
-        private void OnEnable()
+        
+
+        private void Start()
         {
+            _controller.enabled = false;
+            transform.position =  PlayerSpawnPosition.GetSpawnPosition();
+            _controller.enabled = true;
+            
+            GameManager.Instance.SetNewPlayer(this);
+        }
+        
+        // Mets en place le visuel et les ref qui vont avec.
+        private void SetupVisual(PlayerVisual prfVisual)
+        {
+            PlayerVisual visual =Instantiate(prfVisual, transform);
+            _animator = visual.Animator;
+            _dashTrails = visual.TrailRenderer;
+        }
+
+        private void OnEnable() {
             _cinemachineTargetGroup.AddMember(transform, 1f, 1f);
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() {
             _cinemachineTargetGroup.RemoveMember(transform);
         }
         
-        private void OnDestroy()
-        {
+        private void OnDestroy() {
             PlayersControllers.Remove(this);
         }
 
-        private void Update()
-        {
+        private void Update() {
             Vector3 move = new Vector3(_move.x, 0, _move.y);
             
             _attackTimer += Time.deltaTime;
@@ -156,6 +177,24 @@ namespace _Workspace.Jordan.Script.Joueur
             
             HandleGravity();
             
+            
+            
+            if (_hitBox.activeSelf)
+            {
+                _hitboxTimer -= Time.deltaTime;
+
+                if (_hitboxTimer <= 0f)
+                {
+                    _hitBox.SetActive(false);
+                }
+            }
+            ManagerDash();
+            HandleMovement(move);
+            UpdateAnimation(move.magnitude);
+        }
+
+        private void ManagerDash()
+        {
             if (_isDashing)
             {
                 Vector3 dashMove = _dashDirection * _dashSpeed;
@@ -169,17 +208,13 @@ namespace _Workspace.Jordan.Script.Joueur
                 _controller.Move(dashDelta);
             
                 _dashTimer -= Time.deltaTime;
-                if (_dashTimer <= _trailTimer)
-                {
+                if (_dashTimer <= _trailTimer) {
                     _isDashing = false;
                 }
 
-                if (_dashTimer <= _trailTimer)
-                {
-                    if (_dashTrails != null)
-                    {
-                        foreach (TrailRenderer dashTrail in _dashTrails)
-                        {
+                if (_dashTimer <= _trailTimer) {
+                    if (_dashTrails != null) {
+                        foreach (TrailRenderer dashTrail in _dashTrails) {
                             dashTrail.emitting = false;
                         }
                     }
@@ -188,18 +223,6 @@ namespace _Workspace.Jordan.Script.Joueur
                 UpdateAnimation(_dashDirection.magnitude);
                 return;
             }
-            
-            if (_hitBox.activeSelf)
-            {
-                _hitboxTimer -= Time.deltaTime;
-
-                if (_hitboxTimer <= 0f)
-                {
-                    _hitBox.SetActive(false);
-                }
-            }
-            HandleMovement(move);
-            UpdateAnimation(move.magnitude);
         }
         
         private void OnTriggerEnter(Collider other)
@@ -225,6 +248,10 @@ namespace _Workspace.Jordan.Script.Joueur
             }
         }
 
+        private void OnCollisionEnter(Collision collision) {
+            print("Player enter in collision withe"+collision.gameObject.name);
+        }
+
         private void HandleMovement(Vector3 move)
         {
             if (move.magnitude < _inputDeadZone)
@@ -245,7 +272,7 @@ namespace _Workspace.Jordan.Script.Joueur
             Vector3 desiredPos = transform.position + finalMove * dt;
             Vector3 clampedPos = ClampToMovementBounds(desiredPos);
             Vector3 moveDelta = clampedPos - transform.position;
-
+            
             _controller.Move(moveDelta);
         }
 
@@ -262,7 +289,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private void RotateVisual(Vector3 direction)
         {
             if (_pivot == null || direction.sqrMagnitude < 0.001f) return;
-
+            
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             _pivot.rotation = Quaternion.Slerp(_pivot.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
         }
@@ -417,7 +444,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
             if (_looseScene == null)
             {
-                Debug.LogError("DefeatManager introuvable !");
+                Debug.LogWarning("DefeatManager introuvable !");
                 return;
             }
             

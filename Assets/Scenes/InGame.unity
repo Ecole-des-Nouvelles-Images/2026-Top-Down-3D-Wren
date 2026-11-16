@@ -358,7 +358,6 @@ GameObject:
   m_Component:
   - component: {fileID: 226619106}
   - component: {fileID: 226619105}
-  - component: {fileID: 226619107}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -400,7 +399,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 1874596646455503194, guid: f6627d87741098f499955113b595733c, type: 3}
+  m_PlayerPrefab: {fileID: 289156935205341138, guid: f0893df54522360418f53b0e10bc6361, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -425,20 +424,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 826058981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &226619107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226619104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72feb75f646840ce9eccc8b3296d814a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPointManagers
-  spawnPoint:
-  - {x: 0, y: 3.5, z: 7}
 --- !u!1 &260514945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,7 +1957,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1434778955}
   - {fileID: 1659236678}
   - {fileID: 226619106}
   - {fileID: 1894565850}
@@ -2171,7 +2155,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 70, y: 35, z: 70}
   m_Center: {x: 0, y: 16, z: 0.4}
@@ -3527,7 +3511,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8081223793705972024, guid: 8d0369cfc0f43a7429fb50219c0b8b65, type: 3}
   m_PrefabInstance: {fileID: 1156031957}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1434778953
+--- !u!1 &1456780861
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3535,43 +3519,85 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1434778955}
-  - component: {fileID: 1434778954}
+  - component: {fileID: 1456780863}
+  - component: {fileID: 1456780862}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SpawnPlayerPosition (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1434778954
+--- !u!114 &1456780862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434778953}
+  m_GameObject: {fileID: 1456780861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93a258cfeb969314e94e0fca76be78c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a2aea6b27e349a1a7c52bb7f9783dd7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.UI.InGame.PauseMenu
-  _firstselectedbutton: {fileID: 0}
-  _menuPause: {fileID: 0}
---- !u!4 &1434778955
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPosition
+--- !u!4 &1456780863
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434778953}
+  m_GameObject: {fileID: 1456780861}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.62855, y: -1.81881, z: -1.04948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.34, y: 4.45, z: 9.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 826058981}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1501849179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501849181}
+  - component: {fileID: 1501849180}
+  m_Layer: 0
+  m_Name: SpawnPlayerPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1501849180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501849179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2aea6b27e349a1a7c52bb7f9783dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPosition
+--- !u!4 &1501849181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501849179}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.85, y: 4.4, z: 8.88}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554897546
 GameObject:
@@ -4455,7 +4481,6 @@ GameObject:
   - component: {fileID: 1894565854}
   - component: {fileID: 1894565853}
   - component: {fileID: 1894565852}
-  - component: {fileID: 1894565851}
   m_Layer: 0
   m_Name: AudioManagers
   m_TagString: Untagged
@@ -4478,22 +4503,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 826058981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1894565851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894565849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24553b92e59fe0244b3a2aba5ad9b21c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.AudioListener.AudioSettings
-  _sliderGeneral: {fileID: 0}
-  _sliderMusic: {fileID: 0}
-  _sliderSfx: {fileID: 0}
-  _audioMixer: {fileID: 24100000, guid: a773b7d1eb5d866428ba6ce714f58898, type: 2}
 --- !u!82 &1894565852
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5139,3 +5148,5 @@ SceneRoots:
   - {fileID: 175837992}
   - {fileID: 615688709}
   - {fileID: 2121436915}
+  - {fileID: 1501849181}
+  - {fileID: 1456780863}

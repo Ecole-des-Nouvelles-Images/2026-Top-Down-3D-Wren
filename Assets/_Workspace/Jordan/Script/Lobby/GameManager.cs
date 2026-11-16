@@ -1,20 +1,25 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
+﻿using System.Collections.Generic;
+using _Workspace.Jordan.Script.Joueur;
+using UnityEngine;
 
 namespace _Workspace.Jordan.Script
 {
-    public class GameManager: MonoBehaviour
-    {
-        public Transform Spawnpoints1, Spawnpoints2, Spawnpoints3, Spawnpoints4;
-        public GameObject J1, J2, J3, J4;
+    
+    public class GameManager: MonoBehaviour {
+
         
-        public void SpawnPlayers()
-        {
-            Instantiate(J1, Spawnpoints1.position, Spawnpoints1.rotation);
-            Instantiate(J2, Spawnpoints2.position, Spawnpoints2.rotation);
-            Instantiate(J3, Spawnpoints3.position, Spawnpoints3.rotation);
-            Instantiate(J4, Spawnpoints4.position, Spawnpoints4.rotation);
+        [SerializeField] private List<PlayerController> _players = new List<PlayerController>();
+        public static  GameManager Instance;
+
+        private void Awake() {
+            Instance = this;
         }
+        
+        
+        public void SetNewPlayer(PlayerController player) {
+            _players.Add(player);
+        }
+        
+        
     }
 }
