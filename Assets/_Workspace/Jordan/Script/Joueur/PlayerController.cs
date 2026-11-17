@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Workspace.Jordan.Script.AudioListener;
-using _Workspace.Jordan.Script.Pick_Up;
-using NUnit.Framework;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,7 +9,7 @@ namespace _Workspace.Jordan.Script.Joueur
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private PlayerVisual _playerVisual;
+        [SerializeField] private List<PlayerVisual> _playerVisual;
         
         [Header("References")]
         [SerializeField] private Transform _pivot;
@@ -145,9 +142,12 @@ namespace _Workspace.Jordan.Script.Joueur
         }
         
         // Mets en place le visuel et les ref qui vont avec.
-        private void SetupVisual(PlayerVisual prfVisual)
+        private void SetupVisual(List<PlayerVisual> prfVisual)
         {
-            PlayerVisual visual =Instantiate(prfVisual, transform);
+            int playerId = _playerInput.playerIndex;
+
+            PlayerVisual visual = Instantiate(prfVisual[playerId], transform);
+
             _animator = visual.Animator;
             _dashTrails = visual.TrailRenderer;
         }
