@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Workspace.Jordan.Script.AudioListener;
+using _Workspace.Jordan.Script.Lobby;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +11,13 @@ namespace _Workspace.Jordan.Script.Joueur
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
+        public event EventHandler<float> OnHealthChange;
+        public event EventHandler<float> OnHealthChangeNormalized;
+        public event EventHandler<bool> OnDashReady;
+        public event EventHandler<float> OnDashReadyNormalized;
+        //public event EventHandler OnReviveReady;
+        public event EventHandler OnDeath;
+        
         [SerializeField] private List<PlayerVisual> _playerVisual;
         
         [Header("References")]
@@ -72,7 +81,6 @@ namespace _Workspace.Jordan.Script.Joueur
         public float DashCooldown => _dashCooldown;
         public float DashCooldownTimer => _dashCooldownTimer;
         
-        //private readonly Dictionary<Item, int> _inventory = new();
         private Vector2 _move;
         private CharacterController _controller;
         private bool _isControllerConnected; 
@@ -81,7 +89,6 @@ namespace _Workspace.Jordan.Script.Joueur
         private Animator _animator;
 
         //private static readonly int HitTrigger = Animator.StringToHash("Hit");
-
         private Collider _playerLimits;
         private CinemachineTargetGroup _cinemachineTargetGroup;
         private float _hitboxTimer;
@@ -96,12 +103,14 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private PlayerInput _playerInput;
         
+        public int PlayerIndex => _playerInput.playerIndex;
+        
         private void Awake() {
+            
             _looseScene = FindFirstObjectByType<DefeatManagers>();
 
             if (_looseScene == null)
                 Debug.LogWarning("DefeatManagers introuvable");
-            
             
             PlayersControllers.Add(this);
             _hitBox.SetActive(false);
@@ -129,9 +138,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 _circleRevive.SetActive(false);
             SetupVisual(_playerVisual);
         }
-
         
-
         private void Start()
         {
             _controller.enabled = false;
@@ -150,8 +157,50 @@ namespace _Workspace.Jordan.Script.Joueur
 
             _animator = visual.Animator;
             _dashTrails = visual.TrailRenderer;
+            
+            visual.OnAnticipation += VisualOnOnAnticipation;
+            visual.OnActiveStarting += VisualOnOnActiveStarting;
+            visual.OnActiveHitting += VisualOnOnActiveHitting;
+            visual.OnRecoverStarting += VisualOnOnRecoverStarting;
+            visual.OnRecoverEnding += VisualOnOnRecoverEnding;
+            visual.OnEnableHitboxing += VisualOnOnEnableHitboxing;
+            visual.OnDisableHitboxing += VisualOnOnDisableHitboxing;
         }
 
+        private void VisualOnOnAnticipation(object sender, EventArgs e) {
+            _animator.speed = _anticipationSpeed; }
+        
+        private void VisualOnOnActiveStarting(object sender, EventArgs e) {
+            _animator.speed = _activeSpeed; }
+        
+        private void VisualOnOnActiveHitting(object sender, EventArgs e) {}
+        
+        private void VisualOnOnRecoverStarting(object sender, EventArgs e) {
+            _animator.speed = _recoverySpeed; }
+        private void VisualOnOnRecoverEnding(object sender, EventArgs e) {
+            _animator.speed = 1; }
+        
+        private void VisualOnOnEnableHitboxing(object sender, EventArgs e)
+        {
+            _hitBox.SetActive(true);
+            _hitboxTimer = _hitboxDuration;
+            
+            if (_attackIndex == 0)
+            { 
+                SpawnVfx(_attack2Vfx, transform.position, transform.rotation);
+                _attackIndex = 1;
+            }
+            else
+            { 
+                SpawnVfx(_attack1Vfx, transform.position, transform.rotation);
+                _attackIndex = 0;
+            }
+        }
+        private void VisualOnOnDisableHitboxing(object sender, EventArgs e) 
+        {
+            _hitBox.SetActive(false);
+        }
+        
         private void OnEnable() {
             _cinemachineTargetGroup.AddMember(transform, 1f, 1f);
         }
@@ -168,16 +217,8 @@ namespace _Workspace.Jordan.Script.Joueur
             Vector3 move = new Vector3(_move.x, 0, _move.y);
             
             _attackTimer += Time.deltaTime;
-            _dashCooldownTimer += Time.deltaTime;
-
-            if (_dashTimer <= 0f)
-            {
-                _isDashing = false;
-            }
             
             HandleGravity();
-            
-            
             
             if (_hitBox.activeSelf)
             {
@@ -199,19 +240,24 @@ namespace _Workspace.Jordan.Script.Joueur
             {
                 Vector3 dashMove = _dashDirection * _dashSpeed;
                 dashMove.y = _verticalVelocity;
-            
+                
                 RotateVisual(_dashDirection);
                 float dtDash = Time.deltaTime;
                 Vector3 desiredDashPos = transform.position + dashMove * dtDash;
                 Vector3 clampedDashPos = ClampToMovementBounds(desiredDashPos);
                 Vector3 dashDelta = clampedDashPos - transform.position;
                 _controller.Move(dashDelta);
-            
+                
                 _dashTimer -= Time.deltaTime;
-                if (_dashTimer <= _trailTimer) {
+                _dashCooldownTimer += Time.deltaTime;
+                
+                if (_dashCooldownTimer <= _dashCooldown)
+                {
                     _isDashing = false;
+                    OnDashReady?.Invoke(this, true);
                 }
-
+                OnDashReadyNormalized?.Invoke(this, _dashCooldownTimer/_dashCooldown);
+                
                 if (_dashTimer <= _trailTimer) {
                     if (_dashTrails != null) {
                         foreach (TrailRenderer dashTrail in _dashTrails) {
@@ -219,9 +265,7 @@ namespace _Workspace.Jordan.Script.Joueur
                         }
                     }
                 }
-                
                 UpdateAnimation(_dashDirection.magnitude);
-                return;
             }
         }
         
@@ -321,25 +365,23 @@ namespace _Workspace.Jordan.Script.Joueur
             _move = value.Get<Vector2>();
         }
         
-        
+        // Input pour le Dash
         public void OnSprint()
         {
             if (_isDashing) return;
             if (_move.magnitude < _inputDeadZone) return;
-            if (_dashCooldownTimer < _dashCooldown) return;
+            //if (_dashCooldownTimer < _dashCooldown) return;
 
-            if (!_isDashing && _dashTrails != null)
-            {
-                foreach (TrailRenderer dashTrail in _dashTrails)
-                {
+            if (!_isDashing && _dashTrails != null) {
+                foreach (TrailRenderer dashTrail in _dashTrails) {
                     dashTrail.emitting = true;
                 }
             }
-            
             _dashCooldownTimer = 0f;
 
             _isDashing = true;
             _dashTimer = _dashDuration;
+            OnDashReady?.Invoke(this, false);
 
             _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;
         }
@@ -352,26 +394,18 @@ namespace _Workspace.Jordan.Script.Joueur
                 _reviveZone = null;
                 return;
             }
-            
-            
             if (_attackTimer < _attackCooldown) return;
 
             _attackTimer = 0f;
-
             _animator.SetInteger("AttackIndex", _attackIndex);
             _animator.SetTrigger("Attack");
             
-
-            if (_attack != null)
-            {
-                SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx);
-            }
+            if (_attack != null) { 
+                SoundFXManager.Instance.PlaySoundFXClip(_attack, SoundGroups.Sfx); }
         }
         
-        public void OnPause(InputValue value)
-        {
-            TogglePause();
-        }
+        public void OnPause(InputValue value) {
+            TogglePause(); }
 
         private void TogglePause()
         {
@@ -407,46 +441,37 @@ namespace _Workspace.Jordan.Script.Joueur
 
             CurrentHealth -= damage;
             
+            //====================================================//
+            OnHealthChange?.Invoke(this , CurrentHealth);
+            OnHealthChangeNormalized?.Invoke(this , CurrentHealth/MaxHealth);
+            
             if (_animator != null)
             {
                 _animator.ResetTrigger("Hit");
                 _animator.SetTrigger("Hit");
             }
 
-            if (_hit != null)
-            {
-                SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx);
-            }
+            if (_hit != null) {
+                SoundFXManager.Instance.PlaySoundFXClip(_hit, SoundGroups.Sfx); }
 
-            if (CurrentHealth <= 0)
-            {
-                Die();
-            }
+            if (CurrentHealth <= 0) {
+                Die(); }
         }
 
-        public void SetReviveTarget(ReviveZone zone)
-        {
-            _reviveZone = zone;
-        }
+        public void SetReviveTarget(ReviveZone zone){
+            _reviveZone = zone; }
 
-        public void ClearReviveTarget()
-        {
-            _reviveZone = null;
-        }
+        public void ClearReviveTarget() {
+            _reviveZone = null; }
 
         [ContextMenu("Die")]
         public void Die()
         {
             IsDead = true;
             enabled = false;
-            
-            Debug.Log($"{name} est mort");
 
-            if (_looseScene == null)
-            {
-                Debug.LogWarning("DefeatManager introuvable !");
-                return;
-            }
+            OnDeath.Invoke(this, EventArgs.Empty);
+            if (_looseScene == null) return;
             
             _looseScene.PlayerDied();
             Destroy(gameObject);
@@ -460,7 +485,6 @@ namespace _Workspace.Jordan.Script.Joueur
             {
                  SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
             }
-            
             SpawnVfx(_deathVfx, transform.position, transform.rotation);
         }
 
@@ -483,86 +507,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 return;
 
             GameObject vfx = Instantiate(vfxPrefab, position, rotation);
-
             Destroy(vfx, 4f);
-        }
-
-        // public bool HasItemInInventory(Item item, int number)
-        // {
-        //     {
-        //       //  return value >= number;
-        //     } 
-        //     return false;
-        // }
-        //
-        // public void AddItemToInventory(Item item, int number)
-        // {
-        //     if (_inventory.ContainsKey(item))
-        //     {
-        //         _inventory[item]++;
-        //     }
-        //     else
-        //     {
-        //
-        //         _inventory.Add(item, number);
-        //     }
-        // }
-        
-        // public void RemoveItemFromInventory(Item item, int number)
-        // {
-        //     if (_inventory.ContainsKey(item))
-        //     {
-        //         _inventory[item]--;
-        //     }
-        //     else
-        //     {
-        //         throw new Exception("Item not found");
-        //     }
-        // }
-
-        public void OnAnticipationStart()
-        {
-            _animator.speed = _anticipationSpeed;
-        }
-        
-        public void OnActiveStart()
-        {
-            _animator.speed = _activeSpeed;
-        }
-        
-        public void OnActiveHit()
-        { }
-        
-        public void OnRecoveryStart()
-        {
-            _animator.speed = _recoverySpeed;
-        }
-        
-        public void OnRecoveryEnd()
-        {
-            _animator.speed = 1;
-        }
-        
-        public void EnableHitbox()
-        {
-            _hitBox.SetActive(true);
-            _hitboxTimer = _hitboxDuration;
-            
-            if (_attackIndex == 0)
-            { 
-                SpawnVfx(_attack2Vfx, transform.position, transform.rotation);
-                _attackIndex = 1;
-            }
-            else
-            { 
-                SpawnVfx(_attack1Vfx, transform.position, transform.rotation);
-                _attackIndex = 0;
-            }
-        }
-        
-        public void DisableHitbox()
-        {
-            _hitBox.SetActive(false);
         }
     }
 }

@@ -76,6 +76,7 @@ namespace _Workspace.Jordan.Script.ennemi
         }
         public void TakeDamage(float damage)
         {
+            Debug.Log("prends des dégats" + damage);
             if (_isDead) return;
 
             _currentHealth -= damage;
@@ -119,7 +120,6 @@ namespace _Workspace.Jordan.Script.ennemi
                 _animator.ResetTrigger(HitTrigger);
 
                 // Coupe le layer HitEffect
-               
                 if (_animator.layerCount > 1)
                 {
                     _animator.SetLayerWeight(1, 0f);

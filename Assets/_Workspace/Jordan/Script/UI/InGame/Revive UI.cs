@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
@@ -14,7 +15,20 @@ namespace _Workspace.Jordan.Script.UI.InGame
         private void Start()
         {
             HideUI();
+            
+            _deadPlayer.OnHealthChange += DeadPlayerOnOnHealthChange;
         }
+
+        private void OnDestroy()
+        {
+            _deadPlayer.OnHealthChange -= DeadPlayerOnOnHealthChange;
+        }
+
+        private void DeadPlayerOnOnHealthChange(object sender, float newHp)
+        {
+            print("les PV de mon joueur sont à " + newHp);
+        }
+
 
         private void OnTriggerEnter(Collider other)
         {

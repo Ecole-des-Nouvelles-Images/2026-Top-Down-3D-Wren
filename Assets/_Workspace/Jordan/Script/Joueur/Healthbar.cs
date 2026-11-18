@@ -12,7 +12,6 @@ namespace _Workspace.Jordan.Script.Joueur
         {
             if (_playerController == null) return;
             _image.fillAmount = _playerController.CurrentHealth / _playerController.MaxHealth;
-           
         } 
         
         public void Init(PlayerController player)

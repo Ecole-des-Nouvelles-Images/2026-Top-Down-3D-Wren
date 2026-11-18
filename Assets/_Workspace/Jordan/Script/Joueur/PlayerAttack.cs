@@ -15,10 +15,9 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log(other.name + " j'ai collidé");
             if (other.CompareTag("Ennemy"))
             {
-                Debug.Log(other.name + " j'ai collidé");
-
                 EnemyLife enemyLife = other.GetComponent<EnemyLife>();
 
                 if (enemyLife != null)

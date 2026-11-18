@@ -1,3 +1,4 @@
+using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -11,6 +12,11 @@ namespace _Workspace.Jordan.Script.UI.InGame
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(Firstselectedbutton);
+
+            PlayerController controller;
+            
         }
+
+        
     }
 }
