@@ -3552,7 +3552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1399146975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3565,7 +3565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5239e31bf0e38f440ac7e7af4adf1583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.Timer
-  _timesRemaining: 900
+  _timesRemaining: 120
   _valueText: {fileID: 644523953}
   _sceneChanger: {fileID: 1399146980}
 --- !u!114 &1399146976

@@ -75,6 +75,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private Vector3 _dashDirection;
         [SerializeField] private float _trailTimer;
         [SerializeField] private float _dashCooldown;
+        [SerializeField] private bool _dashReady = true;
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashDuration;
         
@@ -213,7 +214,8 @@ namespace _Workspace.Jordan.Script.Joueur
             PlayersControllers.Remove(this);
         }
 
-        private void Update() {
+        private void Update() 
+        {
             Vector3 move = new Vector3(_move.x, 0, _move.y);
             
             _attackTimer += Time.deltaTime;
@@ -236,11 +238,10 @@ namespace _Workspace.Jordan.Script.Joueur
 
         private void ManagerDash()
         {
-            if (_isDashing)
-            {
+            if (_isDashing) {
                 Vector3 dashMove = _dashDirection * _dashSpeed;
                 dashMove.y = _verticalVelocity;
-                
+
                 RotateVisual(_dashDirection);
                 float dtDash = Time.deltaTime;
                 Vector3 desiredDashPos = transform.position + dashMove * dtDash;
@@ -248,23 +249,32 @@ namespace _Workspace.Jordan.Script.Joueur
                 Vector3 dashDelta = clampedDashPos - transform.position;
                 _controller.Move(dashDelta);
                 
-                _dashTimer -= Time.deltaTime;
+                _dashTimer += Time.deltaTime;
+                if (_dashTimer >= _dashDuration) {
+                    _isDashing = false;
+                    
+                }
+            }
+
+            if (!_dashReady && !_isDashing )
+            {
+                //_dashTimer -= Time.deltaTime;
                 _dashCooldownTimer += Time.deltaTime;
                 
-                if (_dashCooldownTimer <= _dashCooldown)
+                if (_dashCooldownTimer >= _dashCooldown)
                 {
-                    _isDashing = false;
+                    _dashReady = true;
                     OnDashReady?.Invoke(this, true);
                 }
                 OnDashReadyNormalized?.Invoke(this, _dashCooldownTimer/_dashCooldown);
                 
-                if (_dashTimer <= _trailTimer) {
-                    if (_dashTrails != null) {
-                        foreach (TrailRenderer dashTrail in _dashTrails) {
-                            dashTrail.emitting = false;
-                        }
-                    }
-                }
+                //if (_dashTimer <= _trailTimer) {
+                //    if (_dashTrails != null) {
+                //        foreach (TrailRenderer dashTrail in _dashTrails) {
+                //            dashTrail.emitting = false;
+                //        }
+                //    }
+                //}
                 UpdateAnimation(_dashDirection.magnitude);
             }
         }
@@ -368,7 +378,7 @@ namespace _Workspace.Jordan.Script.Joueur
         // Input pour le Dash
         public void OnSprint()
         {
-            if (_isDashing) return;
+            if (_isDashing||!_dashReady) return;
             if (_move.magnitude < _inputDeadZone) return;
             //if (_dashCooldownTimer < _dashCooldown) return;
 
@@ -378,9 +388,9 @@ namespace _Workspace.Jordan.Script.Joueur
                 }
             }
             _dashCooldownTimer = 0f;
+            _dashTimer = 0;
 
             _isDashing = true;
-            _dashTimer = _dashDuration;
             OnDashReady?.Invoke(this, false);
 
             _dashDirection = new Vector3(_move.x, 0, _move.y).normalized;
