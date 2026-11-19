@@ -202,8 +202,8 @@ MonoBehaviour:
   _health: 50
   _hit: {fileID: 8300000, guid: 596d318d67bca554a9b08b5d7647c785, type: 3}
   _death: {fileID: 8300000, guid: ca7b8b7f71305f44d88855cfc912ac15, type: 3}
-  _dropChance: 1
-  _healPrefab: {fileID: 919132149155446097, guid: 38b50dd41e2c4dd4eba89e926e41aec7, type: 3}
+  _dropChance: 0.25
+  _healPrefab: {fileID: 468029962170190570, guid: 637b4800aa28fa342897787343374e1f, type: 3}
   _renderer: {fileID: 0}
   _flashColor: {r: 0.6698113, g: 0, b: 0, a: 1}
   _flashDuration: 0.08

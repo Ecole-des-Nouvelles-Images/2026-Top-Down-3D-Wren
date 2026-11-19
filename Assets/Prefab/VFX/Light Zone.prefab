@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 59554576147065098}
   - component: {fileID: 1565175330077499952}
   - component: {fileID: 1482247956070026696}
-  - component: {fileID: 8865005970983310916}
   - component: {fileID: 4341063911977672930}
+  - component: {fileID: 6082091239490361708}
   m_Layer: 0
   m_Name: Light Zone
   m_TagString: Untagged
@@ -93,8 +93,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8865005970983310916
-BoxCollider:
+--- !u!114 &4341063911977672930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391383883670672014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe930d6dffe760408a191e8629ec4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.Priest.PriestAttack
+  _damagePerSecond: 10
+  _lightBeam: {fileID: 0}
+--- !u!135 &6082091239490361708
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,22 +126,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8, y: 2, z: 0.8}
+  m_Radius: 0.35
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &4341063911977672930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2391383883670672014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fe930d6dffe760408a191e8629ec4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Workspace.Jordan.Script.ennemi.Priest.PriestAttack
-  _damagePerSecond: 10
-  _lightBeam: {fileID: 0}
 --- !u!1001 &3302344584061647437
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,19 +1,20 @@
+
 using UnityEngine;
-using UnityEngine.Serialization;
+using TMPro;
 
 namespace _Workspace.Jordan.Script.ennemi
 {
     public class WaveManager : MonoBehaviour
     {
         public static WaveManager Instance;
-        
+
         [Header("Wave")]
         [SerializeField] private int _currentWave;
-        
+
         [Header("Enemies")]
         [SerializeField] private int _enemiesAlive;
         [SerializeField] private int _enemiesToSpawn;
-        
+
         private int _spawnedEnemies;
 
         [Header("Spawn")]
@@ -30,6 +31,13 @@ namespace _Workspace.Jordan.Script.ennemi
         private bool _isSpawning;
         private bool _waveFinished;
 
+        [Header("UI")]
+        [SerializeField] private TMP_Text _enemiesText;
+        [SerializeField] private TMP_Text _waveText;
+        [SerializeField] private float _waveTextDuration = 3f;
+
+        private float _waveTextTimer;
+
         private void Awake()
         {
             Instance = this;
@@ -37,6 +45,10 @@ namespace _Workspace.Jordan.Script.ennemi
 
         private void Start()
         {
+            UpdateEnemiesUI();
+
+            _waveText.gameObject.SetActive(false);
+
             StartNextWave();
         }
 
@@ -44,6 +56,7 @@ namespace _Workspace.Jordan.Script.ennemi
         {
             HandleSpawning();
             HandleWaveEnd();
+            HandleWaveUI();
         }
 
         private void HandleSpawning()
@@ -92,6 +105,8 @@ namespace _Workspace.Jordan.Script.ennemi
 
             chosenSpawner.SpawnIA();
             _enemiesAlive++;
+
+            UpdateEnemiesUI();
         }
 
         private void HandleWaveEnd()
@@ -119,18 +134,48 @@ namespace _Workspace.Jordan.Script.ennemi
         private void StartNextWave()
         {
             _currentWave++;
+
             Debug.Log("Wave : " + _currentWave);
+
             _enemiesToSpawn = 5 + _currentWave * 3;
             _spawnedEnemies = 0;
 
             _waveFinished = false;
             _isSpawning = true;
+
+            _waveText.text = "Manche " + _currentWave;
+            _waveText.gameObject.SetActive(true);
+
+            _waveTextTimer = _waveTextDuration;
+
+            UpdateEnemiesUI();
+        }
+
+        private void HandleWaveUI()
+        {
+            if (_waveTextTimer > 0)
+            {
+                _waveTextTimer -= Time.deltaTime;
+
+                if (_waveTextTimer <= 0)
+                {
+                    _waveText.gameObject.SetActive(false);
+                }
+            }
         }
 
         public void EnemyKilled()
         {
             _enemiesAlive--;
+
+            UpdateEnemiesUI();
+
             Debug.Log("Enemies Left : " + _enemiesAlive);
+        }
+
+        private void UpdateEnemiesUI()
+        {
+            _enemiesText.text = _enemiesAlive.ToString();
         }
     }
 }

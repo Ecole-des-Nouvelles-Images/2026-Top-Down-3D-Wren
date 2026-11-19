@@ -73,7 +73,6 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
             Quaternion targetRotation = Quaternion.LookRotation(dir);
 
             // Offset pour corriger l'anim de marche de travers
-            
             targetRotation *= Quaternion.Euler(0, _rotationOffset, 0);
             _visual.rotation = Quaternion.Slerp(_visual.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
         }

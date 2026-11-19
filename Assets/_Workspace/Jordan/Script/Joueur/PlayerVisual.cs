@@ -16,37 +16,31 @@ namespace _Workspace.Jordan.Script.Joueur
         public event EventHandler OnEnableHitboxing;
         public event EventHandler OnDisableHitboxing;
         
-        
         public void OnAnticipationStart()
         {
             OnAnticipation?.Invoke(this, EventArgs.Empty);
         }
-        
         public void OnActiveStart()
         {
             OnActiveStarting?.Invoke(this, EventArgs.Empty);
         }
-
         public void OnActiveHit()
         {
             OnActiveHitting?.Invoke(this, EventArgs.Empty);
         }
-        
         public void OnRecoveryStart()
         {
             OnRecoverStarting?.Invoke(this, EventArgs.Empty);
         }
-        
         public void OnRecoveryEnd()
         {
             OnRecoverEnding?.Invoke(this, EventArgs.Empty);
         }
-
         public void EnableHitbox()
         {
+            print("l'enableHitbox marche");
             OnEnableHitboxing?.Invoke(this, EventArgs.Empty);
         }
-
         public void DisableHitbox()
         {
             OnDisableHitboxing?.Invoke(this, EventArgs.Empty);

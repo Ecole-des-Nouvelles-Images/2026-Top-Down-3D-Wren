@@ -94,7 +94,7 @@ namespace _Workspace.Jordan.Script.Joueur
         private CinemachineTargetGroup _cinemachineTargetGroup;
         private float _hitboxTimer;
         private bool _paused;
-        [SerializeField] private DefeatManagers _looseScene;
+        private DefeatManagers _looseScene;
         
         public static readonly List<PlayerController> PlayersControllers = new();
         
@@ -173,7 +173,6 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private void VisualOnOnActiveStarting(object sender, EventArgs e) {
             _animator.speed = _activeSpeed; }
-        
         private void VisualOnOnActiveHitting(object sender, EventArgs e) {}
         
         private void VisualOnOnRecoverStarting(object sender, EventArgs e) {
@@ -183,6 +182,7 @@ namespace _Workspace.Jordan.Script.Joueur
         
         private void VisualOnOnEnableHitboxing(object sender, EventArgs e)
         {
+            print("ca marche");
             _hitBox.SetActive(true);
             _hitboxTimer = _hitboxDuration;
             
@@ -475,26 +475,28 @@ namespace _Workspace.Jordan.Script.Joueur
             _reviveZone = null; }
 
         [ContextMenu("Die")]
+        [ContextMenu("Die")]
         public void Die()
         {
+            if (IsDead) return;
+
             IsDead = true;
             enabled = false;
 
-            OnDeath.Invoke(this, EventArgs.Empty);
-            if (_looseScene == null) return;
-            
-            _looseScene.PlayerDied();
-            Destroy(gameObject);
-            
+            OnDeath?.Invoke(this, EventArgs.Empty);
+
+            _looseScene?.PlayerDied();
+
             if (_circleRevive != null)
-                _circleRevive.SetActive(true); 
-            
+                _circleRevive.SetActive(true);
+
             _animator.SetBool("Death", IsDead);
-            
+
             if (_die != null)
             {
-                 SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
+                SoundFXManager.Instance.PlaySoundFXClip(_die, SoundGroups.Sfx);
             }
+
             SpawnVfx(_deathVfx, transform.position, transform.rotation);
         }
 
@@ -518,6 +520,12 @@ namespace _Workspace.Jordan.Script.Joueur
 
             GameObject vfx = Instantiate(vfxPrefab, position, rotation);
             Destroy(vfx, 4f);
+        }
+        
+        public void Health(float healamount)
+        {
+            CurrentHealth = Mathf.Clamp(CurrentHealth + healamount, 0, MaxHealth);
+            OnHealthChangeNormalized?.Invoke(this , CurrentHealth/MaxHealth);
         }
     }
 }
