@@ -9,16 +9,23 @@ namespace _Workspace.Jordan.Script.Lobby
         
         [SerializeField] private List<PlayerController> _players = new List<PlayerController>();
         [SerializeField] private UIPlayerPanel[] _uiPlayerPanels;
-        public static  GameManager Instance;
+        public static GameManager Instance;
 
-        private void Awake() {
+        private void Awake()
+        {
             Instance = this;
         }
         
-        public void SetNewPlayer(PlayerController player) {
+        public void SetNewPlayer(PlayerController player) 
+        {
             _uiPlayerPanels[player.PlayerIndex].SetupUI(player);
             _uiPlayerPanels[player.PlayerIndex].gameObject.SetActive(true);
             _players.Add(player);
+        }
+
+        private void GetClosestPlayer(PlayerController player)
+        {
+            
         }
     }
 }

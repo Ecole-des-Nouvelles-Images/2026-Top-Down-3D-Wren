@@ -256,25 +256,27 @@ namespace _Workspace.Jordan.Script.Joueur
                 }
             }
 
-            if (!_dashReady && !_isDashing )
+            if (!_dashReady && !_isDashing)
             {
-                //_dashTimer -= Time.deltaTime;
                 _dashCooldownTimer += Time.deltaTime;
-                
+
+                float cooldownNormalized = _dashCooldownTimer / _dashCooldown;
+
+                OnDashReadyNormalized?.Invoke(this, cooldownNormalized);
+
                 if (_dashCooldownTimer >= _dashCooldown)
                 {
                     _dashReady = true;
                     OnDashReady?.Invoke(this, true);
                 }
-                OnDashReadyNormalized?.Invoke(this, _dashCooldownTimer/_dashCooldown);
                 
-                //if (_dashTimer <= _trailTimer) {
-                //    if (_dashTrails != null) {
-                //        foreach (TrailRenderer dashTrail in _dashTrails) {
-                //            dashTrail.emitting = false;
-                //        }
-                //    }
-                //}
+                if (_dashTimer <= _trailTimer) {
+                    if (_dashTrails != null) {
+                        foreach (TrailRenderer dashTrail in _dashTrails) {
+                            dashTrail.emitting = false;
+                        }
+                    }
+                }
                 UpdateAnimation(_dashDirection.magnitude);
             }
         }
@@ -301,11 +303,7 @@ namespace _Workspace.Jordan.Script.Joueur
                 _canvas.transform.parent = transform;
             }
         }
-
-        private void OnCollisionEnter(Collision collision) {
-            print("Player enter in collision withe"+collision.gameObject.name);
-        }
-
+        
         private void HandleMovement(Vector3 move)
         {
             if (move.magnitude < _inputDeadZone)
@@ -378,17 +376,21 @@ namespace _Workspace.Jordan.Script.Joueur
         // Input pour le Dash
         public void OnSprint()
         {
-            if (_isDashing||!_dashReady) return;
+            if (_isDashing || !_dashReady) return;
             if (_move.magnitude < _inputDeadZone) return;
-            //if (_dashCooldownTimer < _dashCooldown) return;
 
-            if (!_isDashing && _dashTrails != null) {
-                foreach (TrailRenderer dashTrail in _dashTrails) {
+            if (!_isDashing && _dashTrails != null)
+            {
+                foreach (TrailRenderer dashTrail in _dashTrails)
+                {
                     dashTrail.emitting = true;
                 }
             }
+
             _dashCooldownTimer = 0f;
             _dashTimer = 0;
+
+            _dashReady = false; // C'est cette ligne qui manquait !
 
             _isDashing = true;
             OnDashReady?.Invoke(this, false);
@@ -473,8 +475,7 @@ namespace _Workspace.Jordan.Script.Joueur
 
         public void ClearReviveTarget() {
             _reviveZone = null; }
-
-        [ContextMenu("Die")]
+        
         [ContextMenu("Die")]
         public void Die()
         {

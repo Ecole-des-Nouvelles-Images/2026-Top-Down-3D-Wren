@@ -46,9 +46,6 @@ namespace _Workspace.Jordan.Script.ennemi
         private void Start()
         {
             UpdateEnemiesUI();
-
-            _waveText.gameObject.SetActive(false);
-
             StartNextWave();
         }
 
@@ -99,7 +96,6 @@ namespace _Workspace.Jordan.Script.ennemi
 
             if (chosenSpawner == null)
             {
-                Debug.LogWarning("Aucun spawner disponible pour la wave " + _currentWave);
                 return;
             }
 
@@ -116,8 +112,6 @@ namespace _Workspace.Jordan.Script.ennemi
                 _waveFinished = true;
 
                 _waveTimer = _timeBetweenWaves;
-
-                Debug.Log("Wave Finished");
             }
 
             if (_waveFinished)
@@ -134,9 +128,7 @@ namespace _Workspace.Jordan.Script.ennemi
         private void StartNextWave()
         {
             _currentWave++;
-
-            Debug.Log("Wave : " + _currentWave);
-
+            
             _enemiesToSpawn = 5 + _currentWave * 3;
             _spawnedEnemies = 0;
 
@@ -144,7 +136,6 @@ namespace _Workspace.Jordan.Script.ennemi
             _isSpawning = true;
 
             _waveText.text = "Manche " + _currentWave;
-            _waveText.gameObject.SetActive(true);
 
             _waveTextTimer = _waveTextDuration;
 
@@ -169,8 +160,6 @@ namespace _Workspace.Jordan.Script.ennemi
             _enemiesAlive--;
 
             UpdateEnemiesUI();
-
-            Debug.Log("Enemies Left : " + _enemiesAlive);
         }
 
         private void UpdateEnemiesUI()

@@ -38,7 +38,6 @@ namespace _Workspace.Jordan.Script.Joueur
         }
         public void EnableHitbox()
         {
-            print("l'enableHitbox marche");
             OnEnableHitboxing?.Invoke(this, EventArgs.Empty);
         }
         public void DisableHitbox()

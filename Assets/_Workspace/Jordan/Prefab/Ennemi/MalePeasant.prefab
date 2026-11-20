@@ -108,7 +108,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 1
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -187,6 +187,7 @@ MonoBehaviour:
   _attackCooldown: 2
   _attack: {fileID: 8300000, guid: 987994e66f566e040a74336011ac69c7, type: 3}
   _slash: {fileID: 0}
+  _navTargetMalePeasant: {fileID: 1658358801413466565}
 --- !u!114 &7709757946731354407
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _Workspace.Jordan.Script.AudioListener;
 using _Workspace.Jordan.Script.Joueur;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace _Workspace.Jordan.Script.ennemi
 {
@@ -110,6 +111,15 @@ namespace _Workspace.Jordan.Script.ennemi
             if (_isDead) return;
 
             _isDead = true;
+            
+            NavMeshAgent agent = GetComponent<NavMeshAgent>();
+
+            if (agent != null)
+            {
+                agent.isStopped = true;
+                agent.ResetPath();
+                agent.enabled = false;
+            }
             Debug.Log("Enemy Dead");
 
             TryDropHeal();

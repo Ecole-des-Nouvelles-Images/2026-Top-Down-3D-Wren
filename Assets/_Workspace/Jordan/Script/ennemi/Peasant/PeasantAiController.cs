@@ -13,6 +13,7 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         [SerializeField] private float _attackCooldown;
         [SerializeField] private AudioClip _attack;
         [SerializeField] private GameObject _slash;
+        [SerializeField] private NavTargetMalePeasant _navTargetMalePeasant;
         
         private PlayerController _currentTarget;
         private Animator _animator;
@@ -31,6 +32,8 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
             if (_currentTarget == null) return;
 
+            Debug.DrawLine(transform.position, _currentTarget.transform.position, Color.red);
+            
             float distance = Vector3.Distance(transform.position, _currentTarget.transform.position);
 
             if (distance <= _attackRange)
@@ -47,29 +50,26 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
         private void UpdateNearestTarget()
         {
-            //Debug.Log(PlayerController.PlayersControllers.Count);
-            
             float nearestDistance = Mathf.Infinity;
+            PlayerController nearestTarget = null;
+
             foreach (PlayerController playerController in PlayerController.PlayersControllers)
             {
-                if (Vector3.Distance(transform.position, playerController.transform.position) < nearestDistance)
+                if (playerController == null || playerController.IsDead)
+                    continue;
+
+                float distance = Vector3.Distance(transform.position, playerController.transform.position);
+
+                if (distance < nearestDistance)
                 {
-                    nearestDistance = Vector3.Distance(transform.position, playerController.transform.position);
-                    _currentTarget = playerController;
+                    nearestDistance = distance;
+                    nearestTarget = playerController;
                 }
             }
-        }
-        
-        private void UpdateWeakestTarget()
-        {
-            float nearestDistance = Mathf.Infinity;
-            foreach (PlayerController playerController in PlayerController.PlayersControllers)
+            if (nearestTarget != _currentTarget)
             {
-                if (Vector3.Distance(transform.position, playerController.transform.position) < nearestDistance)
-                {
-                    nearestDistance = Vector3.Distance(transform.position, playerController.transform.position);
-                    _currentTarget = playerController;
-                }
+                _currentTarget = nearestTarget;
+                _navTargetMalePeasant.SetNewTarget(_currentTarget != null ? _currentTarget.transform : null);
             }
         }
         

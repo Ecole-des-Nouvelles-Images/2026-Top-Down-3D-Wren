@@ -22,8 +22,6 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         private void Start()
         {
             _agent = GetComponent<NavMeshAgent>();
-
-            _target = GameObject.FindGameObjectWithTag("Player").transform;
             _animator = GetComponentInChildren<Animator>();
             
             if (_visual == null && _animator != null)
@@ -34,13 +32,11 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
 
         private void Update()
         {
-
             if (_target == null) return;
             
             _agent.speed = _moveSpeed;
 
             float distance = Vector3.Distance(transform.position, _target.position);
-
             if (distance <= _stopDistance)
             {
                 _agent.isStopped = true;
@@ -63,8 +59,8 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
         {
             if (_visual == null) return;
 
-            Vector3 dir = _agent.desiredVelocity;
-
+            Vector3 dir = _agent.destination - transform.position;
+            Debug.DrawLine(_agent.destination, _target.position, Color.yellow);
             dir.y = 0;
 
             if (dir.sqrMagnitude < 0.01f)
@@ -75,6 +71,10 @@ namespace _Workspace.Jordan.Script.ennemi.Peasant
             // Offset pour corriger l'anim de marche de travers
             targetRotation *= Quaternion.Euler(0, _rotationOffset, 0);
             _visual.rotation = Quaternion.Slerp(_visual.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
+        }
+        public void SetNewTarget(Transform newTarget) {
+            _target = newTarget;
+            _agent.SetDestination(_target.position);
         }
     }
 }

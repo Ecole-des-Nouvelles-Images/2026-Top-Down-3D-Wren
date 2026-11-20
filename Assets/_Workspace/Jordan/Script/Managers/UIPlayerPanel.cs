@@ -14,7 +14,10 @@ namespace _Workspace.Jordan.Script.Managers
         {
             player.OnHealthChangeNormalized += PlayerOnOnHealthChangeNormalized;
             player.OnDashReadyNormalized += PlayerOnOnDashReadyNormalized;
+
             _player = player;
+
+            _dash.fillAmount = player.DashCooldownTimer / player.DashCooldown;
         }
 
         private void PlayerOnOnDashReadyNormalized(object sender, float e)
